@@ -4,8 +4,10 @@ import java.lang.System;
 import java.lang.String;
 public class Execution {
     static Scanner scanner = new Scanner(System.in);
-
-    static Joueur joueur;
+    static Wizard wizard;
+    static Pet pet;
+    static Wand wand;
+    static House house;
     public static int place =0,level;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
     public static boolean isRunning;
@@ -46,6 +48,7 @@ public class Execution {
     public static void startGame(){
         boolean nameSet = false;
         String name;
+        int size = 0;
         // print title screen
         clearconsole();
         printseperator(10);
@@ -71,38 +74,19 @@ public class Execution {
         }while(!nameSet);
              System.out.println("Welcome to Poudlard "+name+" I don't doubt that this would be the best years of your life ! " +
                      " But before your adventure starts, you have to buy your fournitures !!");
-        //create new player object with the name
-        joueur = new Joueur(name); //appel de joueuer
+            Execution.anythingtocontinue();
+        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand()  ,House.your_house()); //appel de joueuer
+        System.out.println();
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
-        //start main game loop
-        gameLoop();
+
         }
         //method to continue the journey
     public static void continueJourney(){
 
     }
     //printing out the most important information about the payer charcter
-    public static void characterInfo(){
-        clearconsole();
-        printHeading("Character info");
-        System.out.println(joueur.name + "\tHP:" + joueur.hp+"/"+joueur.maxHp);
-        printseperator(20);
-        System.out.println("XP/"+joueur.xp);
-
-        //printing the chosen trait
-        if(joueur.numAtaUpgrades>0){
-            System.out.println("Offensive trait :"+joueur.attUpgrades[joueur.numAtaUpgrades-1]);
-            printseperator(20);
-        }
-        if(joueur.numDefUpgrades>0){
-            System.out.println("Defensive trait :"+joueur.defUpgrades[joueur.numDefUpgrades-1]);
-            printseperator(20);
-        }
-        anythingtocontinue();
-    }
-    //printing the main menu
     public static void printMenu(){
         clearconsole();
         printHeading(places[place]);
@@ -112,24 +96,11 @@ public class Execution {
         System.out.println("(2) Character info");
         System.out.println("(3) Exit game");
 
+    }
 
 
     }
 
-        //main game loop
-    public static void gameLoop(){
-        while(isRunning){
-            printMenu();
-            int input = readInt("->",3);
-            if(input==1)
-                continueJourney();
-            else if(input==2)
-                characterInfo();
-            else
-                isRunning=false;
-        }
-    }
-    }
 
 
 

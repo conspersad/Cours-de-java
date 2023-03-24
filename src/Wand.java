@@ -1,16 +1,17 @@
 import java.lang.System;
-import java.lang.String;
 import java.util.Scanner;
 
-public class wand {
+public class Wand {
     public int size;
-    static Core[] core= Core.values();
+    Core core;
     static Scanner scanner = new Scanner(System.in);
-    public static void choose_wand_size() {
+    public static int choose_wand() {
+        int size;
+        Core.choose_Core();
         Execution.clearconsole();
         System.out.println("Now you have to choose your wand, this one would choose you but" +
                 " what size would you like ? It has to be beetwen 9 and 40 inches");
-        int size = scanner.nextInt();
+        size = scanner.nextInt();
         do {
             if (size > 40) {
                 System.out.println("Your wand is too long, please choose a shorter one");
@@ -21,14 +22,7 @@ public class wand {
             }
 
         } while ((size > 40) || (size < 9));
-        System.out.println("Perfect your wand is " + size + " inches");}
-
-        public static void choose_core(){
-            Execution.clearconsole();
-            System.out.println("Now you have to choose the core for your wand");
-            System.out.println("(0) Phoenix_feather");
-            System.out.println("(1) Dragon_heartstring");
-            int core_value = scanner.nextInt();
-            System.out.println("Nice you have " + core[core_value] + " in your wand");
+        System.out.println("Perfect your wand is " + size + " inches");
+        return size;
         }
     }
