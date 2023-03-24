@@ -8,7 +8,7 @@ public class Execution {
     static Pet pet;
     static Wand wand;
     static House house;
-    public static int place =0,level;
+    public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
     public static boolean isRunning;
     public static void printseperator(int n){
@@ -67,7 +67,9 @@ public class Execution {
             if (input == 1)
                 nameSet = true;
         }while(!nameSet);
-        System.out.println("Welcome to Poudlard "+name+" I don't doubt that this would be the best years of your life ! " + " But before your adventure starts, you have to buy your fournitures !!");
+
+        Story.printIntro();
+
 
         Execution.anythingtocontinue();
 
@@ -80,7 +82,58 @@ public class Execution {
         gameLoop();
 
         }
+        //method to continue the journey
+   public static void checkAct(){
+        if(level==1){
+        level=2;
+        place=1;
+            //on appele les intro des niveaux1
+        }else if(level==2){
+            level=3;
+            place=2;
 
+        }else if(level==3){
+            level=4;
+            place=3;
+
+        }else if(level==4){
+            level=5;
+            place=4;
+
+        }else if(level==5){
+            level=6;
+            place=5;
+
+        }else if(level==6){
+            level=7;
+            place=6;
+
+        }
+   }
+    public static void continueJourney(){
+        checkAct();
+        //check if game isn't in last act
+        if(level != 7)
+            rendomEncounter();
+
+    }
+    //printing out the most important information about the payer charcter
+    public static void characterInfo(){
+        clearconsole();
+        printHeading("Character info");
+        System.out.println(wizard.name + "\n : Your Pet" + wizard.pet + "\n : The size of your wand " + wizard.wand + "\n : Your house" + wizard.house);
+        printseperator(5);
+    }
+    public static void printMenu(){
+        clearconsole();
+        printHeading(places[place]);
+        System.out.println("choose an action:");
+        printseperator(20);
+        System.out.println("(1) Continue your journey");
+        System.out.println("(2) Character info");
+        System.out.println("(3) Exit game");
+
+    }
     public static void gameLoop(){
         while(isRunning){
             printMenu();
@@ -91,24 +144,7 @@ public class Execution {
                 characterInfo();
             else
                 isRunning=false;
-
         }
-    }
-        //method to continue the journey
-
-    public static void continueJourney(){
-
-    }
-    //printing out the most important information about the payer charcter
-    public static void printMenu(){
-        clearconsole();
-        printHeading(places[place]);
-        System.out.println("choose an action:");
-        printseperator(20);
-        System.out.println("(1) Continue your journey");
-        System.out.println("(2) Character info");
-        System.out.println("(3) Exit game");
-
     }
 
 
