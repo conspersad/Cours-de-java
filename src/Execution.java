@@ -70,10 +70,9 @@ public class Execution {
 
         Story.printIntro();
 
-
         Execution.anythingtocontinue();
 
-        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house()); //appel de joueuer
+        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), wizard.maxHp, wizard.xp); //appel de joueuer
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
@@ -84,38 +83,41 @@ public class Execution {
         }
         //method to continue the journey
    public static void checkAct(){
-        if(level==1){
+        if( Character.xp <= 10 && level==1){
         level=2;
         place=1;
             //on appele les intro des niveaux1
-        }else if(level==2){
+            Story.Thephilosopherstone_Intro();
+
+        }else if( (Character.xp >= 10 && Character.xp <= 20) && level==2){
             level=3;
             place=2;
 
-        }else if(level==3){
+        }else if((Character.xp >=20 && Character.xp <=30) && level==3){
             level=4;
             place=3;
 
-        }else if(level==4){
+        }else if((Character.xp >= 30 && Character.xp <=50) && level==4){
             level=5;
             place=4;
 
-        }else if(level==5){
+        }else if((Character.xp >= 50 && Character.xp <=70) &&level==5){
             level=6;
             place=5;
 
-        }else if(level==6){
+        }else if((Character.xp >= 70 && Character.xp <=90) &&level==6){
             level=7;
             place=6;
 
         }
    }
-    public static void continueJourney(){
-        checkAct();
-        //check if game isn't in last act
-        if(level != 7)
-            rendomEncounter();
+   public static void rendomEncounter(){
 
+    }
+    public static void continueJourney(){
+        //check if game isn't in last act
+        if(level != 7)checkAct();
+            //rendomEncounter();
     }
     //printing out the most important information about the payer charcter
     public static void characterInfo(){
@@ -126,7 +128,7 @@ public class Execution {
     }
     public static void printMenu(){
         clearconsole();
-        printHeading("Menu");
+        printHeading(places[place]);
         System.out.println("choose an action:");
         printseperator(20);
         System.out.println("(1) Continue your journey");

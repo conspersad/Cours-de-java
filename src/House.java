@@ -45,32 +45,33 @@ public class House {
             System.out.println("Your house is Ravenclaw,\n" +
                     "Intensely intelligent, Ravenclaws are also unique and think outside the box.\n" +
                     "his is usually a good thing, unless by 'thinking outside the box' you mean stealing other wizards' stories and erasing their memories, like a certain Ravenclaw called Gilderoy Lockhart.");
-             test1=house[3];
+             test1=house[2];
             return test1;
         }
 
         if (c > max) {
-            max = c;
+            max = c;test1=house[1];
             System.out.println("Your house is Hufflepuff,\n" +
                     "Hufflepuff characteristics include a strong sense of justice, loyalty, patience, and a propensity for hard work.\n" +
                     "Hufflepuffs are also seen as nice, almost to a fault. Hogwarts houses have moved beyond the realm of fiction and into the real worlds");
-             test1=house[2];
+
         }
 
         if (d > max) {
             max = d;
+            test1=house[0];
             System.out.println("Your house is Gryffindor,\n" +
                     "Courage and chivalry are two of the most recognisable qualities when it comes to this house \n" +
                     "but that doesn't mean that every Gryffindor is always supremely confident and self-assured.\n" +
                     "Some can be nervous or unsure of themselves and still belong there. Courage doesn't have to involve flashy or daring gestures.");
-             test1=house[1];
+
         }
         if(max == a){
-
+            test1=house[3];
         System.out.println("Your house is Slytherin, Slytherin are known for being ambitious, cunning, and resourceful.s\n" +
                 "Slytherins are also sometimes regarded as being evil thanks to the fact that many of the most sinister witches and wizards\n" +
                 "have been associated with this house.");
-        test1=house[4];
+
            }
         return test1;
     }}
