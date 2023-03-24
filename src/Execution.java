@@ -73,7 +73,7 @@ public class Execution {
 
         Execution.anythingtocontinue();
 
-        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand()  ,House.your_house()); //appel de joueuer
+        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house()); //appel de joueuer
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
@@ -126,7 +126,7 @@ public class Execution {
     }
     public static void printMenu(){
         clearconsole();
-        printHeading(places[place]);
+        printHeading("Menu");
         System.out.println("choose an action:");
         printseperator(20);
         System.out.println("(1) Continue your journey");
@@ -149,7 +149,20 @@ public class Execution {
 
 
     }
-
+   /* À chaque niveau,
+        vous allez affronter des ennemis différents. Les mécaniques pour les vaincre changeront en fonction
+        de l’ennemi.
+        Pour combattre vos ennemis, vous pourrez utiliser des sorts (Spell) que vous apprendez au fur
+        et à mesure des années. Vous disposez également de potions (Potion) qui peuvent vous aider à
+        regagner de la vie. Les sorts que vous lancez ont un pourcentage de chance de réussite : vous pouvez
+        rater vos sorts.
+        Lorsque vous gagnez un combat, vous pouvez choisir d’augmenter vos points de vie, vos points
+        de dégâts.
+        Chaque maison a sa spécificité :
+        • Les potions sont plus efficaces pour les membres de Hufflepuff.
+        • Les sorts font plus de dégâts pour les membres de Slytherin.
+        • Les sorciers de Gryffindor sont plus résistants aux dégâts.
+        • Les sorciers de Ravenclaw sont plus précis*/
 
 
 
