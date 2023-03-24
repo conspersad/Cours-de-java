@@ -17,6 +17,7 @@ public class Wizard extends Character {
     public void Defend(){
 
     };
+    //overide
     public  int attack(){
         return 0;
     }

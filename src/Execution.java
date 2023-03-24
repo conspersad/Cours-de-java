@@ -72,13 +72,30 @@ public class Execution {
         Execution.anythingtocontinue();
 
         wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand()  ,House.your_house()); //appel de joueuer
-        System.out.println();
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
 
+        //start main game loop
+        gameLoop();
+
         }
+
+    public static void gameLoop(){
+        while(isRunning){
+            printMenu();
+            int input = readInt("->",3);
+            if(input==1)
+                continueJourney();
+            else if(input==2)
+                characterInfo();
+            else
+                isRunning=false;
+
+        }
+    }
         //method to continue the journey
+
     public static void continueJourney(){
 
     }
