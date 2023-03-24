@@ -2,21 +2,22 @@ import java.util.Scanner;
 import java.util.*;
 
 public class House {
-    static String[] house ={"Gryffindor","Hufflepuff","Ravenclaw","Slytherin"};
+    static String house[] ={"Gryffindor","Hufflepuff","Ravenclaw","Slytherin"};
     public static int a = 0, b = 0, c = 0, d = 0;
     static Scanner scanner = new Scanner(System.in);
     public static void poserQuestions() {
         int reponse = scanner.nextInt();
-        if (reponse==1){
-            a++;
-        } else if (reponse==2) {
-            b++;
-        }else if (reponse==3) {
-            c++;
-        }else if (reponse==4) {
-            d++;
-        }
-       }
+       if((4>reponse)|| (reponse)>1) if (reponse == 1) {
+           a++;
+       } else if (reponse == 2) {
+           b++;
+       } else if (reponse == 3) {
+           c++;
+       } else if (reponse == 4) {
+           d++;
+       } else {
+           System.out.println("Your messing with me ! Let's be serious please");
+       }}
     public static void questions() {
         System.out.println("Now you have to answer this few questions to help the sorting hat, answer with your heart !");
         System.out.println("What super power would you like to have ? \n1 : Read minds\n2 : Extreme intelligence \n3 : Extraordinary strength\n4 : Fly" );
@@ -36,6 +37,7 @@ public class House {
     }
 
     public static String your_house(){
+        questions();
         int max = a;
         String test1 = null;
         if (b > max) {

@@ -13,22 +13,19 @@ public class Execution {
     public static boolean isRunning;
     public static void printseperator(int n){
         for(int i=0;i<n;i++)
-            System.out.print("-");
+        System.out.print("-");
         System.out.println();
     }
     public static void printHeading(String title){
         printseperator(30);
         System.out.println(title);
         printseperator(30);}
-
     public static void anythingtocontinue(){
         System.out.println("\nEnter something to continue...");
-        scanner.next();
-
-    }
+        scanner.next();}
     public static void clearconsole(){
         for(int i=0; i<5;i++)
-            System.out.println();
+        System.out.println();
     }
     public static int readInt(String prompt, int Userchoice) {
         int input;
@@ -52,10 +49,8 @@ public class Execution {
         // print title screen
         clearconsole();
         printseperator(10);
-        printseperator(30);
         System.out.println("Harry Potter");
         System.out.println("BY CONSTANCE PERSAD");
-        printseperator(30);
         printseperator(10);
         anythingtocontinue();
 
@@ -72,9 +67,10 @@ public class Execution {
             if (input == 1)
                 nameSet = true;
         }while(!nameSet);
-             System.out.println("Welcome to Poudlard "+name+" I don't doubt that this would be the best years of your life ! " +
-                     " But before your adventure starts, you have to buy your fournitures !!");
-            Execution.anythingtocontinue();
+        System.out.println("Welcome to Poudlard "+name+" I don't doubt that this would be the best years of your life ! " + " But before your adventure starts, you have to buy your fournitures !!");
+
+        Execution.anythingtocontinue();
+
         wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand()  ,House.your_house()); //appel de joueuer
         System.out.println();
 
