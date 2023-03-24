@@ -8,6 +8,8 @@ public class Execution {
     static Pet pet;
     static Wand wand;
     static House house;
+    static int maxHp=100;
+    static int xp=0;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
     public static boolean isRunning;
@@ -72,7 +74,7 @@ public class Execution {
 
         Execution.anythingtocontinue();
 
-        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), wizard.maxHp, wizard.xp); //appel de joueuer
+        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), maxHp, xp); //appel de joueuer
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
@@ -112,6 +114,14 @@ public class Execution {
         }
    }
    public static void rendomEncounter(){
+        int encounter =(int) (Math.random()*encounters.length);
+        if(encounter[encounter].equals("Battle")){
+
+        }else if(encounter[encounter].equals("Rest")){
+
+        }else{
+
+        }
 
     }
     public static void continueJourney(){
@@ -119,11 +129,78 @@ public class Execution {
         if(level != 7)checkAct();
             //rendomEncounter();
     }
+    public static void TrollBattle(){
+        System.out.println("You encountered a troll in the toilette. You'll have to fight it");
+    }
+    public static void battle(Enemy enemy){
+        while(true)
+            clearconsole();
+        printHeading(enemy.name +"\nHP: " +enemy.hp +"/" + enemy.maxHp );
+        printHeading(wizard.name +"\nHP: " + wizard.hp +"/"+wizard.maxHp);
+        System.out.println("Choose an action :");
+        printseperator(20);
+        System.out.println("(1) Fight\n(2) Use Potion \n(3) Run away");
+        int input = readInt("->",3);
+        if(input==1){
+            //calculate dmg and dmgTook
+            int dmg = wizard.attack() - enemy.defend();
+            int dmgTook= enemy.attack()- wizard.defend();
+            if(dmgTook < 0){
+                dmg -=dmgTook/2;
+                dmgTook=0;
+            }if(dmg< 0) {
+                dmg = 0;
+                wizard.hp -= dmgTook;
+                enemy.hp -= dmg;
+                clearconsole();
+                printHeading("Battle");
+                System.out.println("You dealt" + dmg + "damage to the " + enemy.name);
+                printseperator(15);
+                System.out.println("The" + enemy.name + "dealt " + dmgTook + "damage to you");
+                //check if player is still alive or dead
+                if (wizard.hp <= 0) {
+                    wizardDied();
+                    break;
+                } else if (enemy.hp <= 0) {
+                    clearconsole();
+                    printHeading("You defeated the" + enemy.name + "!");
+                    wizard.xp += enemy.xp;
+                    System.out.println("You earned" + enemy.xp + "XP !");
+                    anythingtocontinue();
+                    break;}}
+                 else if(input == 2){
+                     //next part
+                }else{
+                     clearconsole();
+                     if(Math.random()*10+1<=3.5){
+                         printHeading("You ran away from the "+ enemy.name +"!");
+                         anythingtocontinue();
+                         break;
+                     }else {
+                         printHeading("You didn't manage to escape");
+                         int dmgTook = enemy.attack();
+                         System.out.println("In your hurry you took 0 " + dmgTook + "damage !");
+                         anythingtocontinue();
+                         if (wizard.hp <= 0)
+                             playerDied();
+                     }
+
+
+
+            }
+        }
+
+    }
+    public static void wizardDied(){
+        clearconsole();
+        printHeading("You died...");
+        printHeading("You earned " + wizard.xp + " XP on your journey.Try to earn more next time!");
+    }
     //printing out the most important information about the payer charcter
     public static void characterInfo(){
         clearconsole();
         printHeading("Character info");
-        System.out.println(wizard.name + "\n : Your Pet" + wizard.pet + "\n : The size of your wand " + wizard.wand + "\n : Your house" + wizard.house);
+        System.out.println(wizard.name + "Your Pet : " + wizard.pet + "\n The size of your wand : " + wizard.wand + "\n : Your house is :" + wizard.house);
         printseperator(5);
     }
     public static void printMenu(){

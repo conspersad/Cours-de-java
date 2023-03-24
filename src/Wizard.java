@@ -27,7 +27,8 @@ public class Wizard extends Character {
     };
     @Override
     public  int attack(){
-        return 0;
+
+        return (int) (Math.random()*(xp/4+3)+ xp/10 +)
     }
 
 }

@@ -8,7 +8,7 @@ public class Story{
 
     public static void Thephilosopherstone_Intro(){
         System.out.println("It's been a few days since you are in Poudlard now, you have made quite a few friends, and you are doing very well in your first class\n" +
-                "You even learn your first speel Wingardium Leviosa \n" +
+                "You even learn your first speel, it's Wingardium Leviosa \n" +
                 "But this morning you wake up and you didn't see your friend Nevile in potion class");
         System.out.println( Execution.wizard.name + ": Do you know what happend to Nevile ? He never miss potion class !");
         System.out.println("Hermione: Well, i saw him coming back from the toilets yesterdays he looked very scared, it's seems like he saw a ghost !!");

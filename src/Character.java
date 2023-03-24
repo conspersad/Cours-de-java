@@ -9,6 +9,8 @@ public abstract class Character {
         this.xp=xp;
     }
     public abstract  int attack();
-   // public abstract int defend();
+
+    public abstract int defend();
+    // public abstract int defend();
 
 }
