@@ -7,7 +7,6 @@ public class Enemy extends AbstractEnemy{
     {
         super(maxHp,xp);
         this.name=name;
-        hp=maxHp;
     }
     public boolean isAlive() {
         return hp > 0;
@@ -21,13 +20,12 @@ public class Enemy extends AbstractEnemy{
 
     @Override
     public int defend(int damage) {
-        if (Math.random() < 0.1) { // probabilité de 50% de ne pas être touché
+        if (Math.random() > 0.1) { // probabilité de 50% de ne pas être touché
             System.out.println(name + " dodged the attack!");
             return 0;
         } else {
             System.out.println(name + " was hit!");
             return 10; // l'ennemi subit 10 points de dégâts
         }
-
     }
 }

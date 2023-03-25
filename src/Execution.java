@@ -122,7 +122,7 @@ public class Execution {
        while (wizard.isAlive() && enemy.isAlive()) {
            wizard.xp=Spell.damage;
            // Tour du sorcier
-           System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " PV, " + enemy.xp + " DEF)");
+           System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " PV, " + enemy.xp + " DEF)");
            System.out.println("What do you want to do ?");
            System.out.println("1 - fight "+enemy.name);
            System.out.println("2 - Use a sort to have more Hp");
@@ -132,7 +132,7 @@ public class Execution {
                case 1 -> {
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
-                   enemy.hp = enemy.hp - reducedDamage;
+                   Enemy.hp = Enemy.hp - (reducedDamage*damage);
                    System.out.println(wizard.name + " inflige " + damage + " points de dégâts. L'ennemi subit " + reducedDamage + " points de dégâts.");
                }
                case 2 -> wizard.usePotion();
