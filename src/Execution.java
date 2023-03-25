@@ -5,13 +5,17 @@ import java.lang.String;
 public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
+    static Enemy enemy;
     static Pet pet;
     static Wand wand;
     static House house;
     static int maxHp=100;
+
+    public static String[] encounter={"Battle"};
     static int xp=0;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
+
     public static boolean isRunning;
     private static int encounter;
 
@@ -92,6 +96,7 @@ public class Execution {
         place=1;
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
+            enemy = new Enemy("Troll",10);
 
         }else if( (Character.xp >= 10 && Character.xp <= 20) && level==2){
             level=3;
@@ -134,58 +139,53 @@ public class Execution {
     public static void TrollBattle(){
         System.out.println("You encountered a troll in the toilette. You'll have to fight it");
     }
-    public static void battle(Enemy enemy){
-        while(true)
-            clearconsole();
-        printHeading(enemy.name +"\nHP: " +enemy.hp +"/" + enemy.maxHp );
-        printHeading(wizard.name +"\nHP: " + wizard.hp +"/"+wizard.maxHp);
-        System.out.println("Choose an action :");
-        printseperator(20);
-        System.out.println("(1) Fight\n(2) Use Potion \n(3) Run away");
-        int input = readInt("->",3);
-        if(input==1){
-            //calculate dmg and dmgTook
-            int dmg = wizard.attack() - enemy.defend();
-            int dmgTook= enemy.attack()- wizard.defend();
-            if(dmgTook < 0){
-                dmg -= dmgTook/2;
-                dmgTook=0;
-            }if(dmg< 0) {
-                dmg = 0;
-                wizard.hp -= dmgTook;
-                enemy.hp -= dmg;
-                clearconsole();
-                printHeading("Battle");
-                System.out.println("You dealt" + dmg + "damage to the " + enemy.name);
-                printseperator(15);
-                System.out.println("The" + enemy.name + "dealt " + dmgTook + "damage to you");
-                //check if player is still alive or dead
-                if (wizard.hp <= 0) {
-                    wizardDied();
+    public static void battle(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Potions potions = new Potions();
+        Sorcier sorcier = new Sorcier("Harry Potter", 100, 20, potions);
+        Enemy enemy = new Enemy("Voldemort", 50);
 
-                } else if (enemy.hp <= 0) {
-                    clearconsole();
-                    printHeading("You defeated the" + enemy.name + "!");
-                    wizard.xp += enemy.xp;
-                    System.out.println("You earned" + enemy.xp + "XP !");
-                    anythingtocontinue();
-                    }}
-                 else if(input == 2){
-                     //next part
-                }else{
-                     clearconsole();
-                     if(Math.random()*10+1<=3.5){
-                         printHeading("You ran away from the "+ enemy.name +"!");
-                         anythingtocontinue();
+        // Boucle principale du jeu
+        while (sorcier.isAlive() && enemy.isAlive()) {
+            // Tour du sorcier
+            System.out.println(sorcier.getName() + " (" + sorcier.getHp() + " PV, " + sorcier.getDefense() + " DEF) vs " + enemy.getName() + " (" + enemy.getHp() + " PV, " + enemy.getDefense() + " DEF)");
+            System.out.println("Que voulez-vous faire ?");
+            System.out.println("1 - Attaquer");
+            System.out.println("2 - Utiliser une potion");
+            System.out.println("3 - Se défendre");
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    int damage = sorcier.attack();
+                    int reducedDamage = enemy.defense(damage);
+                    System.out.println(sorcier.getName() + " inflige " + damage + " points de dégâts. L'ennemi subit " + reducedDamage + " points de dégâts.");
+                    break;
+                case 2:
+                    sorcier.usePotion();
+                    break;
+                case 3:
+                    System.out.println(sorcier.getName() + " se met en position défensive.");
+                    break;
+                default:
+                    System.out.println("Choix invalide.");
+                    break;
+            }
+            // Tour de l'ennemi
+            if (enemy.isAlive()) {
+                int damage = enemy.attack();
+                int reducedDamage = sorcier.defense(damage);
+                System.out.println(enemy.getName() + " inflige " + damage + " points de dégâts. " + sorcier.getName() + " subit " + reducedDamage + " points de dégâts.");
+            }
+        }
+        // Fin du jeu
+        if (sorcier.isAlive()) {
+            System.out.println(sorcier.getName() + " a vaincu " + enemy.getName() + " !");
+        } else {
+            System.out.println(enemy.getName() + " a vaincu " + sorcier.getName() + " !");
+        }
+    }
 
-                     }else {
-                         printHeading("You didn't manage to escape");
-                         dmgTook = enemy.attack();
-                         System.out.println("In your hurry you took 0 " + dmgTook + "damage !");
-                         anythingtocontinue();
-                         if (wizard.hp <= 0)
-                             wizardDied();
-                     }}}}
+}
     public static void wizardDied(){
         clearconsole();
         printHeading("You died...");
