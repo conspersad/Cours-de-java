@@ -1,5 +1,5 @@
 public class Enemy extends AbstractEnemy{
-    public static int maxHp;
+
     public static int hp;
     public int xp;
     String name;

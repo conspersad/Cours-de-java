@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Wizard extends Character {
     public String name;
-    public static int maxHp;
     public static int hp;
     public int xp;
     Pet pet;
@@ -27,23 +26,19 @@ public class Wizard extends Character {
     @Override
     public int attack() {
         // Calcule les dégâts infligés par le sortilège du sorcier
-        int damage = 0;
-        for (Spell spell : knownSpells) {
-            if (spell.CastSpeel() == Execution.level) {
-                damage = spell.getDamage();
-                break;
-            }
-        }
+        int damage = Spell.getDamage();
+
         // Si le sorcier n'a pas de sortilège adapté, retourne 0 (pas de dégâts infligés)
         if (damage == 0) {
             return 0;
         }
 
+
         // Calcule les dégâts finaux en prenant en compte la puissance de la baguette du sorcier
-        int finalDamage = (int) Math.random()* Execution.wizard.wand;
+        double finalDamage = (int) (Math.random()* Execution.wizard.wand);
 
         // Retourne les dégâts finaux
-        return finalDamage;
+        return (int) finalDamage;
     }
     public double getLuck() {
         return Math.random();

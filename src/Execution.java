@@ -16,8 +16,8 @@ public class Execution {
 
     public static void printseperator(int n){
         for(int i=0;i<n;i++)
-        { System.out.print("-");
-        System.out.println();}
+        System.out.print("-");
+        System.out.println();
     }
     public static void printHeading(String title){
         printseperator(30);
@@ -27,7 +27,8 @@ public class Execution {
         System.out.println("\nEnter something to continue...");
         scanner.next();}
     public static void clearconsole(){
-        for(int i=0; i<5;i++){ System.out.println();}
+        for(int i=0; i<5;i++)
+            System.out.println();
     }
     public static int readInt(String prompt, int Userchoice) {
         int input;
@@ -49,10 +50,10 @@ public class Execution {
         String name;
         // print title screen
         clearconsole();
-        printseperator(10);
+        printseperator(20);
         System.out.println("Harry Potter");
         System.out.println("BY CONSTANCE PERSAD");
-        printseperator(10);
+        printseperator(20);
         anythingtocontinue();
 
         do {
@@ -88,6 +89,7 @@ public class Execution {
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll",50,10);
+            Spell spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
             Story.Thephilosopherstone_Outro();
             level=2;
@@ -118,6 +120,7 @@ public class Execution {
     public static void battle(){
        // Boucle principale du jeu
        while (wizard.isAlive() && enemy.isAlive()) {
+           wizard.xp=Spell.damage;
            // Tour du sorcier
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " PV, " + enemy.xp + " DEF)");
            System.out.println("What do you want to do ?");
@@ -129,7 +132,7 @@ public class Execution {
                case 1 -> {
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
-                   Enemy.hp = Enemy.hp - reducedDamage;
+                   enemy.hp = enemy.hp - reducedDamage;
                    System.out.println(wizard.name + " inflige " + damage + " points de dégâts. L'ennemi subit " + reducedDamage + " points de dégâts.");
                }
                case 2 -> wizard.usePotion();
@@ -174,7 +177,7 @@ public class Execution {
     public static void characterInfo(){
         clearconsole();
         printHeading("Character info");
-        System.out.println(wizard.name + "Your Pet : " + wizard.pet + "\n The size of your wand : " + wizard.wand + "\n : Your house is :" + wizard.house);
+        System.out.println(wizard.name + "Your Pet : " + wizard.pet + "\nThe size of your wand : " + wizard.wand + "\nYour house is :" + wizard.house);
         printseperator(5);
     }
     public static void printMenu(){
