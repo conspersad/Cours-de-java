@@ -3,9 +3,9 @@ public class Enemy extends AbstractEnemy{
     public static int hp;
     public int xp;
     String name;
-    public Enemy(String name)
+    public Enemy(String name,int maxHp,int xp)
     {
-        super(100,0);
+        super(maxHp,xp);
         this.name=name;
     }
     public boolean isAlive() {

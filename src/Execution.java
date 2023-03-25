@@ -4,6 +4,7 @@ import java.lang.String;
 public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
+    static Enemy enemy;
 
     static int maxHp=100;
     static int xp=0;
@@ -89,6 +90,7 @@ public class Execution {
         place=1;
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
+            enemy = new Enemy("Troll",50,10);
             battle();
             Story.Thephilosopherstone_Outro();
 
@@ -116,8 +118,6 @@ public class Execution {
    }
     public static void battle(){
         Spell spell = new Spell(Execution.level,Spell.CastSpeel(), new String[]{Spell.knownSpells[level]});
-        Enemy enemy = new Enemy("Troll");
-
        // Boucle principale du jeu
        while (wizard.isAlive() && enemy.isAlive()) {
            // Tour du sorcier
