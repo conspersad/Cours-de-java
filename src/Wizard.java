@@ -69,4 +69,12 @@ public class Wizard extends Character {
             System.out.println("You failed to defend against the attack!");
             return 10; // 10 points de dégâts sont infligés
         }
-    }}
+    }
+    public void usePotion() {
+            int healed = 10;
+            hp += healed;
+            System.out.println( Execution.wizard.name+ " récupère " + healed + " points de vie.");
+        }
+    }
+
+}

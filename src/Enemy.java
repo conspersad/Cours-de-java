@@ -20,7 +20,7 @@ public class Enemy extends AbstractEnemy{
 
 
     @Override
-    public int defend() {
+    public int defend(int damage) {
         if (Math.random() < 0.1) { // probabilité de 50% de ne pas être touché
             System.out.println(name + " dodged the attack!");
             return 0;
@@ -28,5 +28,6 @@ public class Enemy extends AbstractEnemy{
             System.out.println(name + " was hit!");
             return 10; // l'ennemi subit 10 points de dégâts
         }
+
     }
 }
