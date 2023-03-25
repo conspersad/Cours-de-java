@@ -1,4 +1,4 @@
-public class AbstractEnemy extends Character{
+public abstract class AbstractEnemy extends Character{
     public int maxHp,hp,xp;
     public String name;
 
@@ -15,4 +15,6 @@ public class AbstractEnemy extends Character{
     public int defend() {
         return 0;
     }
+
+    public abstract int defend(int damage);
 }

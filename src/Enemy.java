@@ -18,7 +18,6 @@ public class Enemy extends AbstractEnemy{
         return damage;
     }
 
-
     @Override
     public int defend(int damage) {
         if (Math.random() < 0.1) { // probabilité de 50% de ne pas être touché

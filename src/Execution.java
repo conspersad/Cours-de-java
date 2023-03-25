@@ -4,13 +4,8 @@ import java.lang.String;
 public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
-    static Enemy enemy;
-    static Pet pet;
-    static Wand wand;
-    static House house;
-    static int maxHp=100;
 
-    public static String[] encounter={"Battle"};
+    static int maxHp=100;
     static int xp=0;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
@@ -52,7 +47,6 @@ public class Execution {
     public static void startGame(){
         boolean nameSet = false;
         String name;
-        int size = 0;
         // print title screen
         clearconsole();
         printseperator(10);
@@ -121,8 +115,7 @@ public class Execution {
         }
    }
     public static void battle(){
-       Spell spell;
-        spell = new Spell(Execution.level,Spell.CastSpeel(), new String[]{Spell.knownSpells[level]});
+        Spell spell = new Spell(Execution.level,Spell.CastSpeel(), new String[]{Spell.knownSpells[level]});
         Enemy enemy = new Enemy("Troll");
 
        // Boucle principale du jeu
