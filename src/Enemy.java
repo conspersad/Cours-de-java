@@ -8,7 +8,9 @@ public class Enemy extends AbstractEnemy{
         super(100,0);
         this.name=name;
     }
-
+    public boolean isAlive() {
+        return hp > 0;
+    }
     @Override
     public int attack() {
         int damage = (int)(Math.random() * 10) + 1; // l'ennemi inflige entre 1 et 10 points de dégâts

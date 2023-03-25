@@ -51,6 +51,9 @@ public class Wizard extends Character {
     public double getLuck() {
         return Math.random();
     }
+    public boolean isAlive() {
+        return hp > 0;
+    }
     @Override
     public int defend() {
         // calcul de la probabilité de défense en fonction de la chance du sorcier

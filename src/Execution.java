@@ -122,7 +122,7 @@ public class Execution {
     public static void battle(){
        Spell spell;
         spell = new Spell(Execution.level,Spell.CastSpeel(), new String[]{Spell.knownSpells[level]});
-        Enemy enemy = new Enemy("Troll", 50);
+        Enemy enemy = new Enemy("Troll");
 
        // Boucle principale du jeu
        while (sorcier.isAlive() && enemy.isAlive()) {
