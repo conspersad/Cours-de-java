@@ -1,10 +1,8 @@
 public abstract class AbstractSpeel {
-    protected String name;
-     int level=1;
-    public AbstractSpeel(int level) {
+     int level;
+    int damage;
+    public AbstractSpeel(int level, int damage) {
         this.level = level;
-    }
-
-    public static void castSpell() {
+        this.damage = damage;
     }
 }

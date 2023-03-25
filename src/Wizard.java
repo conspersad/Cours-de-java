@@ -24,58 +24,46 @@ public class Wizard extends Character {
 
 
     @Override
-    public  int attack(){
+    public int attack() {
+        // L'ennemi a un niveau de difficulté de 1
+        int enemyLevel = 1;
 
+        // Calcule les dégâts infligés par le sortilège du sorcier
         int damage = 0;
-        // Récupération des informations de l'ennemi
-        int enemyHp = Enemy.getHp();
-        int enemyDefense = Enemy.getDefense();
-        // Calcul des dégâts infligés
-        damage = (int) (Math.random() * 10) + 10 - enemyDefense;
-        // Vérification que les dégâts infligés sont positifs
-        if (damage < 0) {
-            damage = 0;
-        }
-        // Utilisation d'une potion pour augmenter les dégâts infligés
-        Spell spell = new Spell();
-        Potion potion = potions.getPotion();
-        if (potion != null) {
-            int potionDamage = (int) (damage * potion.getBoost());
-            damage += potionDamage;
-            System.out.println("Vous avez utilisé une potion " + potion.getName() + " pour augmenter vos dégâts de " + potionDamage + " points.");
-        }
-        // Réduction des points de vie de l'ennemi
-        enemy.setHp(enemyHp - damage);
-        return damage;
-
-    @Override
-    public  int defend() {
-        public int defense(int damage) {
-            public int defense(int damage) {
-                // Récupération des informations du sorcier
-                int sorcierHp = getHp();
-                int sorcierDefense = getDefense();
-                // Calcul des dégâts réduits
-                int reducedDamage = (int) (damage * (1 - sorcierDefense / 100.0));
-                // Utilisation d'une potion de défense pour réduire les dégâts subis
-                Potions potions = new Potions();
-                Potion potion = potions.getPotion("defense");
-                if (potion != null) {
-                    int potionReducedDamage = (int) (reducedDamage * potion.getBoost());
-                    reducedDamage -= potionReducedDamage;
-                    System.out.println("Vous avez utilisé une potion de défense " + potion.getName() + " pour réduire les dégâts subis de " + potionReducedDamage + " points.");
-                }
-                // Réduction des points de vie du sorcier
-                setHp(sorcierHp - reducedDamage);
-                return reducedDamage;
+        for (Spell spell : knownSpells) {
+            if (spell.getLevel() == enemyLevel) {
+                damage = spell.getDamage();
+                break;
             }
         }
-    }
 
-}
+        // Si le sorcier n'a pas de sortilège adapté, retourne 0 (pas de dégâts infligés)
+        if (damage == 0) {
+            return 0;
+        }
 
-    public boolean isAlive() {
-        return hp > 0;
-    }
-    }
+        // Calcule les dégâts finaux en prenant en compte la puissance de la baguette du sorcier
+        int finalDamage = damage * wand;
 
+        // Retourne les dégâts finaux
+        return finalDamage;
+    }
+    public double getLuck() {
+        return Math.random();
+    }
+    @Override
+    public int defend() {
+        // calcul de la probabilité de défense en fonction de la chance du sorcier
+        double defenseProbability = 0.5 + this.getLuck() / 20.0;
+
+        // génération d'un nombre aléatoire entre 0 et 1 pour déterminer si le sorcier réussit à esquiver l'attaque
+        double random = Math.random();
+
+        if (random < defenseProbability) {
+            System.out.println("You successfully defended against the attack!");
+            return 0; // aucun dégât n'est infligé
+        } else {
+            System.out.println("You failed to defend against the attack!");
+            return 10; // 10 points de dégâts sont infligés
+        }
+    }}

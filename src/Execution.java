@@ -129,54 +129,7 @@ public class Execution {
     public static void TrollBattle(){
         System.out.println("You encountered a troll in the toilette. You'll have to fight it");
     }
-    public static void battle() {
-        Scanner scanner = new Scanner(System.in);
-        AbstractSpeel.castSpell();
-        wizard.xp=10;
-        Enemy enemy;
-        enemy = new Enemy("TROLL");
 
-        // Boucle principale du jeu
-        while (wizard.isAlive() && enemy.isAlive()) {
-            // Tour du sorcier
-            System.out.println(wizard.name + " (" + sorcier.getHp() + " PV, " + sorcier.getDefense() + " DEF) vs " + enemy.getName() + " (" + enemy.getHp() + " PV, " + enemy.getDefense() + " DEF)");
-            System.out.println("Que voulez-vous faire ?");
-            System.out.println("1 - Attaquer");
-            System.out.println("2 - Utiliser une potion");
-            System.out.println("3 - Se défendre");
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    int damage = sorcier.attack();
-                    int reducedDamage = enemy.defense(damage);
-                    System.out.println(sorcier.getName() + " inflige " + damage + " points de dégâts. L'ennemi subit " + reducedDamage + " points de dégâts.");
-                    break;
-                case 2:
-                    sorcier.usePotion();
-                    break;
-                case 3:
-                    System.out.println(sorcier.getName() + " se met en position défensive.");
-                    break;
-                default:
-                    System.out.println("Choix invalide.");
-                    break;
-            }
-            // Tour de l'ennemi
-            if (enemy.isAlive()) {
-                int damage = enemy.attack();
-                int reducedDamage = sorcier.defense(damage);
-                System.out.println(enemy.getName() + " inflige " + damage + " points de dégâts. " + sorcier.getName() + " subit " + reducedDamage + " points de dégâts.");
-            }
-        }
-        // Fin du jeu
-        if (sorcier.isAlive()) {
-            System.out.println(sorcier.getName() + " a vaincu " + enemy.getName() + " !");
-        } else {
-            System.out.println(enemy.getName() + " a vaincu " + sorcier.getName() + " !");
-        }
-    }
-
-}
     public static void wizardDied(){
         clearconsole();
         printHeading("You died...");
