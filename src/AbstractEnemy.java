@@ -2,9 +2,8 @@ public class AbstractEnemy extends Character{
     public int maxHp,hp,xp;
     public String name;
 
-    public AbstractEnemy(int maxHp, int xp,String name) {
+    public AbstractEnemy(int maxHp, int xp) {
         super(maxHp, xp);
-        this.name=name;
     }
 
     @Override

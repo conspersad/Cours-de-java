@@ -2,10 +2,10 @@ import java.lang.System;
 import java.lang.String;
 
 public class Spell extends AbstractSpeel{
-    private final String[] knownSpells ;
-    public Spell(String name, int level, String[] knownSpells) {
-        super(name, level);
-        this.knownSpells = knownSpells;
+    private String[] knownSpells ;
+    public Spell(String knownSpells, int level) {
+        super(level);
+        this.knownSpells = new String[]{knownSpells};
     }
 
     @Override

@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.lang.System;
 import java.lang.String;
@@ -80,7 +79,7 @@ public class Execution {
 
         Execution.anythingtocontinue();
 
-        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), maxHp, xp); //appel de joueuer
+        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), maxHp=100, xp); //appel de joueuer
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
@@ -96,7 +95,7 @@ public class Execution {
         place=1;
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
-            enemy = new Enemy("Troll",10);
+            battle();
 
         }else if( (Character.xp >= 10 && Character.xp <= 20) && level==2){
             level=3;
@@ -120,17 +119,8 @@ public class Execution {
 
         }
    }
-   public static void rendomEncounter(){
-        int encounter =(int) (Math.random()*encounter.length);
-        if(encounter[encounter].equals("Battle")){
 
-        }else if(encounter[encounter].equals("Rest")){
 
-        }else{
-
-        }
-
-    }
     public static void continueJourney(){
         //check if game isn't in last act
         if(level != 7)checkAct();
@@ -139,16 +129,17 @@ public class Execution {
     public static void TrollBattle(){
         System.out.println("You encountered a troll in the toilette. You'll have to fight it");
     }
-    public static void battle(String[] args) {
+    public static void battle() {
         Scanner scanner = new Scanner(System.in);
-        Potions potions = new Potions();
-        Sorcier sorcier = new Sorcier("Harry Potter", 100, 20, potions);
-        Enemy enemy = new Enemy("Voldemort", 50);
+        AbstractSpeel.castSpell();
+        wizard.xp=10;
+        Enemy enemy;
+        enemy = new Enemy("TROLL");
 
         // Boucle principale du jeu
-        while (sorcier.isAlive() && enemy.isAlive()) {
+        while (wizard.isAlive() && enemy.isAlive()) {
             // Tour du sorcier
-            System.out.println(sorcier.getName() + " (" + sorcier.getHp() + " PV, " + sorcier.getDefense() + " DEF) vs " + enemy.getName() + " (" + enemy.getHp() + " PV, " + enemy.getDefense() + " DEF)");
+            System.out.println(wizard.name + " (" + sorcier.getHp() + " PV, " + sorcier.getDefense() + " DEF) vs " + enemy.getName() + " (" + enemy.getHp() + " PV, " + enemy.getDefense() + " DEF)");
             System.out.println("Que voulez-vous faire ?");
             System.out.println("1 - Attaquer");
             System.out.println("2 - Utiliser une potion");

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public class Wizard extends Character {
     public String name;
-    public int maxHp,hp,xp;
+    public static int maxHp;
+    public static int hp;
+    public int xp;
     Pet pet;
     int wand;
     String house;
@@ -20,16 +22,14 @@ public class Wizard extends Character {
         this.house=house;
     }
 
-    public void Defend(){
 
-    };
     @Override
     public  int attack(){
 
         int damage = 0;
         // Récupération des informations de l'ennemi
-        int enemyHp = enemy.getHp();
-        int enemyDefense = enemy.getDefense();
+        int enemyHp = Enemy.getHp();
+        int enemyDefense = Enemy.getDefense();
         // Calcul des dégâts infligés
         damage = (int) (Math.random() * 10) + 10 - enemyDefense;
         // Vérification que les dégâts infligés sont positifs
@@ -37,7 +37,7 @@ public class Wizard extends Character {
             damage = 0;
         }
         // Utilisation d'une potion pour augmenter les dégâts infligés
-        Potions potions = new Potions();
+        Spell spell = new Spell();
         Potion potion = potions.getPotion();
         if (potion != null) {
             int potionDamage = (int) (damage * potion.getBoost());
@@ -47,10 +47,9 @@ public class Wizard extends Character {
         // Réduction des points de vie de l'ennemi
         enemy.setHp(enemyHp - damage);
         return damage;
-    }
 
     @Override
-    public int defend() {
+    public  int defend() {
         public int defense(int damage) {
             public int defense(int damage) {
                 // Récupération des informations du sorcier
@@ -74,4 +73,9 @@ public class Wizard extends Character {
     }
 
 }
+
+    public boolean isAlive() {
+        return hp > 0;
+    }
+    }
 
