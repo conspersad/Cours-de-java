@@ -1,6 +1,5 @@
 public abstract class Character {
-    public int maxHp=100;
-    public int hp;
+    public int maxHp;
     public static int xp;
 
     //fonction de tout les personnages

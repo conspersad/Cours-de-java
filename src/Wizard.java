@@ -1,9 +1,7 @@
 import java.util.List;
-import java.util.Scanner;
-import java.lang.System;
 import java.lang.String;
 import java.util.ArrayList;
-import java.util.LinkedList;
+
 public class Wizard extends Character {
     public String name;
     public int maxHp,hp,xp;
@@ -13,7 +11,7 @@ public class Wizard extends Character {
 
     List<Spell> knownSpells = new ArrayList<>();
     //List<Potion> maListe = new ArrayList<Integer>();
-    static Scanner scanner = new Scanner(System.in);
+
     public Wizard(String name, Pet pet, int wand, String house, int maxHp,int xp){
         super(maxHp,xp);
         this.name=name;
@@ -28,7 +26,12 @@ public class Wizard extends Character {
     @Override
     public  int attack(){
 
-        return (int) (Math.random()*(xp/4+3)+ xp/10 +)
+        return (int) (Math.random()*(xp/4+3)+ xp/10 );
+    }
+
+    @Override
+    public int defend() {
+        return 0;
     }
 
 }

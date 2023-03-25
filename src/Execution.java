@@ -13,6 +13,8 @@ public class Execution {
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
     public static boolean isRunning;
+    private static int encounter;
+
     public static void printseperator(int n){
         for(int i=0;i<n;i++)
         System.out.print("-");
@@ -114,7 +116,7 @@ public class Execution {
         }
    }
    public static void rendomEncounter(){
-        int encounter =(int) (Math.random()*encounters.length);
+        int encounter =(int) (Math.random()*encounter.length);
         if(encounter[encounter].equals("Battle")){
 
         }else if(encounter[encounter].equals("Rest")){
@@ -146,7 +148,7 @@ public class Execution {
             int dmg = wizard.attack() - enemy.defend();
             int dmgTook= enemy.attack()- wizard.defend();
             if(dmgTook < 0){
-                dmg -=dmgTook/2;
+                dmg -= dmgTook/2;
                 dmgTook=0;
             }if(dmg< 0) {
                 dmg = 0;
@@ -160,14 +162,14 @@ public class Execution {
                 //check if player is still alive or dead
                 if (wizard.hp <= 0) {
                     wizardDied();
-                    break;
+
                 } else if (enemy.hp <= 0) {
                     clearconsole();
                     printHeading("You defeated the" + enemy.name + "!");
                     wizard.xp += enemy.xp;
                     System.out.println("You earned" + enemy.xp + "XP !");
                     anythingtocontinue();
-                    break;}}
+                    }}
                  else if(input == 2){
                      //next part
                 }else{
@@ -175,22 +177,15 @@ public class Execution {
                      if(Math.random()*10+1<=3.5){
                          printHeading("You ran away from the "+ enemy.name +"!");
                          anythingtocontinue();
-                         break;
+
                      }else {
                          printHeading("You didn't manage to escape");
-                         int dmgTook = enemy.attack();
+                         dmgTook = enemy.attack();
                          System.out.println("In your hurry you took 0 " + dmgTook + "damage !");
                          anythingtocontinue();
                          if (wizard.hp <= 0)
-                             playerDied();
-                     }
-
-
-
-            }
-        }
-
-    }
+                             wizardDied();
+                     }}}}
     public static void wizardDied(){
         clearconsole();
         printHeading("You died...");

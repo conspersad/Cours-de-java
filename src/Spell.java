@@ -2,7 +2,7 @@ import java.lang.System;
 import java.lang.String;
 
 public class Spell extends AbstractSpeel{
-    private String[] knownSpells ;
+    private final String[] knownSpells ;
     public Spell(String name, int level, String[] knownSpells) {
         super(name, level);
         this.knownSpells = knownSpells;

@@ -4,9 +4,8 @@ public class Enemy extends AbstractEnemy{
     String name;
     public Enemy(String name,int playerXp)
     {
-        super((int)(Math.random()*playerXp + playerXp/3+5),(int)(Math.random()*(playerXp/4+2)+1));
-        this.playerXp=playerXp;
-        this.name=name;
+        super(100,0,name);
+
     }
 
     @Override
