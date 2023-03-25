@@ -7,6 +7,7 @@ public class Enemy extends AbstractEnemy{
     {
         super(maxHp,xp);
         this.name=name;
+        hp=maxHp;
     }
     public boolean isAlive() {
         return hp > 0;

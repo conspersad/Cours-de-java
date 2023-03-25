@@ -20,6 +20,7 @@ public class Wizard extends Character {
         this.pet=pet;
         this.wand=wand;
         this.house=house;
+        hp=maxHp;
     }
 
 

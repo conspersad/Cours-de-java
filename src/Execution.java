@@ -119,35 +119,31 @@ public class Execution {
        // Boucle principale du jeu
        while (wizard.isAlive() && enemy.isAlive()) {
            // Tour du sorcier
-           System.out.println(wizard.name + " (" + wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " PV, " + enemy.xp + " DEF)");
+           System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " PV, " + enemy.xp + " DEF)");
            System.out.println("What do you want to do ?");
            System.out.println("1 - fight "+enemy.name);
            System.out.println("2 - Use a sort to have more Hp");
            System.out.println("3 - defend yourself");
            int choice = scanner.nextInt();
            switch (choice) {
-               case 1:
+               case 1 -> {
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
-                   enemy.maxHp = maxHp - reducedDamage;
+                   Enemy.hp = Enemy.hp - reducedDamage;
                    System.out.println(wizard.name + " inflige " + damage + " points de dégâts. L'ennemi subit " + reducedDamage + " points de dégâts.");
-                   break;
-               case 2:
-                   wizard.usePotion();
-                   break;
-               case 3:
+               }
+               case 2 -> wizard.usePotion();
+               case 3 -> {
                    wizard.defend();
-                   System.out.println(wizard.name+ " se met en position défensive.");
-                   break;
-               default:
-                   System.out.println("Choix invalide.");
-                   break;
+                   System.out.println(wizard.name + " se met en position défensive.");
+               }
+               default -> System.out.println("Choix invalide.");
            }
            // Tour de l'ennemi
            if (enemy.isAlive()) {
                int damage = enemy.attack();
                int reducedDamage = wizard.defend();
-               wizard.maxHp=maxHp-reducedDamage;
+               Wizard.hp = Wizard.hp -reducedDamage;
 
                System.out.println(enemy.name + " inflige " + damage + " points de dégâts. " + wizard.name + " subit " + reducedDamage + " points de dégâts.");
            }
@@ -157,6 +153,7 @@ public class Execution {
            System.out.println(wizard.name+ " a vaincu " + enemy.name + " !");
        } else {
            System.out.println(enemy.name + " a vaincu " + wizard.name + " !");
+           wizardDied();
        }
    }
 
@@ -166,14 +163,12 @@ public class Execution {
         if(level != 7)checkAct();
             //rendomEncounter();
     }
-    public static void TrollBattle(){
-        System.out.println("You encountered a troll in the toilette. You'll have to fight it");
-    }
 
     public static void wizardDied(){
         clearconsole();
         printHeading("You died...");
         printHeading("You earned " + wizard.xp + " XP on your journey.Try to earn more next time!");
+        isRunning=false;
     }
     //printing out the most important information about the payer charcter
     public static void characterInfo(){
