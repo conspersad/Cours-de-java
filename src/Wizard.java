@@ -25,25 +25,21 @@ public class Wizard extends Character {
 
     @Override
     public int attack() {
-        // L'ennemi a un niveau de difficulté de 1
-        int enemyLevel = 1;
-
         // Calcule les dégâts infligés par le sortilège du sorcier
         int damage = 0;
         for (Spell spell : knownSpells) {
-            if (spell.getLevel() == enemyLevel) {
+            if (spell.CastSpeel() == Execution.level) {
                 damage = spell.getDamage();
                 break;
             }
         }
-
         // Si le sorcier n'a pas de sortilège adapté, retourne 0 (pas de dégâts infligés)
         if (damage == 0) {
             return 0;
         }
 
         // Calcule les dégâts finaux en prenant en compte la puissance de la baguette du sorcier
-        int finalDamage = damage * wand;
+        int finalDamage = (int) Math.random()* Execution.wizard.wand;
 
         // Retourne les dégâts finaux
         return finalDamage;

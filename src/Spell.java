@@ -1,7 +1,8 @@
 import java.lang.String;
+import java.util.Arrays;
 
 public class Spell extends AbstractSpeel{
-    public static String[] knownSpells ={"Wingardium Leviosa"} ;
+    public static String[] knownSpells ={} ;
     public int level;
     public int damage;
 
@@ -19,7 +20,14 @@ public class Spell extends AbstractSpeel{
     }
 
     public static int CastSpeel() {
-        return 0;
+        if(Execution.level == 1)
+        {
+            knownSpells[0]= Arrays.toString(new String[]{"Wingardium Leviosa"});
+            Execution.wizard.xp=10;
+        } else if (Execution.level == 2) {
+            System.out.println("You need to practise a little bit more young wizard");
+        }
+        return Execution.wizard.xp;
 
     }
 }

@@ -16,8 +16,8 @@ public class Execution {
 
     public static void printseperator(int n){
         for(int i=0;i<n;i++)
-        System.out.print("-");
-        System.out.println();
+        { System.out.print("-");
+        System.out.println();}
     }
     public static void printHeading(String title){
         printseperator(30);
@@ -27,8 +27,7 @@ public class Execution {
         System.out.println("\nEnter something to continue...");
         scanner.next();}
     public static void clearconsole(){
-        for(int i=0; i<5;i++)
-        System.out.println();
+        for(int i=0; i<5;i++){ System.out.println();}
     }
     public static int readInt(String prompt, int Userchoice) {
         int input;
@@ -74,7 +73,7 @@ public class Execution {
 
         Execution.anythingtocontinue();
 
-        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), maxHp=100, xp); //appel de joueuer
+        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), maxHp=100, xp=0); //appel de joueuer
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
@@ -85,14 +84,14 @@ public class Execution {
         }
         //method to continue the journey
    public static void checkAct(){
-        if( Character.xp <= 10 && level==1){
-        level=2;
-        place=1;
+        if( Character.xp >=0  && level==1){
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll",50,10);
             battle();
             Story.Thephilosopherstone_Outro();
+            level=2;
+            place=1;
 
         }else if( (Character.xp >= 10 && Character.xp <= 20) && level==2){
             level=3;
@@ -117,15 +116,14 @@ public class Execution {
         }
    }
     public static void battle(){
-        Spell spell = new Spell(Execution.level,Spell.CastSpeel(), new String[]{Spell.knownSpells[level]});
        // Boucle principale du jeu
        while (wizard.isAlive() && enemy.isAlive()) {
            // Tour du sorcier
-           System.out.println(wizard.name + " (" + wizard.hp + " PV, " + wizard.xp + " DEF) vs " + enemy.name + " (" + enemy.hp + " PV, " + enemy.xp + " DEF)");
-           System.out.println("Que voulez-vous faire ?");
-           System.out.println("1 - Attaquer");
-           System.out.println("2 - Utiliser une potion");
-           System.out.println("3 - Se défendre");
+           System.out.println(wizard.name + " (" + wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " PV, " + enemy.xp + " DEF)");
+           System.out.println("What do you want to do ?");
+           System.out.println("1 - fight "+enemy.name);
+           System.out.println("2 - Use a sort to have more Hp");
+           System.out.println("3 - defend yourself");
            int choice = scanner.nextInt();
            switch (choice) {
                case 1:
