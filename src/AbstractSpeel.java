@@ -5,4 +5,5 @@ public abstract class AbstractSpeel {
         this.level = level;
         this.damage = damage;
     }
+
 }

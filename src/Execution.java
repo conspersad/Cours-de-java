@@ -119,6 +119,51 @@ public class Execution {
 
         }
    }
+    public static void battle(){
+       Spell spell;
+        spell = new Spell(Execution.level,Spell.CastSpeel(), new String[]{Spell.knownSpells[level]});
+        Enemy enemy = new Enemy("Troll", 50);
+
+       // Boucle principale du jeu
+       while (sorcier.isAlive() && enemy.isAlive()) {
+           // Tour du sorcier
+           System.out.println(sorcier.getName() + " (" + sorcier.getHp() + " PV, " + sorcier.getDefense() + " DEF) vs " + enemy.getName() + " (" + enemy.getHp() + " PV, " + enemy.getDefense() + " DEF)");
+           System.out.println("Que voulez-vous faire ?");
+           System.out.println("1 - Attaquer");
+           System.out.println("2 - Utiliser une potion");
+           System.out.println("3 - Se défendre");
+           int choice = scanner.nextInt();
+           switch (choice) {
+               case 1:
+                   int damage = sorcier.attack();
+                   int reducedDamage = enemy.defense(damage);
+                   System.out.println(sorcier.getName() + " inflige " + damage + " points de dégâts. L'ennemi subit " + reducedDamage + " points de dégâts.");
+                   break;
+               case 2:
+                   sorcier.usePotion();
+                   break;
+               case 3:
+                   sorcier.defend();
+                   System.out.println(sorcier.getName() + " se met en position défensive.");
+                   break;
+               default:
+                   System.out.println("Choix invalide.");
+                   break;
+           }
+           // Tour de l'ennemi
+           if (enemy.isAlive()) {
+               int damage = enemy.attack();
+               int reducedDamage = sorcier.defense(damage);
+               System.out.println(enemy.getName() + " inflige " + damage + " points de dégâts. " + sorcier.getName() + " subit " + reducedDamage + " points de dégâts.");
+           }
+       }
+       // Fin du jeu
+       if (sorcier.isAlive()) {
+           System.out.println(sorcier.getName() + " a vaincu " + enemy.getName() + " !");
+       } else {
+           System.out.println(enemy.getName() + " a vaincu " + sorcier.getName() + " !");
+       }
+   }
 
 
     public static void continueJourney(){

@@ -1,8 +1,7 @@
-import java.lang.System;
 import java.lang.String;
 
 public class Spell extends AbstractSpeel{
-    public String[] knownSpells ;
+    public static String[] knownSpells ={"Wingardium Leviosa"} ;
     public int level;
     public int damage;
 
@@ -17,5 +16,10 @@ public class Spell extends AbstractSpeel{
 
     public int getDamage() {
         return damage;
+    }
+
+    public static int CastSpeel() {
+        return 0;
+
     }
 }
