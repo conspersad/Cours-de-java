@@ -36,7 +36,7 @@ public class Execution {
                 input = Integer.parseInt(scanner.next());
             } catch (Exception e){
                 input = -1;
-                System.out.println("entrer un nombre entier !");
+                System.out.println("entrer a number !");
             }
         } while (input < 1 || input > Userchoice);
         return input;
@@ -44,7 +44,7 @@ public class Execution {
 
     //methode pour commencer le jeu
     public static void startGame(){
-        int maxHp,xp;
+        int xp;
         boolean nameSet = false;
         String name;
         // print title screen
@@ -73,7 +73,7 @@ public class Execution {
 
         Execution.anythingtocontinue();
 
-        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), maxHp=100, xp=0); //appel de joueuer
+        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), 100, xp=0); //appel de joueuer
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
@@ -126,20 +126,26 @@ public class Execution {
            System.out.println("What do you want to do ?");
            System.out.println("1 - fight "+enemy.name);
            System.out.println("2 - Use a sort to have more Hp");
-           System.out.println("3 - defend yourself");
+           System.out.println("3 - Leave");
            int choice = scanner.nextInt();
            switch (choice) {
                case 1 -> {
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
-                   int totalDamage = reducedDamage * damage * wizard.wand;
+                   int totalDamage = reducedDamage * damage;
                    enemy.setHp(enemy.hp - totalDamage);
-                   System.out.println(wizard.name + " inflige " + damage + " points de dégâts. L'ennemi subit " + totalDamage + " points de dégâts.");
+                   System.out.println(wizard.name + " use Wingardium Leviosas, inflicting " + damage + " damage points.");
+                   if(totalDamage==0){
+                       System.out.println(enemy.name + " dodge your attacck, so he took " + damage + " damage points.");
+                   }else
+                       System.out.println(Execution.enemy.name + " was hit!");
+
                }
                case 2 -> wizard.usePotion();
                case 3 -> {
                    wizard.defend();
-                   System.out.println(wizard.name + " se met en position défensive.");
+                   System.out.println(wizard.name + " leave");
+                   isRunning=false;
                }
                default -> System.out.println("Choix invalide.");
            }
@@ -149,14 +155,14 @@ public class Execution {
                int reducedDamage = wizard.defend();
                int totalDamage = reducedDamage * damage;
                wizard.setHp(wizard.hp - totalDamage);
-               System.out.println(enemy.name + " inflige " + damage + " points de dégâts. " + wizard.name + " subit " + totalDamage + " points de dégâts.");
+               System.out.println(enemy.name + " attack causing " + damage + " damage points. " + wizard.name + " take " + totalDamage + " damage points.");
            }
        }
        // Fin du jeu
        if (wizard.isAlive()) {
-           System.out.println(wizard.name+ " a vaincu " + enemy.name + " !");
+           System.out.println(wizard.name+ " defeat" + enemy.name + " !");
        } else {
-           System.out.println(enemy.name + " a vaincu " + wizard.name + " !");
+           System.out.println(enemy.name + " defeat " + wizard.name + " !");
            wizardDied();
        }
    }

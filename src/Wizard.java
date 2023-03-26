@@ -36,7 +36,7 @@ public class Wizard extends Character {
         double finalDamage = (int) (Math.random()* Execution.wizard.wand);
 
         // Retourne les dégâts finaux
-        return (int) finalDamage;
+        return (int) finalDamage ;//+ Execution.wizard.wand ?
     }
     public double getLuck() {
         return Math.random();
@@ -57,7 +57,7 @@ public class Wizard extends Character {
             return 0; // aucun dégât n'est infligé
         } else {
             System.out.println("You failed to defend against the attack!");
-            return 1; // 10 points de dégâts sont infligés
+            return 1 ; // 10 points de dégâts sont infligés
         }
     }
     public void usePotion() {

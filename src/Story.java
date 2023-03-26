@@ -15,7 +15,7 @@ public class Story{
         Execution.clearconsole();
         Execution.printseperator(30);
         System.out.println("Welcome to Poudlard  I don't doubt that this would be the best years of your life ! " + " But before your adventure starts, you have to buy your fournitures !!");
-        Execution.printseperator(5);
+        Execution.printseperator(30);
     }
 
     public static void Thephilosopherstone_Intro(){
@@ -23,13 +23,13 @@ public class Story{
                 "You even learn your first speel, it's Wingardium Leviosas\n" +
                 "But this morning you wake up and you didn't see your friend Nevile in potion class\n"+
                 Execution.wizard.name + ": Do you know what happend to Nevile ? He never miss potion class !\n" +
-                "Hermione: Well, i saw him coming back from the toilets yesterdays he looked very scared, it's seems like he saw a ghost !!"+
-                Execution.wizard.name + ": I should probably see! \n\n\n"+
-                Execution.wizard.name + ": I should probably see! \n\nNevile \n";
+                "Hermione: Well, i saw him coming back from the toilets of the donjon yesterdays he looked very scared, it's seems like he saw a ghost!!\n"+
+                Execution.wizard.name + ": I should probably see! \n"+
+                Execution.wizard.name + ": I should probably see! \n\nNevile ";
                 Execution.printseperator(5);
-        slowPrint(message, 100);
-      String message2 = "...\nAre you here..\nHo my god, WHAT HAPPEND HERE !!!\nNevile: I'm SORRY\nNevile: I'm SORRY\nNevile: I heard weird noise in the toilet yesterday night so i passe again today but\nNevile: I'm  didn't know it was a\nNevile: TROLL !!!\n";
-        slowPrint(message2, 100);
+        slowPrint(message, 25);
+      String message2 = "...\n"+ Execution.wizard.name +": Are you here..\n"+ Execution.wizard.name +": Ho my god, WHAT HAPPEND HERE !!!\nNevile: I'm SORRY\nNevile: I'm SORRY\nNevile: I heard weird noise in the toilet yesterday night so i passe again today but\nNevile: I'm  didn't know it was a\nNevile: TROLL !!!\n ";
+        slowPrint(message2, 25);
     }
 
     public static void Thephilosopherstone_Outro(){
