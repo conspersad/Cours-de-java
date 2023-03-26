@@ -147,9 +147,9 @@ public class Execution {
            if (enemy.isAlive()) {
                int damage = enemy.attack();
                int reducedDamage = wizard.defend();
-               Wizard.hp = Wizard.hp -reducedDamage;
-
-               System.out.println(enemy.name + " inflige " + damage + " points de dégâts. " + wizard.name + " subit " + reducedDamage + " points de dégâts.");
+               int totalDamage = reducedDamage * damage;
+               wizard.setHp(wizard.hp - totalDamage);
+               System.out.println(enemy.name + " inflige " + damage + " points de dégâts. " + wizard.name + " subit " + totalDamage + " points de dégâts.");
            }
        }
        // Fin du jeu
