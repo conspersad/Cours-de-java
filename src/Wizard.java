@@ -27,7 +27,7 @@ public class Wizard extends Character {
     public int attack() {
         // Calcule les dégâts infligés par le sortilège du sorcier
         int damage,finalDamage;
-        damage = Execution.speel.damage;
+        damage = Execution.spell.damage;
 
         if(Execution.wizard.house=="Slytherin")
         {

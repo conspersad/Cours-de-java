@@ -26,8 +26,8 @@ public class Enemy extends AbstractEnemy{
             damage = 0;
             return damage;
         } else {
-            damage = 2;
-            return damage; // l'ennemi subit 10 points de dégâts
+            damage = 1;
+            return damage;
         }
     }
     public void setHp (int newHp){

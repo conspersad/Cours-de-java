@@ -5,10 +5,10 @@ public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
     static Enemy enemy;
-    static Spell speel;
+    static Spell spell;
 
     public static int place =0,level=1;
-    public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
+    public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "the goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
     public static boolean isRunning;
 
@@ -38,7 +38,7 @@ public class Execution {
                 input = Integer.parseInt(scanner.next());
             } catch (Exception e){
                 input = -1;
-                System.out.println("entrer a number !");
+                System.out.println("enter a number !");
             }
         } while (input < 1 || input > Userchoice);
         return input;
@@ -61,7 +61,7 @@ public class Execution {
             clearconsole();
             printHeading("What's your name ?");
             name = scanner.next();
-            //asking the player if he want to correct his choice
+            //asking the player if he wants to correct his choice
             clearconsole();
             printHeading("Your name is " + name + ".\nIs that correct ?");
             System.out.println("(1) Yes !");
@@ -91,7 +91,7 @@ public class Execution {
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll",xp,maxHp);
-            speel = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
+            spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
             Story.Thephilosopherstone_Outro();
             level=2;
