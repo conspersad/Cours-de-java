@@ -132,7 +132,7 @@ public class Execution {
                case 1 -> {
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
-                   int totalDamage = reducedDamage * damage;
+                   int totalDamage = reducedDamage * damage * wizard.wand;
                    enemy.setHp(enemy.hp - totalDamage);
                    System.out.println(wizard.name + " inflige " + damage + " points de dégâts. L'ennemi subit " + totalDamage + " points de dégâts.");
                }
