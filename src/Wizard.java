@@ -23,21 +23,19 @@ public class Wizard extends Character {
         hp=maxHp;
     }
 
-
     @Override
     public int attack() {
         // Calcule les dégâts infligés par le sortilège du sorcier
-        int damage = Spell.getDamage();
+        int damage,finalDamage;
+        damage = Execution.speel.damage;
 
-        // Si le sorcier n'a pas de sortilège adapté, retourne 0 (pas de dégâts infligés)
-        if (damage == 0) {
-            return 0;
-        }
-        // Calcule les dégâts finaux en prenant en compte la puissance de la baguette du sorcier
-        double finalDamage = (int) (Math.random()* Execution.wizard.wand);
-
-        // Retourne les dégâts finaux
-        return (int) finalDamage ;//+ Execution.wizard.wand ?
+        if(Execution.wizard.house=="Slytherin")
+        {
+            finalDamage = damage +10;
+            return finalDamage;
+        }else
+            finalDamage = damage;
+        return finalDamage ;
     }
     public double getLuck() {
         return Math.random();

@@ -5,11 +5,13 @@ public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
     static Enemy enemy;
+    static Spell speel;
 
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
 
     public static boolean isRunning;
+
 
 
     public static void printseperator(int n){
@@ -89,7 +91,7 @@ public class Execution {
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll",xp,maxHp);
-            Spell spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
+            speel = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
             Story.Thephilosopherstone_Outro();
             level=2;
@@ -136,7 +138,7 @@ public class Execution {
                    enemy.setHp(enemy.hp - totalDamage);
                    System.out.println(wizard.name + " use Wingardium Leviosas, inflicting " + damage + " damage points.");
                    if(totalDamage==0){
-                       System.out.println(enemy.name + " dodge your attack, so he took " + damage + " damage points.");
+                       System.out.println(enemy.name + " dodge your attack, so he didn't took " + damage + " damage points.");
                    }else
                        System.out.println(Execution.enemy.name + " was hit!");
 
@@ -144,9 +146,9 @@ public class Execution {
                case 2 -> {System.out.println(Execution.wizard.name +" you only have "+ wizard.nbr_de_potion +" left !");
                        wizard.usePotion();}
                case 3 -> {
-                   wizard.defend();
                    System.out.println(wizard.name + " leave");
-                   isRunning=false;
+                   System.out.println("You are eather very smart or eather a little bit coward");
+                   gameLoop();
                }
                default -> System.out.println("Choix invalide.");
            }
@@ -223,7 +225,6 @@ public class Execution {
         Lorsque vous gagnez un combat, vous pouvez choisir d’augmenter vos points de vie, vos points
         de dégâts.
         Chaque maison a sa spécificité :
-        • Les potions sont plus efficaces pour les membres de Hufflepuff.
         • Les sorts font plus de dégâts pour les membres de Slytherin.
         • Les sorciers de Gryffindor sont plus résistants aux dégâts.
         • Les sorciers de Ravenclaw sont plus précis*/
