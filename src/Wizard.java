@@ -65,6 +65,10 @@ public class Wizard extends Character {
             hp += healed;
             System.out.println( Execution.wizard.name+ " récupère " + healed + " points de vie.");
         }
+    public void setHp (int newHp){
+        this.hp = newHp;
     }
+
+}
 
 
