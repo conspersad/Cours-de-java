@@ -16,5 +16,5 @@ public abstract class AbstractEnemy extends Character{
         return 0;
     }
 
-    public abstract int defend(int damage);
+
 }

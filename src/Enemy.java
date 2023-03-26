@@ -1,14 +1,17 @@
 public class Enemy extends AbstractEnemy{
 
     public static int hp;
-    public int xp;
+    public static int xp;
     String name;
-    public Enemy(String name,int maxHp,int xp)
+    public Enemy(String name,int xp,int maxHp)
     {
         super(maxHp,xp);
+        this.xp=xp;
         this.name=name;
+        hp=maxHp;
     }
     public boolean isAlive() {
+
         return hp > 0;
     }
     @Override
@@ -19,13 +22,26 @@ public class Enemy extends AbstractEnemy{
     }
 
     @Override
-    public int defend(int damage) {
-        if (Math.random() > 0.1) { // probabilité de 50% de ne pas être touché
-            System.out.println(name + " dodged the attack!");
-            return 0;
+    public int defend() {
+        int damage;
+        if (Math.random() > 0.1) {
+            System.out.println(Execution.enemy.name + " dodged the attack!");
+            damage = 0;
+            return damage;
         } else {
-            System.out.println(name + " was hit!");
-            return 10; // l'ennemi subit 10 points de dégâts
+            System.out.println(Execution.enemy.name + " was hit!");
+            damage = 10;
+            return damage; // l'ennemi subit 10 points de dégâts
         }
     }
+    public void setHp ( int newHp){
+        // Vérifier que la nouvelle valeur de points de vie est positive
+        if (newHp < 0) {
+            System.out.println("Error: the new value of HP must be positive");
+        } else {
+            // Mettre à jour la valeur de points de vie avec la nouvelle valeur
+            this.hp = newHp;
+        }
+    }
+
 }

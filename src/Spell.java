@@ -12,7 +12,9 @@ public class Spell extends AbstractSpeel{
     public static int getDamage() {
         if(Execution.level==1 )
         {
-            damage =10;
+            damage=10;
+        }else{
+            System.out.println("You need to traine young wizard");
         }
         return damage;
     }

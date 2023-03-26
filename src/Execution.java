@@ -6,8 +6,6 @@ public class Execution {
     static Wizard wizard;
     static Enemy enemy;
 
-    static int maxHp=100;
-    static int xp=0;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisonner of azkaban", "the goblet of fire","The order of the phenix","The half-blood prince","The deathly Hallows"};
 
@@ -46,6 +44,7 @@ public class Execution {
 
     //methode pour commencer le jeu
     public static void startGame(){
+        int maxHp,xp;
         boolean nameSet = false;
         String name;
         // print title screen
@@ -84,11 +83,12 @@ public class Execution {
 
         }
         //method to continue the journey
-   public static void checkAct(){
+   public static  void checkAct(){
         if( Character.xp >=0  && level==1){
+            int maxHp=50,xp= 10;
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
-            enemy = new Enemy("Troll",50,10);
+            enemy = new Enemy("Troll",xp,maxHp);
             Spell spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
             Story.Thephilosopherstone_Outro();
@@ -120,9 +120,9 @@ public class Execution {
     public static void battle(){
        // Boucle principale du jeu
        while (wizard.isAlive() && enemy.isAlive()) {
-           wizard.xp=Spell.damage;
+          wizard.xp=Spell.damage;
            // Tour du sorcier
-           System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " PV, " + enemy.xp + " DEF)");
+           System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " hp, " + enemy.xp + " xp)");
            System.out.println("What do you want to do ?");
            System.out.println("1 - fight "+enemy.name);
            System.out.println("2 - Use a sort to have more Hp");
@@ -132,8 +132,9 @@ public class Execution {
                case 1 -> {
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
-                   Enemy.hp = Enemy.hp - (reducedDamage*damage);
-                   System.out.println(wizard.name + " inflige " + damage + " points de dégâts. L'ennemi subit " + reducedDamage + " points de dégâts.");
+                   int totalDamage = reducedDamage * damage;
+                   enemy.setHp(enemy.hp - totalDamage);
+                   System.out.println(wizard.name + " inflige " + damage + " points de dégâts. L'ennemi subit " + totalDamage + " points de dégâts.");
                }
                case 2 -> wizard.usePotion();
                case 3 -> {

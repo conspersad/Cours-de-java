@@ -32,8 +32,6 @@ public class Wizard extends Character {
         if (damage == 0) {
             return 0;
         }
-
-
         // Calcule les dégâts finaux en prenant en compte la puissance de la baguette du sorcier
         double finalDamage = (int) (Math.random()* Execution.wizard.wand);
 
