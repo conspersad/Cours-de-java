@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Wizard extends Character {
     public String name;
+    public static int nbr_de_potion=3;
     public static int hp;
     public int xp;
     Pet pet;
@@ -61,10 +62,22 @@ public class Wizard extends Character {
         }
     }
     public void usePotion() {
+
+        while(nbr_de_potion<3){
+        if((Execution.wizard.house=="Hufflepuff")&&(Execution.wizard.hp<100))
+        {
+            int healed = 20;
+            Execution.wizard.setHp(Execution.wizard.hp+healed);
+            System.out.println( Execution.wizard.name+ " get " + healed + " points of life.");
+            nbr_de_potion=nbr_de_potion-1;
+        }else if(((Execution.wizard.house=="Gryffindor")||(Execution.wizard.house=="Ravenclaw")||(Execution.wizard.house=="Slytherin"))&&(Execution.wizard.hp<100))  {
             int healed = 10;
-            hp += healed;
-            System.out.println( Execution.wizard.name+ " récupère " + healed + " points de vie.");
-        }
+            Execution.wizard.setHp(Execution.wizard.hp+healed);
+            System.out.println( Execution.wizard.name+ " get " + healed + " points of life.");
+            nbr_de_potion=nbr_de_potion-1;}
+         else{
+            System.out.println( Execution.wizard.name+ " have enough life !");
+        }}}
     public void setHp (int newHp){
         this.hp = newHp;
     }

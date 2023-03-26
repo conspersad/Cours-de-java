@@ -1,5 +1,4 @@
 public class Story{
-     public int delay;
     public static void slowPrint(String message, int delay) {
         for (int i = 0; i < message.length(); i++) {
             System.out.print(message.charAt(i));
@@ -19,7 +18,7 @@ public class Story{
     }
 
     public static void Thephilosopherstone_Intro(){
-        String message ="It's been a few days since you are in Poudlard now, you have made quite a few friends, and you are doing very well in your first class\n" +
+        String message ="It's been a few months since you are in Poudlard now, you have made quite a few friends, and you are doing very well in your first class !\n" +
                 "You even learn your first speel, it's Wingardium Leviosas\n" +
                 "But this morning you wake up and you didn't see your friend Nevile in potion class\n"+
                 Execution.wizard.name + ": Do you know what happend to Nevile ? He never miss potion class !\n" +

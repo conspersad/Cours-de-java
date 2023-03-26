@@ -136,12 +136,13 @@ public class Execution {
                    enemy.setHp(enemy.hp - totalDamage);
                    System.out.println(wizard.name + " use Wingardium Leviosas, inflicting " + damage + " damage points.");
                    if(totalDamage==0){
-                       System.out.println(enemy.name + " dodge your attacck, so he took " + damage + " damage points.");
+                       System.out.println(enemy.name + " dodge your attack, so he took " + damage + " damage points.");
                    }else
                        System.out.println(Execution.enemy.name + " was hit!");
 
                }
-               case 2 -> wizard.usePotion();
+               case 2 -> {System.out.println(Execution.wizard.name +" you only have "+ wizard.nbr_de_potion +" left !");
+                       wizard.usePotion();}
                case 3 -> {
                    wizard.defend();
                    System.out.println(wizard.name + " leave");
@@ -160,7 +161,7 @@ public class Execution {
        }
        // Fin du jeu
        if (wizard.isAlive()) {
-           System.out.println(wizard.name+ " defeat" + enemy.name + " !");
+           System.out.println(wizard.name+ " defeat " + enemy.name + " !");
        } else {
            System.out.println(enemy.name + " defeat " + wizard.name + " !");
            wizardDied();
