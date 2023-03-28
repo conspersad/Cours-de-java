@@ -51,10 +51,10 @@ public class Wizard extends Character {
         double random = Math.random();
 
         if (random < defenseProbability) {
-            System.out.println("You successfully defended against the attack!");
+            System.out.println("You successfully defended against the attack!\n");
             return 0; // aucun dégât n'est infligé
         } else {
-            System.out.println("You failed to defend against the attack!");
+            System.out.println("You failed to defend against the attack!\n");
             return 1 ; // 10 points de dégâts sont infligés
         }
     }

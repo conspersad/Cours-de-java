@@ -125,10 +125,11 @@ public class Execution {
           wizard.xp=Spell.damage;
            // Tour du sorcier
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " hp, " + enemy.xp + " xp)");
-           System.out.println("What do you want to do ?");
-           System.out.println("1 - fight "+enemy.name);
-           System.out.println("2 - Use a sort to have more Hp (only if your life is < 80)");
-           System.out.println("3 - Leave");
+           String message ="What do you want to do ?\n"+
+           "1 - fight "+enemy.name+" !\n" +
+           "2 - Use a sort to have more Hp (only if your life is < 100)\n"
+           +"3 - Leave";
+           slowPrint(message,75);
            int choice = scanner.nextInt();
            switch (choice) {
                case 1 -> {
@@ -136,11 +137,15 @@ public class Execution {
                    int reducedDamage = enemy.defend();
                    int totalDamage = reducedDamage * damage;
                    enemy.setHp(enemy.hp - totalDamage);
-                   System.out.println(wizard.name + " use Wingardium Leviosas, inflicting " + damage + " damage points.");
+                   String message1 = wizard.name + " use Wingardium Leviosas, inflicting " + damage + " damage points\n";
+                   slowPrint(message1,75);
                    if(totalDamage==0){
-                       System.out.println(enemy.name + " dodge your attack, so he didn't took " + damage + " damage points.");
-                   }else
-                       System.out.println(Execution.enemy.name + " was hit!");
+                   String message2= enemy.name + " dodge your attack\n";
+                       slowPrint(message2,75);
+                   }else {
+                       String message3= Execution.enemy.name + " was hit!\n";
+                       slowPrint(message3,75);
+                   }
 
                }
                case 2 -> {
@@ -158,7 +163,7 @@ public class Execution {
                        wizard.setHp(wizard.hp+healed);
                        wizard.nbr_de_potion=wizard.nbr_de_potion-1;
 
-                   } else if (Execution.wizard.hp>=100) {
+                   }  else if (Execution.wizard.hp>=100) {
                        System.out.println("You have enough hp");
                    }
                }
@@ -176,14 +181,18 @@ public class Execution {
                int reducedDamage = wizard.defend();
                int totalDamage = reducedDamage * damage;
                wizard.setHp(wizard.hp - totalDamage);
-               System.out.println(enemy.name + " attack causing " + damage + " damage points. " + wizard.name + " take " + totalDamage + " damage points.");
+               String message4 = enemy.name + " attack causing " + damage + " damage points. \n"
+                       + wizard.name + " take " + totalDamage + " damage points.\n";
+               slowPrint(message4,75);
            }
        }
        // Fin du jeu
        if (wizard.isAlive()) {
-           System.out.println(wizard.name+ " defeat " + enemy.name + " !");
+           String message5 = wizard.name+ " defeat " + enemy.name + " !";
+           slowPrint(message5,25);
        } else {
-           System.out.println(enemy.name + " defeat " + wizard.name + " !");
+           String message6= enemy.name + " defeat " + wizard.name + " !";
+           slowPrint(message6,25);
            wizardDied();
        }
    }
@@ -233,8 +242,9 @@ public class Execution {
         while(isRunning){
             printMenu();
             int input = readInt("->",3);
-            if(input==1)
-                continueJourney();
+            if(input==1){
+                clearconsole();
+                continueJourney();}
             else if(input==2)
                 characterInfo();
             else
@@ -243,7 +253,7 @@ public class Execution {
     }
 
 
-    }}
+    }
    /* À chaque niveau,
         vous allez affronter des ennemis différents. Les mécaniques pour les vaincre changeront en fonction
         de l’ennemi.
