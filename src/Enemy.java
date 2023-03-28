@@ -15,10 +15,10 @@ public class Enemy extends AbstractEnemy{
     }
     @Override
     public int attack() {
-        int damage = (int)(Math.random() * 10) + 1; // l'ennemi inflige entre 1 et 10 points de dégâts
+        int damage = (int)(Math.random() * 10) + 1;
         return damage;
     }
-//• Les sorciers de Ravenclaw sont plus précis
+
     @Override
     public int defend() {
         int damage;

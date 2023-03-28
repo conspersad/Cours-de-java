@@ -15,8 +15,9 @@ public class Execution {
 
 
     public static void printseperator(int n){
-        for(int i=0;i<n;i++)
-        System.out.print("-");
+        for(int i=0;i<n;i++) {
+            System.out.print("-");
+        }
         System.out.println();
     }
     public static void printHeading(String title){
@@ -46,7 +47,6 @@ public class Execution {
 
     //methode pour commencer le jeu
     public static void startGame(){
-        int xp;
         boolean nameSet = false;
         String name;
         // print title screen
@@ -75,7 +75,7 @@ public class Execution {
 
         Execution.anythingtocontinue();
 
-        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), 100, xp=0); //appel de joueuer
+        wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), 100, 0); //appel de joueuer
 
         //setting isRunning to true so the game loop can continue
         isRunning =true;
@@ -87,10 +87,10 @@ public class Execution {
         //method to continue the journey
    public static  void checkAct(){
         if( Character.xp >=0  && level==1){
-            int maxHp,xp;
+            int xp;
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
-            enemy = new Enemy("Troll",xp= 10,maxHp=30);
+            enemy = new Enemy("Troll", 10, 30);
             spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
             Story.Thephilosopherstone_Outro();
@@ -153,29 +153,31 @@ public class Execution {
                {
                    int healed = 20;
                    wizard.setHp(wizard.hp+healed);
-                   System.out.println("You healed "+ healed+" Hp !");
+                   System.out.println("You healed "+ healed+" Hp !\n");
                   wizard.nbr_de_potion=wizard.nbr_de_potion-1;
 
                   }else if((Execution.wizard.house!="Hufflepuff")&&(Execution.wizard.hp<100)){
 
                        int healed = 10;
-                       System.out.println("You healed "+ healed+" Hp !");
-                       wizard.setHp(wizard.hp+healed);
+                       System.out.println("You healed "+ healed+" Hp !\n");
+                       wizard.setHp(Wizard.hp +healed);
                        wizard.nbr_de_potion=wizard.nbr_de_potion-1;
 
                    }  else if (Execution.wizard.hp>=100) {
-                       System.out.println("You have enough hp");
+                       System.out.println("You have enough hp\n");
                    }
                }
 
                    case 3 -> {
                    System.out.println(wizard.name + " leave");
-                   System.out.println("You are eather very smart or eather a little bit coward");
+                   System.out.println("You are either very smart or either a little bit coward");
                    gameLoop();
                }
-               default -> System.out.println("Choix invalide.");
+               default -> {
+                   System.out.println("Choice not valid");
+               }
            }
-           // Tour de l'ennemi
+
            if (enemy.isAlive()) {
                int damage = enemy.attack();
                int reducedDamage = wizard.defend();
@@ -201,18 +203,18 @@ public class Execution {
         for (int i = 0; i < message.length(); i++) {
             System.out.print(message.charAt(i));
             try {
-                Thread.sleep(delay); // Ajouter un délai entre chaque caractère
+                Thread.sleep(delay);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        System.out.println(); // Ajouter un retour à la ligne à la fin de l'affichage
+        System.out.println(); //
     }
 
     public static void continueJourney(){
         //check if game isn't in last act
         if(level != 7)checkAct();
-            //rendomEncounter();
+
     }
 
     public static void wizardDied(){
@@ -221,7 +223,7 @@ public class Execution {
         printHeading("You earned " + wizard.xp + " XP on your journey.Try to earn more next time!");
         isRunning=false;
     }
-    //printing out the most important information about the payer charcter
+
     public static void characterInfo(){
         clearconsole();
         printHeading("Character info");

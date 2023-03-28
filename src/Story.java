@@ -19,8 +19,8 @@ public class Story{
 
     public static void Thephilosopherstone_Intro(){
         String message ="It's been a few months since you are in Poudlard now, you have made quite a few friends, and you are doing very well in your first class !\n" +
-                "You even learn your first speel, it's Wingardium Leviosas\n" +
-                "But this morning you wake up and you didn't see your friend Nevile in potion class\n"+
+                "You even learn your first speel, it's Wingardium Leviosas.\n" +
+                "But this morning you wake up and you didn't see your friend Nevile in potion class.\n"+
                 Execution.wizard.name + ": Do you know what happend to Nevile ? He never miss potion class !\n" +
                 "Hermione: Well, i saw him coming back from the toilets of the donjon yesterdays he looked very scared, it's seems like he saw a ghost!!\n"+
                 Execution.wizard.name + ": I should probably see! \n"+
@@ -32,15 +32,15 @@ public class Story{
     }
 
     public static void Thephilosopherstone_Outro(){
-        String message ="Professor mcgonagall : What happen here Nevile"+ Execution.wizard.name +" !\n" +
+        String message ="Professor mcgonagall : What happen here Nevile "+ Execution.wizard.name +" !\n" +
                 "Professor mcgonagall : Hooooo my goddd, is that a troll !\n" +
-                Execution.wizard.name  + "and Nevile : It's a long story \n"+
-                "Professor mcgonagall :I can't belive that wizard that young could defeat a troll !! How is that even possible...\n"+
+                Execution.wizard.name  + " and Nevile : It's a long story...\n"+
+                "Professor mcgonagall :I can't believe that wizard that young could defeat a troll !! How is that even possible...\n"+
                 "Professor mcgonagall : For your bravery i would give 20 points to " + Execution.wizard.house +"!\n"+
                 "Professor mcgonagall : But please next time don't play hereos and call a professor !\n"+
-                "Nevile: It was a close one ! But what you did was very brave "+ Execution.wizard.name +"Thank you very much \n"
+                "Nevile: It was a close one ! But what you did was very brave "+ Execution.wizard.name +". Thank you very much !!\n"
                 + Execution.wizard.name +"And i would do it again if it was necessary !\n"+
-                "That how you and Nevile became bestfriends";
+                "That how you and Nevile became befriends";
         slowPrint(message, 25);
     }
 
