@@ -1,6 +1,4 @@
-import java.util.List;
 import java.lang.String;
-import java.util.ArrayList;
 
 public class Wizard extends Character {
     public String name;
@@ -24,11 +22,12 @@ public class Wizard extends Character {
 
     @Override
     public int attack() {
+        int spell = Execution.speel;
         // Calcule les dégâts infligés par le sortilège du sorcier
-        int damage,finalDamage;
-        damage = Execution.spell.damage;
+        int finalDamage;
+        int damage = Spell.getDamage(spell);
 
-        if(Execution.wizard.house=="Slytherin")
+        if(Execution.wizard.house.equals("Slytherin"))
         {
             finalDamage = damage + 5;
             return finalDamage;
@@ -55,7 +54,7 @@ public class Wizard extends Character {
             return 0; // aucun dégât n'est infligé
         } else {
             System.out.println("You failed to defend against the attack!\n");
-            if (Execution.wizard.house == "Gryffindor") {
+            if (Execution.wizard.house.equals("Gryffindor")) {
                 return 1/2; // 10 points de dégâts sont infligés
             } else return 1;
         }

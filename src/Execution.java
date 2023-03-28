@@ -1,12 +1,15 @@
 import java.util.Scanner;
 import java.lang.System;
 import java.lang.String;
+
+
+
 public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
-    static Enemy enemy;
+    static Enemy enemy,enemy1;
     static Spell spell;
-
+    public static int speel;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "the goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
@@ -94,10 +97,17 @@ public class Execution {
             spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
             Story.Thephilosopherstone_Outro();
+            clearconsole();
+            anythingtocontinue();
             level=2;
             place=1;
+            gameLoop();
 
-        }else if( (Character.xp >= 10 && Character.xp <= 20) && level==2){
+        }else if( (Character.xp >= 10 || Character.xp <= 20) && level==2){
+            Story.TheChamberOfSecret_Intro();
+            enemy1 = new Enemy("Basilic", 30,60 );
+            spell = new Spell(1, 10, new String[] {"Accio"});
+            battle();
             level=3;
             place=2;
 
@@ -133,6 +143,12 @@ public class Execution {
            int choice = scanner.nextInt();
            switch (choice) {
                case 1 -> {
+                   System.out.println("You need to choose a Spell");
+                   for (int i = 0; i < Spell.knownSpells.length; i++) {
+                       System.out.println( "Press "+i + " to use : " + Spell.knownSpells[i]);
+                   }
+                   int speel = scanner.nextInt();
+                   Spell.getDamage(speel);
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
                    int totalDamage = reducedDamage * damage;
@@ -190,10 +206,10 @@ public class Execution {
        }
        // Fin du jeu
        if (wizard.isAlive()) {
-           String message5 = wizard.name+ " defeat " + enemy.name + " !";
+           String message5 = wizard.name+ " defeat " + enemy.name + " !\n";
            slowPrint(message5,25);
        } else {
-           String message6= enemy.name + " defeat " + wizard.name + " !";
+           String message6= enemy.name + " defeat " + wizard.name + " !\n";
            slowPrint(message6,25);
            wizardDied();
        }

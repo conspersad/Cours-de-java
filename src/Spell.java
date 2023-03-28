@@ -1,20 +1,20 @@
 import java.lang.String;
-import java.util.Arrays;
+
 
 public class Spell extends AbstractSpeel{
-    private static String[] knownSpells;
+    static String[] knownSpells;
 
     public Spell(int level, int damage, String[] knownSpells) {
         super(level, damage);
         Spell.knownSpells = knownSpells;
     }
 
-    public static int getDamage() {
-        if(Execution.level==1 )
+    public static int getDamage(int spell) {
+        if(spell==1)
         {
             damage=10;
-        }else{
-            System.out.println("You need to traine young wizard");
+        }else if(spell==2){
+            damage=15;
         }
         return damage;
     }
