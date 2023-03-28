@@ -90,7 +90,7 @@ public class Execution {
             int maxHp,xp;
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
-            enemy = new Enemy("Troll",xp= 10,maxHp=100);
+            enemy = new Enemy("Troll",xp= 10,maxHp=30);
             spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
             Story.Thephilosopherstone_Outro();
@@ -254,19 +254,6 @@ public class Execution {
 
 
     }
-   /* À chaque niveau,
-        vous allez affronter des ennemis différents. Les mécaniques pour les vaincre changeront en fonction
-        de l’ennemi.
-        Pour combattre vos ennemis, vous pourrez utiliser des sorts (Spell) que vous apprendez au fur
-        et à mesure des années. Vous disposez également de potions (Potion) qui peuvent vous aider à
-        regagner de la vie. Les sorts que vous lancez ont un pourcentage de chance de réussite : vous pouvez
-        rater vos sorts.
-        Lorsque vous gagnez un combat, vous pouvez choisir d’augmenter vos points de vie, vos points
-        de dégâts.
-        Chaque maison a sa spécificité :
-        • Les sorts font plus de dégâts pour les membres de Slytherin.
-        • Les sorciers de Gryffindor sont plus résistants aux dégâts.
-        • Les sorciers de Ravenclaw sont plus précis*/
 
 
 

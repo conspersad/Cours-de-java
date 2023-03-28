@@ -55,10 +55,11 @@ public class Wizard extends Character {
             return 0; // aucun dégât n'est infligé
         } else {
             System.out.println("You failed to defend against the attack!\n");
-            return 1 ; // 10 points de dégâts sont infligés
+            if (Execution.wizard.house == "Gryffindor") {
+                return 1/2; // 10 points de dégâts sont infligés
+            } else return 1;
         }
     }
-
 
     public void setHp (int newHp){
         this.hp = newHp;

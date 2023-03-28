@@ -18,17 +18,25 @@ public class Enemy extends AbstractEnemy{
         int damage = (int)(Math.random() * 10) + 1; // l'ennemi inflige entre 1 et 10 points de dégâts
         return damage;
     }
-
+//• Les sorciers de Ravenclaw sont plus précis
     @Override
     public int defend() {
         int damage;
-        if (Math.random() > 0.7) {
-            damage = 0;
+        if(Execution.wizard.house=="Ravenclaw"){
+        if (Math.random() > 0.8) {
+           damage = 0;
             return damage;
         } else {
             damage = 1;
             return damage;
-        }
+        }}else
+            if (Math.random() > 0.6) {
+                damage = 0;
+                return damage;
+            } else {
+                damage = 1;
+                return damage;
+            }
     }
     public void setHp (int newHp){
             this.hp = newHp;
