@@ -87,10 +87,10 @@ public class Execution {
         //method to continue the journey
    public static  void checkAct(){
         if( Character.xp >=0  && level==1){
-            int maxHp=50,xp= 10;
+            int maxHp,xp;
             //on appele les intro des niveaux1
             Story.Thephilosopherstone_Intro();
-            enemy = new Enemy("Troll",xp,maxHp);
+            enemy = new Enemy("Troll",xp= 10,maxHp=100);
             spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
             Story.Thephilosopherstone_Outro();
@@ -127,7 +127,7 @@ public class Execution {
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " hp, " + enemy.xp + " xp)");
            System.out.println("What do you want to do ?");
            System.out.println("1 - fight "+enemy.name);
-           System.out.println("2 - Use a sort to have more Hp");
+           System.out.println("2 - Use a sort to have more Hp (only if your life is < 80)");
            System.out.println("3 - Leave");
            int choice = scanner.nextInt();
            switch (choice) {
@@ -143,9 +143,27 @@ public class Execution {
                        System.out.println(Execution.enemy.name + " was hit!");
 
                }
-               case 2 -> {System.out.println(Execution.wizard.name +" you only have "+ wizard.nbr_de_potion +" left !");
-                       wizard.usePotion();}
-               case 3 -> {
+               case 2 -> {
+                   if((Execution.wizard.house=="Hufflepuff")&&(Execution.wizard.hp<100))
+               {
+                   int healed = 20;
+                   wizard.setHp(wizard.hp+healed);
+                   System.out.println("You healed "+ healed+" Hp !");
+                  wizard.nbr_de_potion=wizard.nbr_de_potion-1;
+
+                  }else if((Execution.wizard.house!="Hufflepuff")&&(Execution.wizard.hp<100)){
+
+                       int healed = 10;
+                       System.out.println("You healed "+ healed+" Hp !");
+                       wizard.setHp(wizard.hp+healed);
+                       wizard.nbr_de_potion=wizard.nbr_de_potion-1;
+
+                   } else if (Execution.wizard.hp>=100) {
+                       System.out.println("You have enough hp");
+                   }
+               }
+
+                   case 3 -> {
                    System.out.println(wizard.name + " leave");
                    System.out.println("You are eather very smart or eather a little bit coward");
                    gameLoop();
@@ -170,6 +188,17 @@ public class Execution {
        }
    }
 
+    public static void slowPrint(String message, int delay) {
+        for (int i = 0; i < message.length(); i++) {
+            System.out.print(message.charAt(i));
+            try {
+                Thread.sleep(delay); // Ajouter un délai entre chaque caractère
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(); // Ajouter un retour à la ligne à la fin de l'affichage
+    }
 
     public static void continueJourney(){
         //check if game isn't in last act
@@ -214,7 +243,7 @@ public class Execution {
     }
 
 
-    }
+    }}
    /* À chaque niveau,
         vous allez affronter des ennemis différents. Les mécaniques pour les vaincre changeront en fonction
         de l’ennemi.

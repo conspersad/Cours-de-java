@@ -38,8 +38,8 @@ public class Story{
                 "Professor mcgonagall :I can't belive that wizard that young could defeat a troll !! How is that even possible...\n"+
                 "Professor mcgonagall : For your bravery i would give 20 points to " + Execution.wizard.house +"!\n"+
                 "Professor mcgonagall : But please next time don't play hereos and call a professor !\n"+
-                "Nevile: It was a close one ! But what you did was very brave "+ Execution.wizard.house +"Thank you very much \n"
-                + Execution.wizard.house +"And i would do it again if it was necessary !\n"+
+                "Nevile: It was a close one ! But what you did was very brave "+ Execution.wizard.name +"Thank you very much \n"
+                + Execution.wizard.name +"And i would do it again if it was necessary !\n"+
                 "That how you and Nevile became bestfriends";
         slowPrint(message, 25);
     }
