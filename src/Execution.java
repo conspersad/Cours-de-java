@@ -162,7 +162,7 @@ public class Execution {
         }, dureeMillis);
 
         boolean preparationEnCours;
-       while ((firework != 7) && (!finDuTimer[0])){
+       while ((firework != 6) && (!finDuTimer[0])){
            // Tour du sorcier
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
            String message ="What do you want to do ?\n"+
@@ -218,7 +218,7 @@ public class Execution {
            }}
 
        // Fin du jeu
-       if (firework == 5 ) {
+       if (firework == 6 ) {
            String message5 = wizard.name+ " prepared enough firework during the allotted time and so defeat " + enemy.name + " !\n";
            slowPrint(message5,75);
        } else if(finDuTimer[0]) {
