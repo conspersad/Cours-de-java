@@ -9,6 +9,7 @@ public class Execution {
     static Wizard wizard;
     static Enemy enemy,enemy1;
     public static int nbr_accio=0;
+    public static int firework=0;
     public static String patronus;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "the goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
@@ -93,7 +94,7 @@ public class Execution {
    public static  void checkAct(){
         if( Character.xp >=0  && level==1){
             //Story.Thephilosopherstone_Intro();
-            enemy = new Enemy("Troll", 10, 30);
+            //enemy = new Enemy("Troll", 10, 30);
             //battle();
             //Story.Thephilosopherstone_Outro();
             clearconsole();
@@ -102,9 +103,9 @@ public class Execution {
             place=1;
             gameLoop();
 
-        }else if( (Character.xp >= 10 || Character.xp <= 20) && level==2){
+        }else if( (Character.xp >= 10 && Character.xp <= 20) && level==2){
             //Story.TheChamberOfSecret_Intro();
-            enemy = new Enemy("Basilic", 30, 60);
+            //enemy = new Enemy("Basilic", 30, 60);
             //battle();
             //Story.TheChamberOfSecret_Outro();
             clearconsole();
@@ -114,122 +115,177 @@ public class Execution {
             gameLoop();
 
         }else if((Character.xp >=20 && Character.xp <=30) && level==3){
-            //Story.The_prisoner_of_azkaban_Intro();
+            /*Story.The_prisoner_of_azkaban_Intro();
             //enemy = new Enemy("Dementor", 45,70 );
            // patronus =Patronus.your_patronus();
             //battle();
             //Story.The_prisoner_of_azkaban_Outro();
             clearconsole();
-            anythingtocontinue();
+            anythingtocontinue();*/
             level=4;
             place=3;
             gameLoop();
 
         }else if((Character.xp >= 30 && Character.xp <=50) && level==4){
-            enemy = new Enemy("Voldemort", 45,20);
-            enemy1 = new Enemy("Peter Pettigrow", 45,70 );
-            battle_level4();
+            //enemy = new Enemy("Voldemort", 45,20);
+           // enemy1 = new Enemy("Peter Pettigrow", 30,70 );
+           // battle_level4();
             level=5;
             place=4;
+            clearconsole();
+            anythingtocontinue();
+            gameLoop();
 
         }else if((Character.xp >= 50 && Character.xp <=70) &&level==5){
+            enemy = new Enemy("Dolores Ombrage", 45,70 );
+            battle_level5();
             level=6;
             place=5;
 
         }else if((Character.xp >= 70 && Character.xp <=90) &&level==6){
             level=7;
             place=6;
-
         }
 
    }
-    public static void battle(){
+    public static void battle_level5(){
+        boolean preparationEnCours;
        // Boucle principale du jeu
-       while (wizard.isAlive() && enemy.isAlive()) {
-          wizard.xp=Spell.damage;
+       boolean test= Wizard.demarrerMinuteur();
+
+       while (firework != 5 && test==true ){
            // Tour du sorcier
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
            String message ="What do you want to do ?\n"+
-           "1 - Fight "+enemy.name+" !\n" +
-           "2 - Use a sort to have more Hp (only if your life is < 100)\n"
+           "1 - Distract "+enemy.name+" !\n" +
+           "2 - Prepare a firework\n"
            +"3 - Leave";
            slowPrint(message,1);
            int choice = scanner.nextInt();
            switch (choice) {
                case 1 -> {
-                   int damage = wizard.attack();
-                   int reducedDamage = enemy.defend();
-                   int totalDamage = reducedDamage * damage;
-                   enemy.setHp(Enemy.hp - totalDamage);
-                   String message1 = wizard.name + " inflict " + damage + " damage points\n";
-                   slowPrint(message1,1);
-                   if(totalDamage==0){
-                   String message2= enemy.name + " dodge your attack\n";
-                       slowPrint(message2,1);
-                   }else {
-                       String message3= Execution.enemy.name + " was hit!\n";
-                       slowPrint(message3,1);
-                   }
-
+                   preparationEnCours=false;
+                   Wizard.distraireEnnemi();
+                   int damage = Enemy.verifierPreparationFeuArtifice(preparationEnCours);
                }
                case 2 -> {
-                   if((Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100))
-               {
-                   int healed = 20;
-                   wizard.setHp(Wizard.hp +healed);
-                   System.out.println("You healed "+ healed+" Hp !\n");
-                  Wizard.nbr_de_potion =wizard.nbr_de_potion-1;
-
-                  }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100)){
-                       int healed = 25;
-                       System.out.println("You healed "+ healed+" Hp !\n");
-                       wizard.setHp(Wizard.hp +healed);
-                       Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
-
-                   }  else if (Wizard.hp >=100) {
-                       System.out.println("You have enough hp\n");
+                   preparationEnCours=true;
+                   firework = Wizard.prepare_firework();
+                   int damage = Enemy.verifierPreparationFeuArtifice(preparationEnCours);
+                   if(damage==0){
+                       System.out.println("Dolores didn't see you preparing the firework ! Continue");
+                   }else{
+                       System.out.println("Dolores caught you preparing  firework, you lose "+damage +" hp");
+                       wizard.setHp(Wizard.hp - damage);
                    }
-               }
 
+               }
                    case 3 -> {
-                   System.out.println(wizard.name + " leave");
-                   System.out.println("You are either very smart or either a little bit coward");
-                   gameLoop();
-               }
-               default -> System.out.println("Choice not valid");
-           }
+                       System.out.println(wizard.name + " leave");
+                       System.out.println("You are either very smart or either a little bit coward");
+                       gameLoop();
+                   }
+                   default -> System.out.println("Choice not valid");
 
-           if (enemy.isAlive()) {
-               int damage = enemy.attack();
-               int reducedDamage = wizard.defend();
-               int totalDamage = reducedDamage * damage;
-               wizard.setHp(Wizard.hp - totalDamage);
-               String message4 = enemy.name + " attack causing " + damage + " damage points. \n\n"
-                       + wizard.name + " take " + totalDamage + " damage points.\n";
-               slowPrint(message4,75);
-           }
-       }
+           }}
+
        // Fin du jeu
-       if (wizard.isAlive()) {
-           String message5 = wizard.name+ " defeat " + enemy.name + " !\n";
+       if (firework == 5 ) {
+           String message5 = wizard.name+ " prepared enough firework during the allotted time and so defeat " + enemy.name + " !\n";
            slowPrint(message5,25);
-       } else {
-           String message6= enemy.name + " defeat " + wizard.name + " !\n";
+       } else if(test==false) {
+           String message6= "You didn't prepare enough firework during the alloted time";
            slowPrint(message6,25);
            wizardDied();
        }
    }
+    public static void battle(){
+        // Boucle principale du jeu
+        while (wizard.isAlive() && enemy.isAlive()) {
+            wizard.xp=Spell.damage;
+            // Tour du sorcier
+            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
+            String message ="What do you want to do ?\n"+
+                    "1 - Fight "+enemy.name+" !\n" +
+                    "2 - Use a sort to have more Hp (only if your life is < 100)\n"
+                    +"3 - Leave";
+            slowPrint(message,1);
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1 -> {
+                    int damage = wizard.attack();
+                    int reducedDamage = enemy.defend();
+                    int totalDamage = reducedDamage * damage;
+                    enemy.setHp(Enemy.hp - totalDamage);
+                    String message1 = wizard.name + " inflict " + damage + " damage points\n";
+                    slowPrint(message1,1);
+                    if(totalDamage==0){
+                        String message2= enemy.name + " dodge your attack\n";
+                        slowPrint(message2,1);
+                    }else {
+                        String message3= Execution.enemy.name + " was hit!\n";
+                        slowPrint(message3,1);
+                    }
+
+                }
+                case 2 -> {
+                    if((Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100))
+                    {
+                        int healed = 20;
+                        wizard.setHp(Wizard.hp +healed);
+                        System.out.println("You healed "+ healed+" Hp !\n");
+                        Wizard.nbr_de_potion =wizard.nbr_de_potion-1;
+
+                    }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100)){
+                        int healed = 25;
+                        System.out.println("You healed "+ healed+" Hp !\n");
+                        wizard.setHp(Wizard.hp +healed);
+                        Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
+
+                    }  else if (Wizard.hp >=100) {
+                        System.out.println("You have enough hp\n");
+                    }
+                }
+
+                case 3 -> {
+                    System.out.println(wizard.name + " leave");
+                    System.out.println("You are either very smart or either a little bit coward");
+                    gameLoop();
+                }
+                default -> System.out.println("Choice not valid");
+            }
+
+            if (enemy.isAlive()) {
+                int damage = enemy.attack();
+                int reducedDamage = wizard.defend();
+                int totalDamage = reducedDamage * damage;
+                wizard.setHp(Wizard.hp - totalDamage);
+                String message4 = enemy.name + " attack causing " + damage + " damage points. \n\n"
+                        + wizard.name + " take " + totalDamage + " damage points.\n";
+                slowPrint(message4,75);
+            }
+        }
+        // Fin du jeu
+        if (wizard.isAlive()) {
+            String message5 = wizard.name+ " defeat " + enemy.name + " !\n";
+            slowPrint(message5,25);
+        } else {
+            String message6= enemy.name + " defeat " + wizard.name + " !\n";
+            slowPrint(message6,25);
+            wizardDied();
+        }
+    }
 
     public static void battle_level4() {
         // Boucle principale du jeu
-        while ((wizard.isAlive() || enemy.isAlive() || enemy1.isAlive()) || nbr_accio !=3) {
+        while (wizard.isAlive() && enemy.isAlive() && enemy1.isAlive() && (nbr_accio !=3)){
             // Tour du sorcier
             System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp) and vs "
                     + enemy1.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
             String message = "What do you want to do ?\n" +
-                    "1 - Fight " + enemy.name + " !\n" +
-                    "2 - Fight " + enemy1.name + " !\n" +
-                    "3- Use a sort to have more Hp (only if your life is < 100)\n"
+                    "1 - Attack " + enemy.name + " !\n" +
+                    "2 - Attack " + enemy1.name + " !\n" +
+                    "3 - Use a sort to have more Hp (only if your life is < 100)\n"
                     + "4 - Leave";
             slowPrint(message, 1);
             int choice = scanner.nextInt();

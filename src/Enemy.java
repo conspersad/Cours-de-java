@@ -60,6 +60,22 @@ public class Enemy extends AbstractEnemy{
     }
     public void setHp (int newHp){
             this.hp = newHp;
-    }
+        }
+    public static int verifierPreparationFeuArtifice(boolean preparationEnCours) {
+        int dommages = 0;
+        if (preparationEnCours==true) {
 
+            if (Math.random() > 0.7) {
+                 dommages = 25;}
+            else{dommages = 0; }
+            } else{
+            System.out.println("Dolores : I don't know why did you call me but it feels like you are preparing something !");
+        }
+        return dommages;
+    }
 }
+
+
+
+
+

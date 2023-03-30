@@ -1,5 +1,6 @@
 import java.lang.String;
-
+import java.util.Timer;
+import java.util.TimerTask;
 public class Wizard extends Character {
     public String name;
     public static int nbr_de_potion=3;
@@ -39,8 +40,10 @@ public class Wizard extends Character {
         return Math.random();
     }
     public boolean isAlive() {
+
         return hp > 0;
     }
+    //Votre objectif est de la distraire le temps que les feux d’artifice soient prêts à être utilisés.
     @Override
     public int defend() {
         // calcul de la probabilité de défense en fonction de la chance du sorcier
@@ -64,6 +67,42 @@ public class Wizard extends Character {
         this.hp = newHp;
     }
 
+    public static boolean demarrerMinuteur() {
+       boolean compteurActif;
+        int dureeMillis =120000;
+        final Timer timer = new Timer();
+        final TimerTask task = new TimerTask() {
+            long debut = System.currentTimeMillis();
+            @Override
+            public void run() {
+                long tempsEcoule = System.currentTimeMillis() - debut;
+                long tempsRestant = dureeMillis - tempsEcoule;
+                if (tempsRestant <= 0) {
+                    timer.cancel();
+                } else {
+                    int secondesRestantes = (int) (tempsRestant / 1000);
+
+                }
+            }
+        };
+        timer.schedule(task, 0, 1000); // Démarrer immédiatement, répéter toutes les 1 seconde
+        return compteurActif=true;
+    }
+    public static void distraireEnnemi() {
+        int dureeMillis=15000;
+        System.out.println("Le sorcier distrait l'ennemi pendant " + (dureeMillis / 1000) + " secondes...");
+        try {
+            Thread.sleep(dureeMillis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("La distraction est terminée !");
+    }
+    public static int prepare_firework() {
+        int firework;
+        firework=Execution.firework+1;
+        return firework;
+    }
 }
 
 
