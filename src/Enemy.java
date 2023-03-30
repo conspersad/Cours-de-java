@@ -13,9 +13,29 @@ public class Enemy extends AbstractEnemy{
     public boolean isAlive() {
         return hp > 0;
     }
+    public int ennemy_choose_speel(){
+        int damage;
+        if (Math.random() > 0.5){
+            System.out.println("Your ennemy use Wingardium Leviosa. \n");
+            damage=15;
+        }else{
+            System.out.println("Your ennemy use Accio. \n");
+            damage=20;
+        }
+        return damage;
+    }
     @Override
     public int attack() {
-        int damage = (int)(Math.random() * 10) + 1;
+        int damage=0;
+        if((Execution.level == 1 )||(Execution.level == 2)  || (Execution.level ==3)){
+        damage = (int)(Math.random() * 10) + 1;}
+        else {
+            if((Execution.enemy.name=="Voldemort")){
+                damage = ennemy_choose_speel()+25;
+            }else
+                damage = ennemy_choose_speel();
+
+        }
         return damage;
     }
 

@@ -7,7 +7,8 @@ import java.lang.String;
 public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
-    static Enemy enemy;
+    static Enemy enemy,enemy1;
+    public static int nbr_accio=0;
     public static String patronus;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "the goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
@@ -91,10 +92,10 @@ public class Execution {
 
    public static  void checkAct(){
         if( Character.xp >=0  && level==1){
-            Story.Thephilosopherstone_Intro();
+            //Story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll", 10, 30);
-            battle();
-            Story.Thephilosopherstone_Outro();
+            //battle();
+            //Story.Thephilosopherstone_Outro();
             clearconsole();
             anythingtocontinue();
             level=2;
@@ -102,10 +103,10 @@ public class Execution {
             gameLoop();
 
         }else if( (Character.xp >= 10 || Character.xp <= 20) && level==2){
-            Story.TheChamberOfSecret_Intro();
+            //Story.TheChamberOfSecret_Intro();
             enemy = new Enemy("Basilic", 30, 60);
-            battle();
-            Story.TheChamberOfSecret_Outro();
+            //battle();
+            //Story.TheChamberOfSecret_Outro();
             clearconsole();
             anythingtocontinue();
             level=3;
@@ -113,11 +114,11 @@ public class Execution {
             gameLoop();
 
         }else if((Character.xp >=20 && Character.xp <=30) && level==3){
-            Story.The_prisoner_of_azkaban_Intro();
-            enemy = new Enemy("Dementor", 45,70 );
-            patronus =Patronus.your_patronus();
-            battle();
-            Story.The_prisoner_of_azkaban_Outro();
+            //Story.The_prisoner_of_azkaban_Intro();
+            //enemy = new Enemy("Dementor", 45,70 );
+           // patronus =Patronus.your_patronus();
+            //battle();
+            //Story.The_prisoner_of_azkaban_Outro();
             clearconsole();
             anythingtocontinue();
             level=4;
@@ -125,6 +126,9 @@ public class Execution {
             gameLoop();
 
         }else if((Character.xp >= 30 && Character.xp <=50) && level==4){
+            enemy = new Enemy("Voldemort", 45,20);
+            enemy1 = new Enemy("Peter Pettigrow", 45,70 );
+            battle_level4();
             level=5;
             place=4;
 
@@ -216,6 +220,117 @@ public class Execution {
        }
    }
 
+    public static void battle_level4() {
+        // Boucle principale du jeu
+        while ((wizard.isAlive() && enemy.isAlive() && enemy1.isAlive()) || nbr_accio !=3) {
+            // Tour du sorcier
+            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp) and vs "
+                    + enemy1.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
+            String message = "What do you want to do ?\n" +
+                    "1 - Fight " + enemy.name + " !\n" +
+                    "2 - Fight " + enemy1.name + " !\n" +
+                    "3- Use a sort to have more Hp (only if your life is < 100)\n"
+                    + "4 - Leave";
+            slowPrint(message, 1);
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1 -> {
+                    int damage = wizard.attack();
+                    int reducedDamage = enemy.defend();
+                    int totalDamage = reducedDamage * damage;
+                    enemy.setHp(Enemy.hp - totalDamage);
+                    String message1 = wizard.name + " inflict " + damage + " damage points\n";
+                    slowPrint(message1, 1);
+                    if (totalDamage == 0) {
+                        String message2 = enemy.name + " dodge your attack\n";
+                        slowPrint(message2, 1);
+                    } else {
+                        String message3 = Execution.enemy.name + " was hit!\n";
+                        slowPrint(message3, 1);
+                    }
+
+                }
+                case 2 -> {
+                    int damage = wizard.attack();
+                    int reducedDamage = enemy1.defend();
+                    int totalDamage = reducedDamage * damage;
+                    enemy1.setHp(enemy1.hp - totalDamage);
+                    String message1 = wizard.name + " inflict " + damage + " damage points\n";
+                    slowPrint(message1, 1);
+                    if (totalDamage == 0) {
+                        String message2 = enemy1.name + " dodge your attack\n";
+                        slowPrint(message2, 1);
+                    } else {
+                        String message3 = Execution.enemy1.name + " was hit!\n";
+                        slowPrint(message3, 1);
+                    }
+
+                }
+                case 3 -> {
+                    if ((Execution.wizard.house.equals("Hufflepuff")) && (Wizard.hp < 100)) {
+                        int healed = 20;
+                        wizard.setHp(Wizard.hp + healed);
+                        System.out.println("You healed " + healed + " Hp !\n");
+                        Wizard.nbr_de_potion = wizard.nbr_de_potion - 1;
+
+                    } else if ((!Execution.wizard.house.equals("Hufflepuff")) && (Wizard.hp < 100)) {
+                        int healed = 25;
+                        System.out.println("You healed " + healed + " Hp !\n");
+                        wizard.setHp(Wizard.hp + healed);
+                        Wizard.nbr_de_potion = Wizard.nbr_de_potion - 1;
+
+                    } else if (Wizard.hp >= 100) {
+                        System.out.println("You have enough hp\n");
+                    }
+                }
+
+                case 4 -> {
+                    System.out.println(wizard.name + " leave");
+                    System.out.println("You are either very smart or either a little bit coward");
+                    gameLoop();
+                }
+                default -> System.out.println("Choice not valid");
+            }
+            if (Math.random() > 0.5) {
+                if (enemy.isAlive()) {
+                    int damage = enemy.attack();
+                    int reducedDamage = wizard.defend();
+                    int totalDamage = reducedDamage * damage;
+                    wizard.setHp(Wizard.hp - totalDamage);
+                    String message4 = enemy.name + " attack causing " + damage + " damage points. \n";
+                    slowPrint(message4, 75);
+                }
+            } else {
+                if (enemy1.isAlive()) {
+                    int damage = enemy1.attack();
+                    int reducedDamage = wizard.defend();
+                    int totalDamage = reducedDamage * damage;
+                    wizard.setHp(Wizard.hp - totalDamage);
+                    String message4 = enemy1.name + " attack causing " + damage + " damage points. \n";
+                    slowPrint(message4, 75);
+                }
+            }}
+            // Fin du jeu
+            if(nbr_accio==3) {
+                String message6 = "You managed to attract the Portolion, and thus to escape!\n" +
+                        "It was a close one, your very lucky ! \n";
+                slowPrint(message6, 25);
+            } else {
+                if (wizard.isAlive()) {
+                    String message5 = wizard.name + " defeat " + enemy.name + " !\n";
+                    slowPrint(message5, 25);
+                } else if (enemy.isAlive()) {
+                    String message6 = enemy.name + " defeat " + wizard.name + " !\n";
+                    slowPrint(message6, 25);
+                    wizardDied();
+                } else if (enemy1.isAlive()) {
+                    String message6 = enemy.name + " defeat " + wizard.name + " !\n";
+                    slowPrint(message6, 25);
+                    wizardDied();
+                }
+            }}
+
+
     public static void slowPrint(String message, int delay) {
         for (int i = 0; i < message.length(); i++) {
             System.out.print(message.charAt(i));
@@ -269,7 +384,7 @@ public class Execution {
             }
         }
         else if((Execution.level==3)){
-            System.out.println(" 1: Use Expecto Patronum a "+patronus);
+            System.out.println(" Use Expecto Patronum a "+patronus);
             switch (patronus) {
                 case "Deer" -> damage = 28;
                 case "Eagle" -> damage = 30;
@@ -278,9 +393,22 @@ public class Execution {
                     System.out.println("Please enter a valide value");
                     Choose_spell();
                 }
+            }}
+        else if(Execution.level==4){
+            spellCount=2;
+            for (int i = 0; i < spellCount; i++) {
+                System.out.println((i + 1) + " : " + Spell.spells[i]);}
+            int input = Execution.readInt("->", spellCount);
+            if (input == 1) {
+                damage = 10;
+            } else if (input == 2) {
+                nbr_accio=nbr_accio+1;
+                damage = 20;
             }
-    } return damage;
-    }
+        }
+        return damage;      }
+
+
 
 
     public static void continueJourney(){

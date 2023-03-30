@@ -61,7 +61,7 @@ public class Story{
     }
     public static void TheChamberOfSecret_Outro(){
         String message ="Few hours later ....\n" +
-                "Dumbledore : Thank you for your bravery Harry,Ron,Hermione"+ Execution.wizard.name +" !\n" +
+                "Dumbledore : Thank you for your bravery Harry, Ron, Hermione and"+ Execution.wizard.name +" !\n" +
                 "Dumbledore : And thank you for your service to the school.\n"+
                 "Dumbledore : You seems fearless and for that I am going to give 10 points to " + Execution.wizard.house +"!\n"+
                 "Hermione :  Thank you for sharing the secret diary with us !\n"+
@@ -79,11 +79,11 @@ public class Story{
         String message ="It's the start of a new year ! \n" +
         "But over the summer television news from the non-magical world announces the escape of a very dangerous prisoner by the name of Sirius Black.\n " +
                 "In the Hogwarts Express, you and Nevile are rescued by  Remus Lupin, who produces a patronus as an Azkaban Dementor," +
-                " searching for Sirius Black, attacks your compartment.\n" +
+                "searching for Sirius Black, attacks your compartment.\n" +
                 "Dementors are employed by the Ministry of Magic to guard Azkaban, the wizarding prison.\n " +
                 "The Expexto Patronum spell is taught to you during Defense Against the Dark Arts classes to get rid of Dementors.\n"+
-                "But during the first lesson about Care of Magical Creatures by Hagrid.\n Draco Malfoy provokes a hippogriff and is attacked by the animal.\n He threatens Hagrid with a lawsuit. And later you learn that Hagrid's hippogryph is condemned to beheading.\n" +
-                " To save him, you and Hermione go back in time using the Time Turner.\n But as you try to save the poor beast in the forest a dementor attacks you !\n";
+                "But during the first lesson about Care of Magical Creatures by Hagrid.\nDraco Malfoy provokes a hippogriff and is attacked by the animal.\n He threatens Hagrid with a lawsuit. And later you learn that Hagrid's hippogryph is condemned to beheading.\n" +
+                "To save him, you and Hermione go back in time using the Time Turner.\nBut as you try to save the poor beast in the forest a dementor attacks you !\n";
         Execution.printseperator(5);
         slowPrint(message, 25);
     };
