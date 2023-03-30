@@ -162,19 +162,20 @@ public class Execution {
         }, dureeMillis);
 
         boolean preparationEnCours;
-       while ((firework != 5) && (!finDuTimer[0])){
+       while ((firework != 7) && (!finDuTimer[0])){
            // Tour du sorcier
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
            String message ="What do you want to do ?\n"+
-           "1 - Distract "+enemy.name+" !\n" +
-           "2 - Prepare a firework\n"
-           +"3 - Leave";
+           "1 - Distract "+enemy.name+" while your friend prepare a firework!\n" +
+           "2 - Prepare a 2 firework (it take 5 secondes)\n"
+           +"3 - Use a sort to have more Hp (only if your life is < 100)\n"+
+                   "4 - Leave";
            slowPrint(message,1);
            int choice = scanner.nextInt();
            switch (choice) {
                case 1 -> {
                    preparationEnCours=false;
-                   Wizard.distraireEnnemi();
+                   firework=Wizard.distraireEnnemi();
                    int damage = Enemy.verifierPreparationFeuArtifice(preparationEnCours);
                }
                case 2 -> {
@@ -184,27 +185,45 @@ public class Execution {
                    if(damage==0){
                        System.out.println("Dolores didn't see you preparing the firework ! Continue");
                    }else{
-                       System.out.println("Dolores caught you preparing  firework, you lose "+damage +" hp");
+                       System.out.println("Dolores caught you preparing  firework, you lose "+damage +" hp and lost 2 firework");
                        wizard.setHp(Wizard.hp - damage);
+                       firework=firework-2;
                    }
 
                }
                    case 3 -> {
-                       System.out.println(wizard.name + " leave");
-                       System.out.println("You are either very smart or either a little bit coward");
-                       gameLoop();
+                       if((Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100))
+                       {
+                           int healed = 20;
+                           wizard.setHp(Wizard.hp +healed);
+                           System.out.println("You healed "+ healed+" Hp !\n");
+                           Wizard.nbr_de_potion =wizard.nbr_de_potion-1;
+
+                       }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100)){
+                           int healed = 25;
+                           System.out.println("You healed "+ healed+" Hp !\n");
+                           wizard.setHp(Wizard.hp +healed);
+                           Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
+
+                       }  else if (Wizard.hp >=100) {
+                           System.out.println("You have enough hp\n");
+                       }
                    }
                    default -> System.out.println("Choice not valid");
-
+               case 4 -> {
+                   System.out.println(wizard.name + " leave");
+                   System.out.println("You are either very smart or either a little bit coward");
+                   gameLoop();
+               }
            }}
 
        // Fin du jeu
        if (firework == 5 ) {
            String message5 = wizard.name+ " prepared enough firework during the allotted time and so defeat " + enemy.name + " !\n";
-           slowPrint(message5,25);
+           slowPrint(message5,75);
        } else if(finDuTimer[0]) {
            String message6= "You didn't prepare enough firework during the alloted time";
-           slowPrint(message6,25);
+           slowPrint(message6,75);
            wizardDied();
        }
    }

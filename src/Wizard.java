@@ -69,19 +69,28 @@ public class Wizard extends Character {
     }
 
 
-    public static void distraireEnnemi() {
+    public static int distraireEnnemi() {
         int dureeMillis=15000;
-        System.out.println("Le sorcier distrait l'ennemi pendant " + (dureeMillis / 1000) + " secondes...");
+        System.out.println("The wizard distract ennemy during " + (dureeMillis / 1000) + " secondes...");
         try {
             Thread.sleep(dureeMillis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("La distraction est terminée !");
-    }
-    public static int prepare_firework() {
+        System.out.println("The distraction is over !");
         int firework;
         firework=Execution.firework+1;
+        return firework;
+    }
+    public static int prepare_firework() {
+        int dureeMillis=5000;
+        int firework;
+        firework=Execution.firework+2;
+        try {
+            Thread.sleep(dureeMillis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return firework;
     }
 }
