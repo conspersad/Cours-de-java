@@ -8,6 +8,7 @@ public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
     static Enemy enemy;
+    public static String patronus;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "the goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
@@ -90,11 +91,10 @@ public class Execution {
 
    public static  void checkAct(){
         if( Character.xp >=0  && level==1){
-            //on appele les intro des niveaux1
-            //Story.Thephilosopherstone_Intro();
+            Story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll", 10, 30);
             battle();
-            //Story.Thephilosopherstone_Outro();
+            Story.Thephilosopherstone_Outro();
             clearconsole();
             anythingtocontinue();
             level=2;
@@ -102,10 +102,10 @@ public class Execution {
             gameLoop();
 
         }else if( (Character.xp >= 10 || Character.xp <= 20) && level==2){
-            /* Story.TheChamberOfSecret_Intro(); */
+            Story.TheChamberOfSecret_Intro();
             enemy = new Enemy("Basilic", 30, 60);
             battle();
-            //Story.TheChamberOfSecret_Outro();
+            Story.TheChamberOfSecret_Outro();
             clearconsole();
             anythingtocontinue();
             level=3;
@@ -113,11 +113,16 @@ public class Execution {
             gameLoop();
 
         }else if((Character.xp >=20 && Character.xp <=30) && level==3){
-            /*Story.The_prisoner_of_azkaban_Intro()*/
+            Story.The_prisoner_of_azkaban_Intro();
             enemy = new Enemy("Dementor", 45,70 );
+            patronus =Patronus.your_patronus();
             battle();
+            Story.The_prisoner_of_azkaban_Outro();
+            clearconsole();
+            anythingtocontinue();
             level=4;
             place=3;
+            gameLoop();
 
         }else if((Character.xp >= 30 && Character.xp <=50) && level==4){
             level=5;
@@ -171,14 +176,13 @@ public class Execution {
                    System.out.println("You healed "+ healed+" Hp !\n");
                   Wizard.nbr_de_potion =wizard.nbr_de_potion-1;
 
-                  }else if((Execution.wizard.house!="Hufflepuff")&&(Execution.wizard.hp<100)){
-
+                  }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100)){
                        int healed = 25;
                        System.out.println("You healed "+ healed+" Hp !\n");
                        wizard.setHp(Wizard.hp +healed);
-                       wizard.nbr_de_potion=wizard.nbr_de_potion-1;
+                       Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
 
-                   }  else if (Execution.wizard.hp>=100) {
+                   }  else if (Wizard.hp >=100) {
                        System.out.println("You have enough hp\n");
                    }
                }
@@ -228,14 +232,23 @@ public class Execution {
         System.out.println("Choose a spell");
 
         int spellCount = Execution.level;  // number of available spells
-        for (int i = 0; i < spellCount; i++) {
+        if((Execution.level==1)){
+            for (int i = 0; i < spellCount; i++) {
 
-            System.out.println((i + 1) + " : " + Spell.spells[i]);
+                System.out.println((i + 1) + " : " + Spell.spells[i]);
+            }
+            int input = Execution.readInt("->", spellCount);
+            if (input == 1) {
+                damage = 10;
+            } else{ System.out.println("Please enter a valide value");
+              Choose_spell();}
         }
-        if((Execution.level==2)&& (Execution.wizard.house.equals("Gryffindor")))
+        else if((Execution.level==2)&& (Execution.wizard.house.equals("Gryffindor")))
         {
-            System.out.println("3 : Use the legend sword of Godric Gryffindor  ");
+            for (int i = 0; i < spellCount; i++) {
+                System.out.println((i + 1) + " : " + Spell.spells[i]);}
             spellCount=spellCount+1;
+            System.out.println("3 : Use the legend sword of Godric Gryffindor  ");
             int input = Execution.readInt("->", spellCount);
             if (input == 1) {
                 damage = 10;
@@ -244,17 +257,29 @@ public class Execution {
             }else if (input == 3) {
                 damage = 45;
             }
-        } else {
+        }
+        else if((Execution.level==2)&& (!Execution.wizard.house.equals("Gryffindor"))) {
+            for (int i = 0; i < spellCount; i++) {
+                System.out.println((i + 1) + " : " + Spell.spells[i]);}
             int input = Execution.readInt("->", spellCount);
             if (input == 1) {
                 damage = 10;
             } else if (input == 2) {
                 damage = 20;
-            }else if (input == 3) {
-                damage = 30;
             }
         }
-        return damage;
+        else if((Execution.level==3)){
+            System.out.println(" 1: Use Expecto Patronum a "+patronus);
+            switch (patronus) {
+                case "Deer" -> damage = 28;
+                case "Eagle" -> damage = 30;
+                case "Horse" -> damage = 32;
+                default -> {
+                    System.out.println("Please enter a valide value");
+                    Choose_spell();
+                }
+            }
+    } return damage;
     }
 
 
