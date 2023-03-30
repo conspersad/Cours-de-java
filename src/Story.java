@@ -75,6 +75,18 @@ public class Story{
         slowPrint(message, 25);
     }
 
+    public static void The_prisoner_of_azkaban_Intro(){
+        String message ="It's the start of a new year ! \n" +
+        "But over the summer television news from the non-magical world announces the escape of a very dangerous prisoner by the name of Sirius Black.\n " +
+                "In the Hogwarts Express, you and Nevile are rescued by  Remus Lupin, who produces a patronus as an Azkaban Dementor," +
+                " searching for Sirius Black, attacks your compartment.\n" +
+                "Dementors are employed by the Ministry of Magic to guard Azkaban, the wizarding prison.\n " +
+                "The Expexto Patronum spell is taught to you during Defense Against the Dark Arts classes to get rid of Dementors.\n"+
+                "But during the first lesson about Care of Magical Creatures by Hagrid.\n Draco Malfoy provokes a hippogriff and is attacked by the animal.\n He threatens Hagrid with a lawsuit. And later you learn that Hagrid's hippogryph is condemned to beheading.\n" +
+                " To save him, you and Hermione go back in time using the Time Turner.\n But as you try to save the poor beast in the forest a dementor attacks you !\n";
+        Execution.printseperator(5);
+        slowPrint(message, 25);
+    };
     }
 
 
