@@ -87,6 +87,20 @@ public class Story{
         Execution.printseperator(5);
         slowPrint(message, 25);
     };
+    public static void The_prisoner_of_azkaban_Outro(){
+        String message ="Hermione : It was a close one ! \n" +
+                Execution.wizard.name + " : Thank god we learn that new speel in class, other wise i don't know what would have happend to us ! \n"+
+                "Hermione : Your patronus is beautiful ! \n" +
+                Execution.wizard.name + " : Thank you ! My mom had the same.\n"+
+                Execution.wizard.name + " : But we really got to go,we must prevent the accident with Malfoy from happening again!\n"+
+                        "Few moment later ....\n"+
+                "Hagrid : Thank you very much girl, I know what you did to save my hippogriff,I am very grateful for it"+
+                 "Hagrid : It look like, he like you !!\n" +
+                "Hagrid : You girls want to take a rid !\n"+
+                "It was one of the best day of your life, an unforgettable memory !";
+        Execution.printseperator(5);
+        slowPrint(message, 25);
+    };
     }
 
 

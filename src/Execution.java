@@ -173,7 +173,7 @@ public class Execution {
 
                   }else if((Execution.wizard.house!="Hufflepuff")&&(Execution.wizard.hp<100)){
 
-                       int healed = 10;
+                       int healed = 25;
                        System.out.println("You healed "+ healed+" Hp !\n");
                        wizard.setHp(Wizard.hp +healed);
                        wizard.nbr_de_potion=wizard.nbr_de_potion-1;
@@ -250,6 +250,8 @@ public class Execution {
                 damage = 10;
             } else if (input == 2) {
                 damage = 20;
+            }else if (input == 3) {
+                damage = 30;
             }
         }
         return damage;
