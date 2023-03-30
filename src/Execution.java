@@ -222,7 +222,7 @@ public class Execution {
 
     public static void battle_level4() {
         // Boucle principale du jeu
-        while ((wizard.isAlive() && enemy.isAlive() && enemy1.isAlive()) || nbr_accio !=3) {
+        while ((wizard.isAlive() || enemy.isAlive() || enemy1.isAlive()) || nbr_accio !=3) {
             // Tour du sorcier
             System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp) and vs "
                     + enemy1.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
@@ -307,6 +307,8 @@ public class Execution {
                     int totalDamage = reducedDamage * damage;
                     wizard.setHp(Wizard.hp - totalDamage);
                     String message4 = enemy1.name + " attack causing " + damage + " damage points. \n";
+
+
                     slowPrint(message4, 75);
                 }
             }}
