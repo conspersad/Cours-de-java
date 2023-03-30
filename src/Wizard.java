@@ -22,10 +22,10 @@ public class Wizard extends Character {
 
     @Override
     public int attack() {
-        int spell = Execution.speel;
+
         // Calcule les dégâts infligés par le sortilège du sorcier
         int finalDamage;
-        int damage = Spell.getDamage(spell);
+        int damage = Execution.Choose_spell();
 
         if(Execution.wizard.house.equals("Slytherin"))
         {
@@ -55,8 +55,8 @@ public class Wizard extends Character {
         } else {
             System.out.println("You failed to defend against the attack!\n");
             if (Execution.wizard.house.equals("Gryffindor")) {
-                return 1/2; // 10 points de dégâts sont infligés
-            } else return 1;
+                return 1; // 10 points de dégâts sont infligés
+            } else return 2;
         }
     }
 

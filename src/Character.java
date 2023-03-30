@@ -7,6 +7,7 @@ public abstract class Character {
         this.maxHp=maxHp;
         this.xp=xp;
     }
+
     public abstract  int attack();
 
     public abstract int defend();

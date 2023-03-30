@@ -7,9 +7,10 @@ import java.lang.String;
 public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
-    static Enemy enemy,enemy1;
-    static Spell spell;
-    public static int speel;
+    static Enemy enemy;
+    public static Spell spell1,spell2;
+
+     public static Spell[] spells= new Spell[]{};
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "the goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
@@ -88,15 +89,16 @@ public class Execution {
 
         }
         //method to continue the journey
+
+
    public static  void checkAct(){
         if( Character.xp >=0  && level==1){
             int xp;
             //on appele les intro des niveaux1
-            Story.Thephilosopherstone_Intro();
+            //Story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll", 10, 30);
-            spell = new Spell(1, 10, new String[] {"Wingardium Leviosa"});
             battle();
-            Story.Thephilosopherstone_Outro();
+            //Story.Thephilosopherstone_Outro();
             clearconsole();
             anythingtocontinue();
             level=2;
@@ -104,9 +106,8 @@ public class Execution {
             gameLoop();
 
         }else if( (Character.xp >= 10 || Character.xp <= 20) && level==2){
-            Story.TheChamberOfSecret_Intro();
-            enemy1 = new Enemy("Basilic", 30,60 );
-            spell = new Spell(1, 10, new String[] {"Accio"});
+           // Story.TheChamberOfSecret_Intro();
+            enemy = new Enemy("Basilic", 30, 60);
             battle();
             level=3;
             place=2;
@@ -128,6 +129,7 @@ public class Execution {
             place=6;
 
         }
+
    }
     public static void battle(){
        // Boucle principale du jeu
@@ -136,31 +138,25 @@ public class Execution {
            // Tour du sorcier
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " hp, " + enemy.xp + " xp)");
            String message ="What do you want to do ?\n"+
-           "1 - fight "+enemy.name+" !\n" +
+           "1 - Fight "+enemy.name+" !\n" +
            "2 - Use a sort to have more Hp (only if your life is < 100)\n"
            +"3 - Leave";
-           slowPrint(message,75);
+           slowPrint(message,1);
            int choice = scanner.nextInt();
            switch (choice) {
                case 1 -> {
-                   System.out.println("You need to choose a Spell");
-                   for (int i = 0; i < Spell.knownSpells.length; i++) {
-                       System.out.println( "Press "+i + " to use : " + Spell.knownSpells[i]);
-                   }
-                   int speel = scanner.nextInt();
-                   Spell.getDamage(speel);
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
                    int totalDamage = reducedDamage * damage;
                    enemy.setHp(enemy.hp - totalDamage);
-                   String message1 = wizard.name + " use Wingardium Leviosas, inflicting " + damage + " damage points\n";
-                   slowPrint(message1,75);
+                   String message1 = wizard.name + " use Wingardium Leviosas, inflicting " + damage + " damage points\n";//CHANGER LE NOM DU SPELL
+                   slowPrint(message1,1);
                    if(totalDamage==0){
                    String message2= enemy.name + " dodge your attack\n";
-                       slowPrint(message2,75);
+                       slowPrint(message2,1);
                    }else {
                        String message3= Execution.enemy.name + " was hit!\n";
-                       slowPrint(message3,75);
+                       slowPrint(message3,1);
                    }
 
                }
@@ -226,6 +222,31 @@ public class Execution {
         }
         System.out.println(); //
     }
+    public static int Choose_spell(){
+        int damage = 0;
+        System.out.println("Choose a spell");
+
+        int spellCount = Execution.level;  // number of available spells
+        for (int i = 0; i < spellCount; i++) {
+
+            System.out.println((i + 1) + " : " + Spell.spells[i]);
+        }
+        if((Execution.level==2)&& (Execution.wizard.house=="Gryffindor"))
+        {
+            System.out.println("3 : Use the legend sword of Godric Gryffindor  ");
+            spellCount=spellCount+1;
+        }
+        int input = Execution.readInt("->", spellCount);
+        if (input == 1) {
+            damage = 10;
+        } else if (input == 2) {
+            damage = 20;
+        }else if (input == 3) {
+            damage = 30;
+        }
+        return damage;
+    }
+
 
     public static void continueJourney(){
         //check if game isn't in last act
@@ -271,7 +292,7 @@ public class Execution {
     }
 
 
-    }
+}
 
 
 
