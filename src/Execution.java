@@ -8,9 +8,6 @@ public class Execution {
     static Scanner scanner = new Scanner(System.in);
     static Wizard wizard;
     static Enemy enemy;
-    public static Spell spell1,spell2;
-
-     public static Spell[] spells= new Spell[]{};
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "the goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
@@ -93,7 +90,6 @@ public class Execution {
 
    public static  void checkAct(){
         if( Character.xp >=0  && level==1){
-            int xp;
             //on appele les intro des niveaux1
             //Story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll", 10, 30);
@@ -106,7 +102,7 @@ public class Execution {
             gameLoop();
 
         }else if( (Character.xp >= 10 || Character.xp <= 20) && level==2){
-           // Story.TheChamberOfSecret_Intro();
+            /* Story.TheChamberOfSecret_Intro(); */
             enemy = new Enemy("Basilic", 30, 60);
             battle();
             level=3;
@@ -136,7 +132,7 @@ public class Execution {
        while (wizard.isAlive() && enemy.isAlive()) {
           wizard.xp=Spell.damage;
            // Tour du sorcier
-           System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + enemy.hp + " hp, " + enemy.xp + " xp)");
+           System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
            String message ="What do you want to do ?\n"+
            "1 - Fight "+enemy.name+" !\n" +
            "2 - Use a sort to have more Hp (only if your life is < 100)\n"
@@ -148,8 +144,8 @@ public class Execution {
                    int damage = wizard.attack();
                    int reducedDamage = enemy.defend();
                    int totalDamage = reducedDamage * damage;
-                   enemy.setHp(enemy.hp - totalDamage);
-                   String message1 = wizard.name + " use Wingardium Leviosas, inflicting " + damage + " damage points\n";//CHANGER LE NOM DU SPELL
+                   enemy.setHp(Enemy.hp - totalDamage);
+                   String message1 = wizard.name + " inflict " + damage + " damage points\n";
                    slowPrint(message1,1);
                    if(totalDamage==0){
                    String message2= enemy.name + " dodge your attack\n";
@@ -161,12 +157,12 @@ public class Execution {
 
                }
                case 2 -> {
-                   if((Execution.wizard.house=="Hufflepuff")&&(Execution.wizard.hp<100))
+                   if((Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100))
                {
                    int healed = 20;
-                   wizard.setHp(wizard.hp+healed);
+                   wizard.setHp(Wizard.hp +healed);
                    System.out.println("You healed "+ healed+" Hp !\n");
-                  wizard.nbr_de_potion=wizard.nbr_de_potion-1;
+                  Wizard.nbr_de_potion =wizard.nbr_de_potion-1;
 
                   }else if((Execution.wizard.house!="Hufflepuff")&&(Execution.wizard.hp<100)){
 
@@ -185,17 +181,15 @@ public class Execution {
                    System.out.println("You are either very smart or either a little bit coward");
                    gameLoop();
                }
-               default -> {
-                   System.out.println("Choice not valid");
-               }
+               default -> System.out.println("Choice not valid");
            }
 
            if (enemy.isAlive()) {
                int damage = enemy.attack();
                int reducedDamage = wizard.defend();
                int totalDamage = reducedDamage * damage;
-               wizard.setHp(wizard.hp - totalDamage);
-               String message4 = enemy.name + " attack causing " + damage + " damage points. \n"
+               wizard.setHp(Wizard.hp - totalDamage);
+               String message4 = enemy.name + " attack causing " + damage + " damage points. \n\n"
                        + wizard.name + " take " + totalDamage + " damage points.\n";
                slowPrint(message4,75);
            }
@@ -231,18 +225,25 @@ public class Execution {
 
             System.out.println((i + 1) + " : " + Spell.spells[i]);
         }
-        if((Execution.level==2)&& (Execution.wizard.house=="Gryffindor"))
+        if((Execution.level==2)&& (Execution.wizard.house.equals("Gryffindor")))
         {
             System.out.println("3 : Use the legend sword of Godric Gryffindor  ");
             spellCount=spellCount+1;
-        }
-        int input = Execution.readInt("->", spellCount);
-        if (input == 1) {
-            damage = 10;
-        } else if (input == 2) {
-            damage = 20;
-        }else if (input == 3) {
-            damage = 30;
+            int input = Execution.readInt("->", spellCount);
+            if (input == 1) {
+                damage = 10;
+            } else if (input == 2) {
+                damage = 20;
+            }else if (input == 3) {
+                damage = 45;
+            }
+        } else {
+            int input = Execution.readInt("->", spellCount);
+            if (input == 1) {
+                damage = 10;
+            } else if (input == 2) {
+                damage = 20;
+            }
         }
         return damage;
     }

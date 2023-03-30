@@ -55,7 +55,22 @@ public class Story{
                 "On these complicated times you learn a new spell learned with Professor Rogue: Accio!\n"+
                  "One day you find in the toilet a mysterious diary belonging to a man named Tom Riddle. More and more people are disappearing at Hogwarts and in a panic, show you the diary to your friends Hermione, Ron and Harry.\n"+
                 "It is written there that the door to the Chamber of Secrets would be in the toilet\n."+
-                "You decide to go there the next day armed with the legend sword of Godric Gryffindor, to bring down the monster and end this story.\n";
+                "You decide to go there the next day armed with the legend sword of Godric Gryffindor, if your house is Gryffindor you could use it to bring down the monster and end this story.\n";
+        Execution.printseperator(5);
+        slowPrint(message, 25);
+    }
+    public static void TheChamberOfSecret_Outro(){
+        String message ="At the beginning of this new year, something strange happened before the start of the school year at Hogwarts.\n" +
+                " As you were packing your suitcase, a house-elf came to introduce you.\n" +
+                " He claims to be called Dobby and he announces that terrible dangers threaten the school of Hogwarts and that you must not return there in September.\n"+
+                "And recently, many Hogwarts students claim that The Chamber of Secrets would have been reopened !\n"+
+                "Professor mcgonagall : I have heard the rumors that are running this time, please students be careful ! Even if we don't know if it's true let me tell you the story\n"+
+                "Professor mcgonagall : Salazar Slytherin, one of the four founders of the school, would have created this famous Chamber and would have hidden there a fearsome monster intended to rid the school of those who are not worthy of it, that is to say the wizards born to muggle parents.\n"+
+                "Since what professor mcgonagall said you friend Hermione,Ron and Harry seems very worried\n"+
+                "On these complicated times you learn a new spell learned with Professor Rogue: Accio!\n"+
+                "One day you find in the toilet a mysterious diary belonging to a man named Tom Riddle. More and more people are disappearing at Hogwarts and in a panic, show you the diary to your friends Hermione, Ron and Harry.\n"+
+                "It is written there that the door to the Chamber of Secrets would be in the toilet\n."+
+                "You decide to go there the next day armed with the legend sword of Godric Gryffindor, if your house is Gryffindor you could use it to bring down the monster and end this story.\n";
         Execution.printseperator(5);
         slowPrint(message, 25);
     }
