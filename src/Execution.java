@@ -105,10 +105,16 @@ public class Execution {
             /* Story.TheChamberOfSecret_Intro(); */
             enemy = new Enemy("Basilic", 30, 60);
             battle();
+            //Story.TheChamberOfSecret_Outro();
+            clearconsole();
+            anythingtocontinue();
             level=3;
             place=2;
+            gameLoop();
 
         }else if((Character.xp >=20 && Character.xp <=30) && level==3){
+            enemy = new Enemy("Dementor", 45,70 );
+            battle();
             level=4;
             place=3;
 
