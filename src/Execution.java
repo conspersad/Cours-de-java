@@ -150,7 +150,7 @@ public class Execution {
 
    }
     public static void battle_level5(){
-        int dureeMillis = 60000;
+        int dureeMillis = 90000;
         final Timer timer = new Timer();
         final boolean[] finDuTimer = {false};
         timer.schedule(new TimerTask() {
@@ -166,7 +166,7 @@ public class Execution {
            // Tour du sorcier
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
            String message ="What do you want to do ?\n"+
-           "1 - Distract "+enemy.name+" while your friend prepare a firework!\n" +
+           "1 - Distract "+enemy.name+" during 15 secondes while your friend prepare a firework!\n" +
            "2 - Prepare a 2 firework (it take 5 secondes)\n"
            +"3 - Use a sort to have more Hp (only if your life is < 100)\n"+
                    "4 - Leave";
