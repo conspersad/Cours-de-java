@@ -65,7 +65,7 @@ public class Enemy extends AbstractEnemy{
         int dommages = 0;
         if (preparationEnCours==true) {
 
-            if (Math.random() > 0.7) {
+            if (Math.random() > 0.6) {
                  dommages = 25;}
             else{dommages = 0; }
             } else{

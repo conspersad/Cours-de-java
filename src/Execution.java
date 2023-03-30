@@ -1,7 +1,8 @@
 import java.util.Scanner;
 import java.lang.System;
 import java.lang.String;
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Execution {
@@ -103,7 +104,7 @@ public class Execution {
             place=1;
             gameLoop();
 
-        }else if( (Character.xp >= 10 && Character.xp <= 20) && level==2){
+        }else if(  level==2){
             //Story.TheChamberOfSecret_Intro();
             //enemy = new Enemy("Basilic", 30, 60);
             //battle();
@@ -114,7 +115,7 @@ public class Execution {
             place=2;
             gameLoop();
 
-        }else if((Character.xp >=20 && Character.xp <=30) && level==3){
+        }else if(level==3){
             /*Story.The_prisoner_of_azkaban_Intro();
             //enemy = new Enemy("Dementor", 45,70 );
            // patronus =Patronus.your_patronus();
@@ -126,7 +127,7 @@ public class Execution {
             place=3;
             gameLoop();
 
-        }else if((Character.xp >= 30 && Character.xp <=50) && level==4){
+        }else if( level==4){
             //enemy = new Enemy("Voldemort", 45,20);
            // enemy1 = new Enemy("Peter Pettigrow", 30,70 );
            // battle_level4();
@@ -136,7 +137,7 @@ public class Execution {
             anythingtocontinue();
             gameLoop();
 
-        }else if((Character.xp >= 50 && Character.xp <=70) &&level==5){
+        }else if(level==5){
             enemy = new Enemy("Dolores Ombrage", 45,70 );
             battle_level5();
             level=6;
@@ -149,11 +150,19 @@ public class Execution {
 
    }
     public static void battle_level5(){
-        boolean preparationEnCours;
-       // Boucle principale du jeu
-       boolean test= Wizard.demarrerMinuteur();
+        int dureeMillis = 60000;
+        final Timer timer = new Timer();
+        final boolean[] finDuTimer = {false};
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                finDuTimer[0] = true;
+                timer.cancel();
+            }
+        }, dureeMillis);
 
-       while (firework != 5 && test==true ){
+        boolean preparationEnCours;
+       while ((firework != 5) && (!finDuTimer[0])){
            // Tour du sorcier
            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
            String message ="What do you want to do ?\n"+
@@ -193,7 +202,7 @@ public class Execution {
        if (firework == 5 ) {
            String message5 = wizard.name+ " prepared enough firework during the allotted time and so defeat " + enemy.name + " !\n";
            slowPrint(message5,25);
-       } else if(test==false) {
+       } else if(finDuTimer[0]) {
            String message6= "You didn't prepare enough firework during the alloted time";
            slowPrint(message6,25);
            wizardDied();
