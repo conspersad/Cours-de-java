@@ -26,11 +26,12 @@ public class Enemy extends AbstractEnemy{
     }
     @Override
     public int attack() {
-        int damage=0;
-        if((Execution.level == 1 )||(Execution.level == 2)  || (Execution.level ==3)){
+        Execution myExc= new Execution();
+        int damage;
+        if((myExc.level == 1 )||(myExc.level == 2)  || (myExc.level ==3)){
         damage = (int)(Math.random() * 10) + 1;}
         else {
-            if((Execution.enemy.name=="Voldemort")){
+            if((myExc.enemy.name=="Voldemort")){
                 damage = ennemy_choose_speel()+25;
             }else
                 damage = ennemy_choose_speel();
@@ -42,14 +43,14 @@ public class Enemy extends AbstractEnemy{
     @Override
     public int defend() {
         int damage;
-        if(Execution.wizard.house=="Ravenclaw"){
+        if(Execution.wizard.house.equals("Ravenclaw")){
         if (Math.random() > 0.8) {
            damage = 0;
-            return damage;
         } else {
             damage = 1;
+        }
             return damage;
-        }}else
+        }else
             if (Math.random() > 0.6) {
                 damage = 0;
                 return damage;
@@ -65,7 +66,7 @@ public class Enemy extends AbstractEnemy{
         int dommages = 0;
         if (preparationEnCours==true) {
 
-            if (Math.random() > 0.6) {
+            if (Math.random() > 0.5) {
                  dommages = 25;}
             else{dommages = 0; }
             } else{

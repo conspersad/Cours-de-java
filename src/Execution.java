@@ -6,33 +6,33 @@ import java.util.TimerTask;
 
 
 public class Execution {
-    static Scanner scanner = new Scanner(System.in);
-    static Wizard wizard;
-    static Enemy enemy,enemy1;
+     static Scanner scanner = new Scanner(System.in);
+    public static Wizard wizard;
+    public Enemy  enemy,enemy1;
     public static int nbr_accio=0;
     public static int firework=0;
     public static String patronus;
     public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "The goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
-    public static boolean isRunning;
+    public boolean isRunning;
 
 
 
-    public static void printseperator(int n){
+    public void printseperator(int n){
         for(int i=0;i<n;i++) {
             System.out.print("-");
         }
         System.out.println();
     }
-    public static void printHeading(String title){
+    public void printHeading(String title){
         printseperator(30);
         System.out.println(title);
         printseperator(30);}
-    public static void anythingtocontinue(){
+    public void anythingtocontinue(){
         System.out.println("\nEnter something to continue...");
         scanner.next();}
-    public static void clearconsole(){
+    public void clearconsole(){
         for(int i=0; i<5;i++)
             System.out.println();
     }
@@ -51,7 +51,7 @@ public class Execution {
     }
 
     //methode pour commencer le jeu
-    public static void startGame(){
+    public void startGame(){
         boolean nameSet = false;
         String name;
         // print title screen
@@ -78,7 +78,7 @@ public class Execution {
 
         Story.printIntro();
 
-        Execution.anythingtocontinue();
+        anythingtocontinue();
 
         wizard = new Wizard(name, Pet.choosePet(),Wand.choose_wand() ,House.your_house(), 100, 0); //appel de joueuer
 
@@ -92,7 +92,7 @@ public class Execution {
         //method to continue the journey
 
 
-   public static  void checkAct(){
+   public void checkAct(){
         if( Character.xp >=0  && level==1){
             //Story.Thephilosopherstone_Intro();
             //enemy = new Enemy("Troll", 10, 30);
@@ -117,7 +117,7 @@ public class Execution {
 
         }else if(level==3){
             Story.The_prisoner_of_azkaban_Intro();
-            enemy = new Enemy("Dementor", 45,70 );
+            this.enemy = new Enemy("Dementor", 45,70 );
             patronus =Patronus.your_patronus();
              battle();
              Story.The_prisoner_of_azkaban_Outro();
@@ -140,18 +140,24 @@ public class Execution {
             gameLoop();
 
         }else if(level==5){
+            Story.The_order_of_the_phoenix_Intro();
             enemy = new Enemy("Dolores Ombrage", 45,70 );
             battle_level5();
+            Story.The_order_of_the_phoenix_Outro();
+            clearconsole();
+            anythingtocontinue();
             level=6;
             place=5;
+            gameLoop();
 
-        }else if((Character.xp >= 70 && Character.xp <=90) &&level==6){
+        }else if(level==6){
+            enemy = new Enemy("Death Eater", 55,80 );
             level=7;
             place=6;
         }
 
    }
-    public static void battle_level5(){
+    public void battle_level5(){
         int dureeMillis = 100000;
         final Timer timer = new Timer();
         final boolean[] finDuTimer = {false};
@@ -229,7 +235,7 @@ public class Execution {
            wizardDied();
        }
    }
-    public static void battle(){
+    public  void battle(){
         // Boucle principale du jeu
         while (wizard.isAlive() && enemy.isAlive()) {
             wizard.xp=Spell.damage;
@@ -253,7 +259,7 @@ public class Execution {
                         String message2= enemy.name + " dodge your attack\n";
                         slowPrint(message2,1);
                     }else {
-                        String message3= Execution.enemy.name + " was hit!\n";
+                        String message3= enemy.name + " was hit!\n";
                         slowPrint(message3,1);
                     }
 
@@ -306,7 +312,7 @@ public class Execution {
         }
     }
 
-    public static void battle_level4() {
+    public  void battle_level4() {
         // Boucle principale du jeu
         while (wizard.isAlive() && enemy.isAlive() && enemy1.isAlive() && (nbr_accio !=3)){
             // Tour du sorcier
@@ -331,7 +337,7 @@ public class Execution {
                         String message2 = enemy.name + " dodge your attack\n";
                         slowPrint(message2, 1);
                     } else {
-                        String message3 = Execution.enemy.name + " was hit!\n";
+                        String message3 = enemy.name + " was hit!\n";
                         slowPrint(message3, 1);
                     }
 
@@ -347,7 +353,7 @@ public class Execution {
                         String message2 = enemy1.name + " dodge your attack\n";
                         slowPrint(message2, 1);
                     } else {
-                        String message3 = Execution.enemy1.name + " was hit!\n";
+                        String message3 = enemy1.name + " was hit!\n";
                         slowPrint(message3, 1);
                     }
 
@@ -419,7 +425,7 @@ public class Execution {
             }}
 
 
-    public static void slowPrint(String message, int delay) {
+    public void slowPrint(String message, int delay) {
         for (int i = 0; i < message.length(); i++) {
             System.out.print(message.charAt(i));
             try {
@@ -434,13 +440,13 @@ public class Execution {
         int damage = 0;
         System.out.println("Choose a spell");
 
-        int spellCount = Execution.level;  // number of available spells
+        int spellCount = level;  // number of available spells
         if((Execution.level==1)){
             for (int i = 0; i < spellCount; i++) {
 
                 System.out.println((i + 1) + " : " + Spell.spells[i]);
             }
-            int input = Execution.readInt("->", spellCount);
+            int input = readInt("->", spellCount);
             if (input == 1) {
                 damage = 10;
             } else{ System.out.println("Please enter a valide value");
@@ -452,7 +458,7 @@ public class Execution {
                 System.out.println((i + 1) + " : " + Spell.spells[i]);}
             spellCount=spellCount+1;
             System.out.println("3 : Use the legend sword of Godric Gryffindor  ");
-            int input = Execution.readInt("->", spellCount);
+            int input = readInt("->", spellCount);
             if (input == 1) {
                 damage = 10;
             } else if (input == 2) {
@@ -499,26 +505,26 @@ public class Execution {
 
 
 
-    public static void continueJourney(){
+    public void continueJourney(){
         //check if game isn't in last act
         if(level != 7)checkAct();
 
     }
 
-    public static void wizardDied(){
+    public void wizardDied(){
         clearconsole();
         printHeading("You died...");
         printHeading("You earned " + wizard.xp + " XP on your journey.Try to earn more next time!");
         isRunning=false;
     }
 
-    public static void characterInfo(){
+    public void characterInfo(){
         clearconsole();
         printHeading("Character info");
         System.out.println(wizard.name + "Your Pet : " + wizard.pet + "\nThe size of your wand : " + wizard.wand + "\nYour house is :" + wizard.house);
         printseperator(5);
     }
-    public static void printMenu(){
+    public void printMenu(){
         clearconsole();
         printHeading(places[place]);
         System.out.println("choose an action:");
@@ -528,7 +534,7 @@ public class Execution {
         System.out.println("(3) Exit game");
 
     }
-    public static void gameLoop(){
+    public  void gameLoop(){
         while(isRunning){
             printMenu();
             int input = readInt("->",3);
