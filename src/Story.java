@@ -100,7 +100,35 @@ public class Story{
                 "It was one of the best day of your life, an unforgettable memory !";
         Execution.printseperator(5);
         slowPrint(message, 25);
-    };
+    }
+    public static void The_goblet_of_fire_Intro(){
+        String message ="You and your friends are going back to Hogwarts for the start of the new school year in this fourth year\n." +
+                " This new year is marked by the return of the The wizard Tournament, an old tournament which regularly opposed a sorcerer's apprentice from each of the most prestigious schools of witchcraft in Europe\n, " +
+                "in other words Hogwarts, Beauxbatons and Durmstrang.\n " +
+                "However, this year, in addition to the usual three candidates, the Goblet of Fire chooses a fourth participant: you!\n" +
+                " You swear never to have put your name in the Cup, and you are forced to face the three great trials:\n" +
+                " stealing a golden egg from a dragon,\n" +
+                " swimming underwater for an hour to recover a treasure that is yours dear -in this case your friend Hermione\n" +
+                " and grab the trophy hidden in a maze full of dangerous creatures and spells.\n"+
+                "Thanks to the help of your friends, you manage to grab the trophy in the maze at the same time as Cedric Diggory during the third and final task.\n"
+                +"But the trophy happens to be a Portkey that takes you to the Little Hangleton Cemetery.\n"+
+                "There, you discover Peter Pettigrew who kills Cedric, ties you up, and resurrects Voldemort with Harry's blood, the bones of Tom Riddle Senior, and his own flesh.\n"+
+                "You have to take the Portkey back to escape, you're not powerful enough to fight!\n"+
+                "Use Accio at least three times to pull the Portkey towards you and escape but be careful your ennemies are very powerful !\n";
+        Execution.printseperator(5);
+        slowPrint(message, 25);
+    }
+    public static void The_goblet_of_fire_Outro(){
+        String message ="You use accio to manage to grab the Portkey, annd you escape!\n"+
+                "You tell the details of what happened to Dumbledore and Sirius, then you are sent to Madam Pomfrey, the nurse, your friends follow you very worried.\n"+
+                "Cornelius Fudge, the Minister of Magic, argues with Dumbledore and refuses to believe that Voldemort has returned. Therefore, he refuses to take the necessary measures.\n+" +
+                " The end of the year approaches. During the grand banquet speech, Dumbledore brings up Cedric's death and warns the students against Voldemort's return.\n+" +
+                " You give the sum of money won by his victory in the tournament to Fred and George to enable them to finance their shop of tricks and tricks.\n"+
+                 "Voldemort is back and Hagrid solemnly declares that it will be necessary to prepare to face him really.\n" +
+                "What a year !\n";
+        Execution.printseperator(5);
+        slowPrint(message, 25);
+    }
     }
 
 

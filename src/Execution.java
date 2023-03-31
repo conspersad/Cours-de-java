@@ -13,7 +13,7 @@ public class Execution {
     public static int firework=0;
     public static String patronus;
     public static int place =0,level=1;
-    public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "the goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
+    public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "The goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
     public static boolean isRunning;
 
@@ -116,25 +116,27 @@ public class Execution {
             gameLoop();
 
         }else if(level==3){
-            /*Story.The_prisoner_of_azkaban_Intro();
-            //enemy = new Enemy("Dementor", 45,70 );
-           // patronus =Patronus.your_patronus();
-            //battle();
-            //Story.The_prisoner_of_azkaban_Outro();
+            Story.The_prisoner_of_azkaban_Intro();
+            enemy = new Enemy("Dementor", 45,70 );
+            patronus =Patronus.your_patronus();
+             battle();
+             Story.The_prisoner_of_azkaban_Outro();
             clearconsole();
-            anythingtocontinue();*/
+            anythingtocontinue();
             level=4;
             place=3;
             gameLoop();
 
         }else if( level==4){
-            //enemy = new Enemy("Voldemort", 45,20);
-           // enemy1 = new Enemy("Peter Pettigrow", 30,70 );
-           // battle_level4();
-            level=5;
-            place=4;
+            Story.The_goblet_of_fire_Intro();
+            enemy = new Enemy("Voldemort", 45,20);
+            enemy1 = new Enemy("Peter Pettigrow", 30,70 );
+            battle_level4();
+            Story.The_goblet_of_fire_Outro();
             clearconsole();
             anythingtocontinue();
+            level=5;
+            place=4;
             gameLoop();
 
         }else if(level==5){
@@ -150,7 +152,7 @@ public class Execution {
 
    }
     public static void battle_level5(){
-        int dureeMillis = 90000;
+        int dureeMillis = 100000;
         final Timer timer = new Timer();
         final boolean[] finDuTimer = {false};
         timer.schedule(new TimerTask() {
@@ -185,9 +187,9 @@ public class Execution {
                    if(damage==0){
                        System.out.println("Dolores didn't see you preparing the firework ! Continue");
                    }else{
-                       System.out.println("Dolores caught you preparing  firework, you lose "+damage +" hp and lost 2 firework");
+                       System.out.println("Dolores caught you preparing  firework, you lose "+damage +" hp and lost 1 firework");
                        wizard.setHp(Wizard.hp - damage);
-                       firework=firework-2;
+                       firework=firework-1;
                    }
 
                }
@@ -262,7 +264,7 @@ public class Execution {
                         int healed = 20;
                         wizard.setHp(Wizard.hp +healed);
                         System.out.println("You healed "+ healed+" Hp !\n");
-                        Wizard.nbr_de_potion =wizard.nbr_de_potion-1;
+                        Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
 
                     }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100)){
                         int healed = 25;
