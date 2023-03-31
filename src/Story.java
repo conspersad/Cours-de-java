@@ -129,6 +129,24 @@ public class Story{
         Execution.printseperator(5);
         slowPrint(message, 25);
     }
+
+    public static void The_order_of_the_phoenix_Intro(){
+        String message ="You and your friends are going back to Hogwarts for the start of the new school year in this fourth year\n." +
+                " This new year is marked by the return of the The wizard Tournament, an old tournament which regularly opposed a sorcerer's apprentice from each of the most prestigious schools of witchcraft in Europe\n, " +
+                "in other words Hogwarts, Beauxbatons and Durmstrang.\n " +
+                "However, this year, in addition to the usual three candidates, the Goblet of Fire chooses a fourth participant: you!\n" +
+                " You swear never to have put your name in the Cup, and you are forced to face the three great trials:\n" +
+                " stealing a golden egg from a dragon,\n" +
+                " swimming underwater for an hour to recover a treasure that is yours dear -in this case your friend Hermione\n" +
+                " and grab the trophy hidden in a maze full of dangerous creatures and spells.\n"+
+                "Thanks to the help of your friends, you manage to grab the trophy in the maze at the same time as Cedric Diggory during the third and final task.\n"
+                +"But the trophy happens to be a Portkey that takes you to the Little Hangleton Cemetery.\n"+
+                "There, you discover Peter Pettigrew who kills Cedric, ties you up, and resurrects Voldemort with Harry's blood, the bones of Tom Riddle Senior, and his own flesh.\n"+
+                "You have to take the Portkey back to escape, you're not powerful enough to fight!\n"+
+                "Use Accio at least three times to pull the Portkey towards you and escape but be careful your ennemies are very powerful !\n";
+        Execution.printseperator(5);
+        slowPrint(message, 25);
+    }
     }
 
 
