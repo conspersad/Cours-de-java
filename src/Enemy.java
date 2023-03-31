@@ -31,7 +31,7 @@ public class Enemy extends AbstractEnemy{
         if((myExc.level == 1 )||(myExc.level == 2)  || (myExc.level ==3)){
         damage = (int)(Math.random() * 10) + 1;}
         else {
-            if((myExc.enemy.name=="Voldemort")){
+            if((Execution.enemy.name=="Voldemort")){
                 damage = ennemy_choose_speel()+25;
             }else
                 damage = ennemy_choose_speel();
