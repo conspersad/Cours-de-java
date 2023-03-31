@@ -175,6 +175,18 @@ public class Story{
         myExc.printseperator(5);
         slowPrint(message, 25);
     }
+    public static void The_half_blood_prince_Outro(){
+        Execution myExc= new Execution();
+        String message ="You're entering sixth year at Hogwarts School of Witchcraft and Wizardry.\n"+
+        "You then come into possession of a potion book bearing the word property of the Half-Blood Prince and begin to learn more about the dark past of Voldemort who was still known as Tom Riddle.\n"+
+        "Your friend Harry who spends a lot of time with Dumbledor and he notably discovers a memory of Dumbledore which relates to Voldemort's childhood.\n"+
+                "The latter, then known as Tom Riddle, was an orphan child. He didn't know he was a wizard until the day when Dumbledore (then a professor at Hogwarts) came to pick him up from his orphanage to tell him that a place was waiting for him at Hogwarts.\n"+
+                "Harry tells you that Dumbledore told him that he thinks that Voldemort, out of his initial desire to create seven horcruxes, managed to create only six. Dumbledore discovered at least two of them, which are already destroyed:\n"+
+                "Tom Riddle's diary destroyed by you in the Chamber of Secrets, and the Gaunt's ring that Dumbledore destroyed. He also gives him an appointment in the astronomical tower and asks you to accompany him. But once you're in the tower the Death Eaters attack Hogwarts.\n You have to attack them\n" +
+                "front (Sectumsempra). If you're from Slytherin, you can decide to join the ranks of the Death Eaters.";
+        myExc.printseperator(5);
+        slowPrint(message, 25);
+    }
     }
 
 

@@ -116,7 +116,7 @@ public class Execution {
             gameLoop();
 
         }else if(level==3){
-         //   Story.The_prisoner_of_azkaban_Intro();
+         //  Story.The_prisoner_of_azkaban_Intro();
           //  this.enemy = new Enemy("Dementor", 45,70 );
           //  patronus =Patronus.your_patronus();
 //             Story.The_prisoner_of_azkaban_Outro();
@@ -150,7 +150,8 @@ public class Execution {
             gameLoop();
 
         }else if(level==6){
-            enemy = new Enemy("Death Eater", 55,80 );
+           // Story.The_half_blood_prince_Outro();
+            enemy = new Enemy("Death Eater", 55,170);
             battle();
             level=7;
             place=6;
