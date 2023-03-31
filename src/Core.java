@@ -2,7 +2,8 @@ public enum Core {
     Phoenix_feather, Dragon_heartstring;
 
     public static Core choose_Core() {
-        Execution.clearconsole();
+        Execution myExc= new Execution();
+        myExc.clearconsole();
         System.out.println("Now you have to choose the core for your wand");
         System.out.println("(1) Phoenix_feather");
         System.out.println("(2) Dragon_heartstring");

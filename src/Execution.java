@@ -152,11 +152,88 @@ public class Execution {
 
         }else if(level==6){
             enemy = new Enemy("Death Eater", 55,80 );
+            battle_6();
             level=7;
             place=6;
         }
 
    }
+    public  void battle_6(){
+        // Boucle principale du jeu
+        while (wizard.isAlive() && enemy.isAlive()) {
+            wizard.xp=Spell.damage;
+            // Tour du sorcier
+            System.out.println(wizard.name + " (" + Wizard.hp + " hp, " + wizard.xp + " Xp) vs " + enemy.name + " (" + Enemy.hp + " hp, " + Enemy.xp + " xp)");
+            String message ="What do you want to do ?\n"+
+                    "1 - Fight "+enemy.name+" !\n" +
+                    "2 - Use a sort to have more Hp (only if your life is < 100)\n"
+                    +"3 - Leave";
+            slowPrint(message,1);
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1 -> {
+                    int damage = wizard.attack();
+                    int reducedDamage = enemy.defend();
+                    int totalDamage = reducedDamage * damage;
+                    enemy.setHp(Enemy.hp - totalDamage);
+                    String message1 = wizard.name + " inflict " + damage + " damage points\n";
+                    slowPrint(message1,1);
+                    if(totalDamage==0){
+                        String message2= enemy.name + " dodge your attack\n";
+                        slowPrint(message2,1);
+                    }else {
+                        String message3= enemy.name + " was hit!\n";
+                        slowPrint(message3,1);
+                    }
+
+                }
+                case 2 -> {
+                    if((Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100))
+                    {
+                        int healed = 20;
+                        wizard.setHp(Wizard.hp +healed);
+                        System.out.println("You healed "+ healed+" Hp !\n");
+                        Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
+
+                    }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100)){
+                        int healed = 25;
+                        System.out.println("You healed "+ healed+" Hp !\n");
+                        wizard.setHp(Wizard.hp +healed);
+                        Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
+
+                    }  else if (Wizard.hp >=100) {
+                        System.out.println("You have enough hp\n");
+                    }
+                }
+
+                case 3 -> {
+                    System.out.println(wizard.name + " leave");
+                    System.out.println("You are either very smart or either a little bit coward");
+                    gameLoop();
+                }
+                default -> System.out.println("Choice not valid");
+            }
+
+            if (enemy.isAlive()) {
+                int damage = enemy.attack();
+                int reducedDamage = wizard.defend();
+                int totalDamage = reducedDamage * damage;
+                wizard.setHp(Wizard.hp - totalDamage);
+                String message4 = enemy.name + " attack causing " + damage + " damage points. \n\n"
+                        + wizard.name + " take " + totalDamage + " damage points.\n";
+                slowPrint(message4,75);
+            }
+        }
+        // Fin du jeu
+        if (wizard.isAlive()) {
+            String message5 = wizard.name+ " defeat " + enemy.name + " !\n";
+            slowPrint(message5,25);
+        } else {
+            String message6= enemy.name + " defeat " + wizard.name + " !\n";
+            slowPrint(message6,25);
+            wizardDied();
+        }
+    }
     public void battle_level5(){
         int dureeMillis = 100000;
         final Timer timer = new Timer();
@@ -498,6 +575,21 @@ public class Execution {
             } else if (input == 2) {
                 nbr_accio=nbr_accio+1;
                 damage = 20;
+            }
+        }
+        else if(Execution.level==6){
+            spellCount=4;
+            for (int i = 0; i < spellCount; i++) {
+                System.out.println((i + 1) + " : " + Spell.spells[i]);}
+            int input = Execution.readInt("->", spellCount);
+            if (input == 1) {
+                damage = 10;
+            } else if (input == 2) {
+                damage = 20;
+            }else if (input == 3) {
+                damage = 30;
+            }else if (input == 4) {
+                damage = 40;
             }
         }
         return damage;      }

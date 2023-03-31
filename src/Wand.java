@@ -4,9 +4,10 @@ import java.util.Scanner;
 public class Wand {
     static Scanner scanner = new Scanner(System.in);
     public static int choose_wand() {
+        Execution myExc= new Execution();
         int size;
         Core.choose_Core();
-        Execution.clearconsole();
+        myExc.clearconsole();
         System.out.println("Now you have to choose your wand, this one would choose you but" +
                 " what size would you like ? It has to be between 9 and 40 inches");
         size = scanner.nextInt();

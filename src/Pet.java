@@ -2,8 +2,9 @@ public enum  Pet {
     Owl,Rat,Cat,Toad;
 
     public static Pet choosePet() {
-        Execution.clearconsole();
-        Execution.printHeading("Please, choose your compagnon for the adventures");
+        Execution myExc= new Execution();
+        myExc.clearconsole();
+        myExc.printHeading("Please, choose your compagnon for the adventures");
         System.out.println("(1) Owl");
         System.out.println("(2) Rat");
         System.out.println("(3) Cat");
