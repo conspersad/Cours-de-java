@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 import java.lang.System;
 import java.lang.String;
@@ -8,7 +9,7 @@ import java.util.TimerTask;
 public class Execution {
     Game game= new Game();
     House Hue= new House();
-    Wand wnd = new Wand();
+
     static Scanner scanner = new Scanner(System.in);
     public static Wizard wizard;
     public static Enemy enemy,enemy1;
@@ -265,7 +266,7 @@ public class Execution {
                         int healed = 20;
                         wizard.setHp(wizard.getHp() + healed);
                         System.out.println("You healed " + healed + " Hp !\n");
-                        Wizard.nbr_de_potion = wizard.nbr_de_potion - 1;
+                        Wizard.nbr_de_potion = Wizard.nbr_de_potion - 1;
 
                     } else if ((!Execution.wizard.house.equals("Hufflepuff")) && (enemy.getHp() < 100)) {
                         int healed = 25;
@@ -397,14 +398,14 @@ public class Execution {
        if (firework == 6 ) {
            String message5 = wizard.getName()+ " prepared enough firework during the allotted time and so defeat " + enemy.getName() + " !\n";
            game.slowPrint(message5,75);
-       } else if(finDuTimer[0]) {
+       } else {
            String message6= "You didn't prepare enough firework during the alloted time";
            game.slowPrint(message6,75);
            game.wizardDied();
        }
    }
     public  void battle_6(){
-        if (wizard.house=="Slytherin"){
+        if (Objects.equals(wizard.house, "Slytherin")){
         // Boucle principale du jeu
         while (wizard.isAlive() && enemy.isAlive()) {
             wizard.xp=Spell.damage;
@@ -416,7 +417,7 @@ public class Execution {
                     "3 - You are Slytherin you can join Death Eaters\n"
                     +"4 - Leave";
             game.slowPrint(message,1);
-            int choice = game.readInt("->",4);
+            int choice = Game.readInt("->",4);
             switch (choice) {
                 case 1 -> {
                     int damage = wizard.attack();
@@ -497,7 +498,7 @@ public class Execution {
                             "2 - Use a sort to have more Hp (only if your life is < 100)\n" +
                             "3 - Leave";
                     game.slowPrint(message, 1);
-                    int choice = game.readInt("->", 4);
+                    int choice = Game.readInt("->", 4);
                     switch (choice) {
                         case 1 -> {
                             int damage = wizard.attack();
@@ -567,6 +568,9 @@ public class Execution {
     public void continueJourney(){
         //check if game isn't in last act
         if(level != 7) checkAct();
+        else{
+            Story.The_deathly_HallowsIntro();
+        }
 
     }
 }
