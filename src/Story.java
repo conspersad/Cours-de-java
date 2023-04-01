@@ -1,27 +1,19 @@
+import java.util.Scanner;
+import java.lang.System;
+import java.lang.String;
+
 public class Story{
-    Execution myExc= new Execution();
-    public static void slowPrint(String message, int delay) {
-        for (int i = 0; i < message.length(); i++) {
-            System.out.print(message.charAt(i));
-            try {
-                Thread.sleep(delay); // Ajouter un délai entre chaque caractère
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println(); // Ajouter un retour à la ligne à la fin de l'affichage
-    }
     public static void printIntro(){
-        Execution myExc= new Execution();
-        myExc.clearconsole();
-        myExc.printseperator(30);
+        Game game = new Game();
+        game.clearconsole();
+        game.printseperator(30);
         System.out.println("Welcome to Poudlard  I don't doubt that this would be the best years of your life ! " + " But before your adventure starts, you have to buy your fournitures !!");
-        myExc.printseperator(30);
+        game.printseperator(30);
     }
 
     public static void Thephilosopherstone_Intro(){
-        Execution myExc= new Execution();
-        myExc.clearconsole();
+        Game game = new Game();
+        game.clearconsole();
         String message ="It's been a few months since you are in Poudlard now, you have made quite a few friends, and you are doing very well in your first class !\n" +
                 "You even learn your first speel, it's Wingardium Leviosas.\n" +
                 "But this morning you wake up and you didn't see your friend Nevile in potion class.\n"+
@@ -29,7 +21,7 @@ public class Story{
                 "Hermione: Well, i saw him coming back from the toilets of the donjon yesterdays he looked very scared, it's seems like he saw a ghost!!\n"+
                 Execution.wizard.name + ": I should probably see! \n"+
                 Execution.wizard.name + ": I should probably see! \n\nNevile ";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
       String message2 = "...\n"+ Execution.wizard.name +": Are you here..\n"+ Execution.wizard.name +": Ho my god, WHAT HAPPEND HERE !!!\nNevile: I'm SORRY\nNevile: I'm SORRY\nNevile: I heard weird noise in the toilet yesterday night so i passe again today but\nNevile: I'm  didn't know it was a\nNevile: TROLL !!!\nNevile: You have to use Wingardium Leviosa !!!\n ";
         slowPrint(message2, 25);
@@ -49,7 +41,7 @@ public class Story{
     }
 
     public static void TheChamberOfSecret_Intro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="At the beginning of this new year, something strange happened before the start of the school year at Hogwarts.\n" +
                 " As you were packing your suitcase, a house-elf came to introduce you.\n" +
                 " He claims to be called Dobby and he announces that terrible dangers threaten the school of Hogwarts and that you must not return there in September.\n"+
@@ -61,11 +53,11 @@ public class Story{
                  "One day you find in the toilet a mysterious diary belonging to a man named Tom Riddle. More and more people are disappearing at Hogwarts and in a panic, show you the diary to your friends Hermione, Ron and Harry.\n"+
                 "It is written there that the door to the Chamber of Secrets would be in the toilet\n."+
                 "You decide to go there the next day armed with the legend sword of Godric Gryffindor, if your house is Gryffindor you could use it to bring down the monster and end this story.\n";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     }
     public static void TheChamberOfSecret_Outro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="Few hours later ....\n" +
                 "Dumbledore : Thank you for your bravery Harry, Ron, Hermione and"+ Execution.wizard.name +" !\n" +
                 "Dumbledore : And thank you for your service to the school.\n"+
@@ -77,12 +69,12 @@ public class Story{
                 "...\n"+
                 "In the evening, a big party is organized in the Great Hall where we find Hermione and the other victims among the students, where Dumbledore announces the cancellation of the exam sessions.\n"+
                 "This evening couldn't be better, and you keep wonder what adventures you have in store for the following year!\n";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     }
 
     public static void The_prisoner_of_azkaban_Intro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="It's the start of a new year ! \n" +
         "But over the summer television news from the non-magical world announces the escape of a very dangerous prisoner by the name of Sirius Black.\n " +
                 "In the Hogwarts Express, you and Nevile are rescued by  Remus Lupin, who produces a patronus as an Azkaban Dementor," +
@@ -91,11 +83,11 @@ public class Story{
                 "The Expexto Patronum spell is taught to you during Defense Against the Dark Arts classes to get rid of Dementors.\n"+
                 "But during the first lesson about Care of Magical Creatures by Hagrid.\nDraco Malfoy provokes a hippogriff and is attacked by the animal.\n He threatens Hagrid with a lawsuit. And later you learn that Hagrid's hippogryph is condemned to beheading.\n" +
                 "To save him, you and Hermione go back in time using the Time Turner.\nBut as you try to save the poor beast in the forest a dementor attacks you !\n";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     };
     public static void The_prisoner_of_azkaban_Outro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="Hermione : It was a close one ! \n" +
                 Execution.wizard.name + " : Thank god we learn that new speel in class, other wise i don't know what would have happend to us ! \n"+
                 "Hermione : Your patronus is beautiful ! \n" +
@@ -106,11 +98,11 @@ public class Story{
                  "Hagrid : It look like, he like you !!\n" +
                 "Hagrid : You girls want to take a rid !\n"+
                 "It was one of the best day of your life, an unforgettable memory !";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     }
     public static void The_goblet_of_fire_Intro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="You and your friends are going back to Hogwarts for the start of the new school year in this fourth year\n." +
                 " This new year is marked by the return of the The wizard Tournament, an old tournament which regularly opposed a sorcerer's apprentice from each of the most prestigious schools of witchcraft in Europe\n, " +
                 "in other words Hogwarts, Beauxbatons and Durmstrang.\n " +
@@ -124,11 +116,11 @@ public class Story{
                 "There, you discover Peter Pettigrew who kills Cedric, ties you up, and resurrects Voldemort with Harry's blood, the bones of Tom Riddle Senior, and his own flesh.\n"+
                 "You have to take the Portkey back to escape, you're not powerful enough to fight!\n"+
                 "Use Accio at least three times to pull the Portkey towards you and escape but be careful your ennemies are very powerful !\n";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     }
     public static void The_goblet_of_fire_Outro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="You use accio to manage to grab the Portkey, annd you escape!\n"+
                 "You tell the details of what happened to Dumbledore and Sirius, then you are sent to Madam Pomfrey, the nurse, your friends follow you very worried.\n"+
                 "Cornelius Fudge, the Minister of Magic, argues with Dumbledore and refuses to believe that Voldemort has returned. Therefore, he refuses to take the necessary measures.\n+" +
@@ -136,12 +128,12 @@ public class Story{
                 " You give the sum of money won by his victory in the tournament to Fred and George to enable them to finance their shop of tricks and tricks.\n"+
                  "Voldemort is back and Hagrid solemnly declares that it will be necessary to prepare to face him really.\n" +
                 "What a year !\n";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     }
 
     public static void The_order_of_the_phoenix_Intro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="You spend your holidays in Grimmauld Square with Sirius Black, Hermione, Remus Lupin and the Weasley family at the headquarters of the Order of the Phoenix,\n"+
                 "whose members try to awaken the consciences of other wizards and make publicly know about Voldemort's return.\n" +
                 "Back at Hogwarts, you and your friends discover that Dolores Umbridge, the Minister's Under-Secretary of State , is the new Defense Against the Dark Arts teacher.\n"+
@@ -151,18 +143,18 @@ public class Story{
                 "During the final exam at the end of the year helped by Fred and George.\n" +
                 "To do so, you have one minute and thirty seconds to set up at least six fireworks, or you distract Dolores to let Fred set up a two.\n" +
                 " Either you set up two fireworks alone, but be careful if Dolores sees you you lose Hp and you lose a firework. Good luck !!";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     }
     public static void The_order_of_the_phoenix_Outro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="The fireworks are ready to be used and are used. Dolores is outraged and quits her professorship at Hogwarts.\n" +
                 " In addition, you no longer had to prepare for an exam. You spend a calmer year!";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     }
     public static void The_half_blood_prince_Intro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="You spend your holidays in Grimmauld Square with Sirius Black, Hermione, Remus Lupin and the Weasley family at the headquarters of the Order of the Phoenix,\n"+
                 "whose members try to awaken the consciences of other wizards and make publicly know about Voldemort's return.\n" +
                 "Back at Hogwarts, you and your friends discover that Dolores Umbridge, the Minister's Under-Secretary of State , is the new Defense Against the Dark Arts teacher.\n"+
@@ -172,11 +164,11 @@ public class Story{
                 "During the final exam at the end of the year helped by Fred and George.\n" +
                 "To do so, you have one minute and thirty seconds to set up at least six fireworks, or you distract Dolores to let Fred set up a two.\n" +
                 " Either you set up two fireworks alone, but be careful if Dolores sees you you lose Hp and you lose a firework. Good luck !!";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
     }
     public static void The_half_blood_prince_Outro(){
-        Execution myExc= new Execution();
+        Game game = new Game();
         String message ="You're entering sixth year at Hogwarts School of Witchcraft and Wizardry.\n"+
         "You then come into possession of a potion book bearing the word property of the Half-Blood Prince and begin to learn more about the dark past of Voldemort who was still known as Tom Riddle.\n"+
         "Your friend Harry who spends a lot of time with Dumbledor and he notably discovers a memory of Dumbledore which relates to Voldemort's childhood.\n"+
@@ -184,8 +176,19 @@ public class Story{
                 "Harry tells you that Dumbledore told him that he thinks that Voldemort, out of his initial desire to create seven horcruxes, managed to create only six. Dumbledore discovered at least two of them, which are already destroyed:\n"+
                 "Tom Riddle's diary destroyed by you in the Chamber of Secrets, and the Gaunt's ring that Dumbledore destroyed. He also gives him an appointment in the astronomical tower and asks you to accompany him. But once you're in the tower the Death Eaters attack Hogwarts.\n You have to attack them\n" +
                 "front (Sectumsempra). If you're from Slytherin, you can decide to join the ranks of the Death Eaters.";
-        myExc.printseperator(5);
+        game.printseperator(5);
         slowPrint(message, 25);
+    }
+    public static void slowPrint(String message, int delay) {
+        for (int i = 0; i < message.length(); i++) {
+            System.out.print(message.charAt(i));
+            try {
+                Thread.sleep(delay); // Ajouter un délai entre chaque caractère
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println(); // Ajouter un retour à la ligne à la fin de l'affichage
     }
     }
 

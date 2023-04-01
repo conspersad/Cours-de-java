@@ -1,6 +1,4 @@
 import java.lang.String;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Wizard extends Character {
     public String name;
@@ -11,23 +9,23 @@ public class Wizard extends Character {
     int wand;
     String house;
 
-    public Wizard(String name, Pet pet, int wand, String house, int maxHp,int xp){
-        super(maxHp,xp);
-        this.name=name;
-        this.pet=pet;
-        this.wand=wand;
-        this.house=house;
-        hp=maxHp;
+    public Wizard(String name, int maxHp,int xp, String house, Pet pet, int wand) {
+        super(name, maxHp,xp);
+        this.house = house;
+        this.pet = pet;
+        this.wand = wand;
+        this.hp = maxHp;
+
     }
 
-
+    public  int getHp(){return hp;}
 
     @Override
     public int attack() {
 
         // Calcule les dégâts infligés par le sortilège du sorcier
         int finalDamage;
-        int damage = Execution.Choose_spell();
+        int damage = Game.Choose_spell();
 
         if(Execution.wizard.house.equals("Slytherin"))
         {
@@ -41,7 +39,6 @@ public class Wizard extends Character {
         return Math.random();
     }
     public boolean isAlive() {
-
         return hp > 0;
     }
     //Votre objectif est de la distraire le temps que les feux d’artifice soient prêts à être utilisés.
@@ -63,11 +60,6 @@ public class Wizard extends Character {
             } else return 2;
         }
     }
-
-    public void setHp (int newHp){
-        this.hp = newHp;
-    }
-
 
     public static int distraireEnnemi() {
         int dureeMillis=15000;

@@ -1,18 +1,18 @@
 public class Enemy extends AbstractEnemy{
 
-    public static int hp;
-    public static int xp;
+    public int hp;
+    public int xp;
     String name;
-    public Enemy(String name,int xp,int maxHp)
+    public Enemy(String name, int maxHp,int xp)
     {
-        super(maxHp,xp);
+        super(name, maxHp, xp);
         this.xp=xp;
-        this.name=name;
-        hp=maxHp;
+        this.hp=maxHp;
     }
     public boolean isAlive() {
         return hp > 0;
     }
+    public  int getHp(){return hp;}
     public int ennemy_choose_speel(){
         int damage;
         if (Math.random() > 0.5){
@@ -29,7 +29,7 @@ public class Enemy extends AbstractEnemy{
         Execution myExc= new Execution();
         int damage;
         if((myExc.level == 1 )||(myExc.level == 2)  || (myExc.level ==3)){
-        damage = (int)(Math.random() * 10) + 1;}
+        damage = (int)(Math.random() * 25) + 1;}
         else {
             if((Execution.enemy.name=="Voldemort")){
                 damage = ennemy_choose_speel()+25;

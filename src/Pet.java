@@ -2,14 +2,15 @@ public enum  Pet {
     Owl,Rat,Cat,Toad;
 
     public static Pet choosePet() {
+        Game game = new Game();
         Execution myExc= new Execution();
-        myExc.clearconsole();
-        myExc.printHeading("Please, choose your compagnon for the adventures");
+        game.clearconsole();
+        game.printHeading("Please, choose your compagnon for the adventures");
         System.out.println("(1) Owl");
         System.out.println("(2) Rat");
         System.out.println("(3) Cat");
         System.out.println("(4) Toad");
-        int input = Execution.readInt("->", 4);
+        int input = game.readInt("->", 4);
         if (input == 1) {
             System.out.println("Nice you have a new Owl, she's beautiful");
             return Pet.Owl;

@@ -1,16 +1,25 @@
 public abstract class Character {
     public int maxHp;
-    public static int xp;
+    public  int xp,hp;
+    public String name;
 
     //fonction de tout les personnages
-    public Character(int maxHp,int xp){
-        this.maxHp=maxHp;
+    public Character(String name, int maxHp,int xp) {
+        this.name = name;
+        this.maxHp = maxHp;
+        this.hp = maxHp;
         this.xp=xp;
     }
+
+
 
     public abstract  int attack();
 
     public abstract int defend();
     // public abstract int defend();
+    public String getName(){return name;}
+    public int getXp(){return xp;}
+    public void setHp(int i){this.hp=i;}
+    public int getMaxhp(){ return maxHp;}
 
 }
