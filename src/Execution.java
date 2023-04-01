@@ -137,7 +137,7 @@ public class Execution {
        while (wizard.isAlive() && enemy.isAlive()) {
            wizard.xp=Spell.damage;
            // Tour du sorcier
-           System.out.println( wizard.getName() + " (" + wizard.getHp()
+           System.out.println( wizard.getName() + " (" + wizard.hp
                    + " hp, " + wizard.getXp() + " Xp) vs " + enemy.getName() + " (" + enemy.getHp() + " hp, " +  enemy.getXp() + " xp)");
            String message ="What do you want to do ?\n"+
                    "1 - Fight "+ enemy.getName()+" !\n" +
@@ -166,14 +166,14 @@ public class Execution {
                    }
                }
                case 2 -> {
-                   if((Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100))
+                   if((Execution.wizard.house.equals("Hufflepuff"))&&(wizard.getHp() <100))
                    {
                        int healed = 20;
                        wizard.setHp(wizard.getHp() +healed);
                        System.out.println("You healed "+ healed+" Hp !\n");
                        Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
 
-                   }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(Wizard.hp <100)){
+                   }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(wizard.getHp()<100)){
                        int healed = 25;
                        System.out.println("You healed "+ healed+" Hp !\n");
                        wizard.setHp(wizard.getHp() +healed);

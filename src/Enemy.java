@@ -29,7 +29,7 @@ public class Enemy extends AbstractEnemy{
         Execution myExc= new Execution();
         int damage;
         if((myExc.level == 1 )||(myExc.level == 2)  || (myExc.level ==3)){
-        damage = (int)(Math.random() * 25) + 1;}
+        damage = (int)(Math.random() * 30) + 1;}
         else {
             if((Execution.enemy.name=="Voldemort")){
                 damage = ennemy_choose_speel()+25;

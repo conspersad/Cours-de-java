@@ -12,7 +12,7 @@ public abstract class Character {
     }
 
 
-
+    public  int getHp(){return hp;}
     public abstract  int attack();
 
     public abstract int defend();

@@ -3,7 +3,6 @@ import java.lang.String;
 public class Wizard extends Character {
     public String name;
     public static int nbr_de_potion=3;
-    public static int hp;
     public int xp;
     Pet pet;
     int wand;
@@ -14,11 +13,9 @@ public class Wizard extends Character {
         this.house = house;
         this.pet = pet;
         this.wand = wand;
-        this.hp = maxHp;
 
     }
 
-    public  int getHp(){return hp;}
 
     @Override
     public int attack() {
