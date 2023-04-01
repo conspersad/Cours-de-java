@@ -149,25 +149,12 @@ public class Story{
     public static void The_order_of_the_phoenix_Outro(){
         Game game = new Game();
         String message ="The fireworks are ready to be used and are used. Dolores is outraged and quits her professorship at Hogwarts.\n" +
-                " In addition, you no longer had to prepare for an exam. You spend a calmer year!";
+                " In addition, you no longer had to prepare for an exam. You will spend a calmer year!";
         game.printseperator(5);
         slowPrint(message, 25);
     }
+
     public static void The_half_blood_prince_Intro(){
-        Game game = new Game();
-        String message ="You spend your holidays in Grimmauld Square with Sirius Black, Hermione, Remus Lupin and the Weasley family at the headquarters of the Order of the Phoenix,\n"+
-                "whose members try to awaken the consciences of other wizards and make publicly know about Voldemort's return.\n" +
-                "Back at Hogwarts, you and your friends discover that Dolores Umbridge, the Minister's Under-Secretary of State , is the new Defense Against the Dark Arts teacher.\n"+
-                "In class, the latter refuses to let the students practice magic, and makes you study only the theory by reading the manuals, which revolts everyone.\n"+
-                "You receive many hours of detention from Umbridge for her insubordination, and especially when you insist on Voldemort's return.\n"+
-                "Umbridge finds a way to control the school and Dumbledore's authority by enacting Education Decrees. You are fed up and you decide to play a bad trick on Dolores.\n"+
-                "During the final exam at the end of the year helped by Fred and George.\n" +
-                "To do so, you have one minute and thirty seconds to set up at least six fireworks, or you distract Dolores to let Fred set up a two.\n" +
-                " Either you set up two fireworks alone, but be careful if Dolores sees you you lose Hp and you lose a firework. Good luck !!";
-        game.printseperator(5);
-        slowPrint(message, 25);
-    }
-    public static void The_half_blood_prince_Outro(){
         Game game = new Game();
         String message ="You're entering sixth year at Hogwarts School of Witchcraft and Wizardry.\n"+
         "You then come into possession of a potion book bearing the word property of the Half-Blood Prince and begin to learn more about the dark past of Voldemort who was still known as Tom Riddle.\n"+
@@ -176,6 +163,29 @@ public class Story{
                 "Harry tells you that Dumbledore told him that he thinks that Voldemort, out of his initial desire to create seven horcruxes, managed to create only six. Dumbledore discovered at least two of them, which are already destroyed:\n"+
                 "Tom Riddle's diary destroyed by you in the Chamber of Secrets, and the Gaunt's ring that Dumbledore destroyed. He also gives him an appointment in the astronomical tower and asks you to accompany him. But once you're in the tower the Death Eaters attack Hogwarts.\n You have to attack them\n" +
                 "front (Sectumsempra). If you're from Slytherin, you can decide to join the ranks of the Death Eaters.";
+        game.printseperator(5);
+        slowPrint(message, 25);
+    }
+    public static void The_half_blood_prince_Outro(){
+        Game game = new Game();
+        String message ="While you were fighting your enemy. Malfoy disarms Dumbledore and explains to him that he managed to introduce accomplices into the castle thanks to the cabinet to disappear in the Room of Requirement, but he dares not finish him off.\n"+
+                "Other Death Eaters join them. Dumbledore begs Rogue, thenRogue kills him. Rogue and Malfoy flee, pursued by Harry, who comes across other Death Eaters dueling members of the Order of the Phoenix.\n"+
+                "He catches up with Rogue, who refuses to fight, but tells him he is the Half-Blood Prince. Rogue and Malfoy manage to leave the castle. You and hundreds of people attend Dumbledore's funeral.\n"+
+                "At the end of the funeral, your friend Harry announces that he will not return to Hogwarts the following year, but will go in search of the Horcruxes.\n"+
+                 "You, Hermione and Ron insist on accompanying him on his quest. Aware of the dangers this represents, you end your year rather perplexed.";
+        game.printseperator(5);
+        slowPrint(message, 25);
+    }
+
+    public static void The_deathly_HallowsIntro(){
+        Game game = new Game();
+        String message ="Without the guidance and protection of their teachers, you Harry, Ron and Hermione are on a mission to destroy the horcruxes, the origins of Voldemort's immortality.\n"+
+                "Although more than ever you have to rely on each other, the forces of evil threaten to tear you apart. Voldemort's Death Eaters have taken over the Ministry of Magic and Hogwarts and they are looking for Harry.\n"+
+                "Also Harry and his friends prepare for the last confrontation.\n"+
+                "Voldemort arrives triumphant, taunts Harry's followers by telling them that Harry is dead, and gives them the choice to join him or die.\n"+
+                "However, he meets resistance in the person of Neville who refuses Voldemort's outstretched hand. Harry then jumps out of Hagrid's arms and proves that he is not dead.\n"+
+                "Faced with this spectacle, several Death Eaters desert and in anger, Voldemort pursues Harry throughout the castle, while Ron and Hermione try to kill Nagini.\n"+
+                "Under the difficulty he decides to attack these friends you find yourself in front of Voldemort and Bellatrix Lestrange, be careful if they throw Avada Kedrabra at you, you will die immediately so defend yourself well!";
         game.printseperator(5);
         slowPrint(message, 25);
     }

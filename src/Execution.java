@@ -125,7 +125,7 @@ public class Execution {
 
         }else if(level==6){
            // Story.The_half_blood_prince_Outro();
-            enemy = new Enemy("Death Eater", 55,170);
+            enemy = new Enemy("Death Eater", 55,250);
             battle_6();
             level=7;
             place=6;
@@ -456,6 +456,7 @@ public class Execution {
                 case 3 -> {
                     System.out.println("You decided to join Voldemort army, you will have to figth against your friend");
                     go_with_voldemort=true;
+                    enemy.setHp(0);
                     game.gameLoop();
                 }
                 case 4 -> {
