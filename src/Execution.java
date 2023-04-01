@@ -9,6 +9,7 @@ import java.util.TimerTask;
 public class Execution {
     Game game= new Game();
     House Hue= new House();
+    Story story = new Story();
 
     static Scanner scanner = new Scanner(System.in);
     public static Wizard wizard;
@@ -43,12 +44,12 @@ public class Execution {
             game. printHeading("Your name is " + name + ".\nIs that correct ?");
             System.out.println("(1) Yes !");
             System.out.println("(2) No i want to change my name !");
-            int input = Game.readInt("->", 2);
+            int input = game.readInt("->", 2);
             if (input == 1)
                 nameSet = true;
         }while(!nameSet);
 
-        Story.printIntro();
+        story.printIntro();
 
         game.anythingtocontinue();
 
@@ -68,10 +69,10 @@ public class Execution {
 
    public  void checkAct(){
         if( level==1){
-            Story.Thephilosopherstone_Intro();
+            story.Thephilosopherstone_Intro();
             enemy = new Enemy("Troll", 30, 10);
             battle();
-            Story.Thephilosopherstone_Outro();
+            story.Thephilosopherstone_Outro();
             game.clearconsole();
             game.anythingtocontinue();
             level=2;
@@ -79,10 +80,10 @@ public class Execution {
             game.gameLoop();
 
         }else if(level==2){
-            Story.TheChamberOfSecret_Intro();
+            story.TheChamberOfSecret_Intro();
             enemy = new Enemy("Basilic", 30, 60);
             battle();
-            Story.TheChamberOfSecret_Outro();
+            story.TheChamberOfSecret_Outro();
             game.clearconsole();
             game. anythingtocontinue();
             level=3;
@@ -90,11 +91,11 @@ public class Execution {
             game.gameLoop();
 
         }else if(level==3){
-             Story.The_prisoner_of_azkaban_Intro();
-             this.enemy = new Enemy("Dementor", 50,70 );
+             story.The_prisoner_of_azkaban_Intro();
+             enemy = new Enemy("Dementor", 50,70 );
              patronus =Patronus.your_patronus();
              battle();
-             Story.The_prisoner_of_azkaban_Outro();
+             story.The_prisoner_of_azkaban_Outro();
              game.clearconsole();
              game.anythingtocontinue();
              level=4;
@@ -102,11 +103,11 @@ public class Execution {
              game.gameLoop();
 
         }else if( level==4){
-            Story.The_goblet_of_fire_Intro();
+            story.The_goblet_of_fire_Intro();
             enemy = new Enemy("Voldemort", 45,20);
             enemy1 = new Enemy("Peter Pettigrow", 30,70 );
             battle_level4();
-            Story.The_goblet_of_fire_Outro();
+            story.The_goblet_of_fire_Outro();
             game.clearconsole();
             game.anythingtocontinue();
             level=5;
@@ -114,10 +115,10 @@ public class Execution {
             game.gameLoop();
 
         }else if(level==5){
-            Story.The_order_of_the_phoenix_Intro();
+            story.The_order_of_the_phoenix_Intro();
             enemy = new Enemy("Dolores Ombrage", 45,70 );
             battle_level5();
-            Story.The_order_of_the_phoenix_Outro();
+            story.The_order_of_the_phoenix_Outro();
             game.clearconsole();
             game.anythingtocontinue();
             level=6;
@@ -125,9 +126,10 @@ public class Execution {
             game.gameLoop();
 
         }else if(level==6){
-            Story.The_half_blood_prince_Outro();
+            story.The_half_blood_prince_Intro();
             enemy = new Enemy("Death Eater", 55,250);
             battle_6();
+            story.The_half_blood_prince_Outro();
             level=7;
             place=6;
         }
@@ -309,8 +311,10 @@ public class Execution {
             }}
         // Fin du jeu
         if(nbr_accio==3) {
-            String message6 = "You managed to attract the Portolion, and thus to escape!\n" +
-                    "It was a close one, you are very lucky ! \n";
+            String message6 = """
+                    You managed to attract the Portolion, and thus to escape!
+                    It was a close one, you are very lucky !\s
+                    """;
             game.slowPrint(message6, 25);
         } else {
             if (wizard.isAlive()) {
@@ -351,9 +355,7 @@ public class Execution {
            int choice = game.readInt("->",4);
            switch (choice) {
                case 1 -> {
-                   preparationEnCours=false;
                    firework=Wizard.distraireEnnemi();
-                   int damage = Enemy.verifierPreparationFeuArtifice(preparationEnCours);
                }
                case 2 -> {
                    preparationEnCours=true;
@@ -374,7 +376,7 @@ public class Execution {
                            int healed = 20;
                            wizard.setHp(wizard.getHp()+healed);
                            System.out.println("You healed "+ healed+" Hp !\n");
-                           Wizard.nbr_de_potion =wizard.nbr_de_potion-1;
+                           Wizard.nbr_de_potion = Wizard.nbr_de_potion -1;
 
                        }else if((!Execution.wizard.house.equals("Hufflepuff"))&&(wizard.getHp() <100)){
                            int healed = 25;
@@ -417,7 +419,7 @@ public class Execution {
                     "3 - You are Slytherin you can join Death Eaters\n"
                     +"4 - Leave";
             game.slowPrint(message,1);
-            int choice = Game.readInt("->",4);
+            int choice = game.readInt("->",4);
             switch (choice) {
                 case 1 -> {
                     int damage = wizard.attack();
@@ -498,7 +500,7 @@ public class Execution {
                             "2 - Use a sort to have more Hp (only if your life is < 100)\n" +
                             "3 - Leave";
                     game.slowPrint(message, 1);
-                    int choice = Game.readInt("->", 4);
+                    int choice = game.readInt("->", 4);
                     switch (choice) {
                         case 1 -> {
                             int damage = wizard.attack();
@@ -569,7 +571,7 @@ public class Execution {
         //check if game isn't in last act
         if(level != 7) checkAct();
         else{
-            Story.The_deathly_HallowsIntro();
+            story.The_deathly_HallowsIntro();
         }
 
     }

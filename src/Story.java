@@ -1,14 +1,12 @@
 public class Story{
-    public static void printIntro(){
-        Game game = new Game();
+    Game game = new Game();
+    public void printIntro(){
         game.clearconsole();
         game.printseperator(30);
         System.out.println("Welcome to Poudlard  I don't doubt that this would be the best years of your life ! " + " But before your adventure starts, you have to buy your fournitures !!");
         game.printseperator(30);
     }
-
-    public static void Thephilosopherstone_Intro(){
-        Game game = new Game();
+    public void Thephilosopherstone_Intro(){
         game.clearconsole();
         String message ="It's been a few months since you are in Poudlard now, you have made quite a few friends, and you are doing very well in your first class !\n" +
                 "You even learn your first speel, it's Wingardium Leviosas.\n" +
@@ -22,8 +20,7 @@ public class Story{
       String message2 = "...\n"+ Execution.wizard.name +": Are you here..\n"+ Execution.wizard.name +": Ho my god, WHAT HAPPEND HERE !!!\nNevile: I'm SORRY\nNevile: I'm SORRY\nNevile: I heard weird noise in the toilet yesterday night so i passe again today but\nNevile: I'm  didn't know it was a\nNevile: TROLL !!!\nNevile: You have to use Wingardium Leviosa !!!\n ";
         slowPrint(message2, 25);
     }
-
-    public static void Thephilosopherstone_Outro(){
+    public void Thephilosopherstone_Outro(){
         String message ="Professor mcgonagall : What happen here Nevile "+ Execution.wizard.name +" !\n" +
                 "Professor mcgonagall : Hooooo my goddd, is that a troll !\n" +
                 Execution.wizard.name  + " and Nevile : It's a long story...\n"+
@@ -35,9 +32,7 @@ public class Story{
                 "That how you and Nevile became befriends";
         slowPrint(message, 25);
     }
-
-    public static void TheChamberOfSecret_Intro(){
-        Game game = new Game();
+    public void TheChamberOfSecret_Intro(){
         String message = """
                 At the beginning of this new year, something strange happened before the start of the school year at Hogwarts.
                  As you were packing your suitcase, a house-elf came to introduce you.
@@ -54,8 +49,7 @@ public class Story{
         game.printseperator(5);
         slowPrint(message, 25);
     }
-    public static void TheChamberOfSecret_Outro(){
-        Game game = new Game();
+    public void TheChamberOfSecret_Outro(){
         String message ="Few hours later ....\n" +
                 "Dumbledore : Thank you for your bravery Harry, Ron, Hermione and"+ Execution.wizard.name +" !\n" +
                 "Dumbledore : And thank you for your service to the school.\n"+
@@ -71,8 +65,7 @@ public class Story{
         slowPrint(message, 25);
     }
 
-    public static void The_prisoner_of_azkaban_Intro(){
-        Game game = new Game();
+    public void The_prisoner_of_azkaban_Intro(){
         String message = """
                 It's the start of a new year !\s
                 But over the summer television news from the non-magical world announces the escape of a very dangerous prisoner by the name of Sirius Black.
@@ -88,9 +81,7 @@ public class Story{
         game.printseperator(5);
         slowPrint(message, 25);
     }
-
-    public static void The_prisoner_of_azkaban_Outro(){
-        Game game = new Game();
+    public void The_prisoner_of_azkaban_Outro(){
         String message ="Hermione : It was a close one ! \n" +
                 Execution.wizard.name + " : Thank god we learn that new speel in class, other wise i don't know what would have happend to us ! \n"+
                 "Hermione : Your patronus is beautiful ! \n" +
@@ -104,8 +95,7 @@ public class Story{
         game.printseperator(5);
         slowPrint(message, 25);
     }
-    public static void The_goblet_of_fire_Intro(){
-        Game game = new Game();
+    public void The_goblet_of_fire_Intro(){
         String message = """
                 You and your friends are going back to Hogwarts for the start of the new school year in this fourth year
                 . This new year is marked by the return of the The wizard Tournament, an old tournament which regularly opposed a sorcerer's apprentice from each of the most prestigious schools of witchcraft in Europe
@@ -124,8 +114,7 @@ public class Story{
         game.printseperator(5);
         slowPrint(message, 25);
     }
-    public static void The_goblet_of_fire_Outro(){
-        Game game = new Game();
+    public void The_goblet_of_fire_Outro(){
         String message = """
                 You use accio to manage to grab the Portkey, annd you escape!
                 You tell the details of what happened to Dumbledore and Sirius, then you are sent to Madam Pomfrey, the nurse, your friends follow you very worried.
@@ -139,8 +128,7 @@ public class Story{
         slowPrint(message, 25);
     }
 
-    public static void The_order_of_the_phoenix_Intro(){
-        Game game = new Game();
+    public void The_order_of_the_phoenix_Intro(){
         String message = """
                 You spend your holidays in Grimmauld Square with Sirius Black, Hermione, Remus Lupin and the Weasley family at the headquarters of the Order of the Phoenix,
                 whose members try to awaken the consciences of other wizards and make publicly know about Voldemort's return.
@@ -154,16 +142,14 @@ public class Story{
         game.printseperator(5);
         slowPrint(message, 25);
     }
-    public static void The_order_of_the_phoenix_Outro(){
-        Game game = new Game();
+    public void The_order_of_the_phoenix_Outro(){
         String message ="The fireworks are ready to be used and are used. Dolores is outraged and quits her professorship at Hogwarts.\n" +
                 " In addition, you no longer had to prepare for an exam. You will spend a calmer year!";
         game.printseperator(5);
         slowPrint(message, 25);
     }
 
-    public static void The_half_blood_prince_Intro(){
-        Game game = new Game();
+    public void The_half_blood_prince_Intro(){
         String message = """
                 You're entering sixth year at Hogwarts School of Witchcraft and Wizardry.
                 You then come into possession of a potion book bearing the word property of the Half-Blood Prince and begin to learn more about the dark past of Voldemort who was still known as Tom Riddle.
@@ -176,8 +162,7 @@ public class Story{
         game.printseperator(5);
         slowPrint(message, 25);
     }
-    public static void The_half_blood_prince_Outro(){
-        Game game = new Game();
+    public  void The_half_blood_prince_Outro(){
         String message = """
                 While you were fighting your enemy. Malfoy disarms Dumbledore and explains to him that he managed to introduce accomplices into the castle thanks to the cabinet to disappear in the Room of Requirement, but he dares not finish him off.
                 Other Death Eaters join them. Dumbledore begs Rogue, thenRogue kills him. Rogue and Malfoy flee, pursued by Harry, who comes across other Death Eaters dueling members of the Order of the Phoenix.
@@ -188,8 +173,7 @@ public class Story{
         slowPrint(message, 25);
     }
 
-    public static void The_deathly_HallowsIntro(){
-        Game game = new Game();
+    public  void The_deathly_HallowsIntro(){
         String message = """
                 Without the guidance and protection of their teachers, you Harry, Ron and Hermione are on a mission to destroy the horcruxes, the origins of Voldemort's immortality.
                 Although more than ever you have to rely on each other, the forces of evil threaten to tear you apart. Voldemort's Death Eaters have taken over the Ministry of Magic and Hogwarts and they are looking for Harry.

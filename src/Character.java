@@ -20,6 +20,5 @@ public abstract class Character {
     public String getName(){return name;}
     public int getXp(){return xp;}
     public void setHp(int i){this.hp=i;}
-    public int getMaxhp(){ return maxHp;}
 
 }

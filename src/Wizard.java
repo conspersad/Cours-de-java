@@ -4,6 +4,7 @@ public class Wizard extends Character {
     public String name;
     public static int nbr_de_potion=3;
     public int xp;
+    Game game= new Game();
     Pet pet;
     int wand;
     String house;
@@ -20,9 +21,8 @@ public class Wizard extends Character {
     @Override
     public int attack() {
 
-        // Calcule les dégâts infligés par le sortilège du sorcier
         int finalDamage;
-        int damage = Game.Choose_spell();
+        int damage = game.Choose_spell();
 
         if(Execution.wizard.house.equals("Slytherin"))
         {

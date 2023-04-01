@@ -22,7 +22,7 @@ public class Game {
         for(int i=0; i<5;i++)
             System.out.println();
     }
-    public static int readInt(String prompt, int Userchoice) {
+    public  int readInt(String prompt, int Userchoice) {
         int input;
         do {
             System.out.println(prompt);
@@ -86,7 +86,7 @@ public class Game {
                 isRunning=false;
         }
     }
-    public static int Choose_spell(){
+    public  int Choose_spell(){
         int damage = 0;
         System.out.println("Choose a spell");
 

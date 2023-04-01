@@ -3,9 +3,8 @@ public enum  Pet {
 
     public static Pet choosePet() {
         Game game = new Game();
-        Execution myExc= new Execution();
         game.clearconsole();
-        game.printHeading("Please, choose your compagnon for the adventures");
+        game.printHeading("Please, choose your companion for the adventures");
         System.out.println("(1) Owl");
         System.out.println("(2) Rat");
         System.out.println("(3) Cat");
