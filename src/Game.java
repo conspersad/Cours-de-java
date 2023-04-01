@@ -59,7 +59,7 @@ public class Game {
     public void characterInfo(){
         clearconsole();
         printHeading("Character info");
-        System.out.println(Execution.enemy.getName() + "Your Pet : " + Execution.wizard.pet + "\nThe size of your wand : " +Execution.wizard.wand + "\nYour house is :" + Execution.wizard.house);
+        System.out.println(Execution.wizard.getName() + "Your Pet : " + Execution.wizard.pet + "\nThe size of your wand : " +Execution.wizard.wand + "\nYour house is :" + Execution.wizard.house);
         printseperator(5);
     }
     public void printMenu(){
