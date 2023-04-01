@@ -68,10 +68,10 @@ public class Execution {
 
    public  void checkAct(){
         if( level==1){
-            //Story.Thephilosopherstone_Intro();
-            //enemy = new Enemy("Troll", 30, 10);
-            //battle();
-            //Story.Thephilosopherstone_Outro();
+            Story.Thephilosopherstone_Intro();
+            enemy = new Enemy("Troll", 30, 10);
+            battle();
+            Story.Thephilosopherstone_Outro();
             game.clearconsole();
             game.anythingtocontinue();
             level=2;
@@ -79,10 +79,10 @@ public class Execution {
             game.gameLoop();
 
         }else if(level==2){
-            //Story.TheChamberOfSecret_Intro();
-           // enemy = new Enemy("Basilic", 30, 60);
-           // battle();
-            //Story.TheChamberOfSecret_Outro();
+            Story.TheChamberOfSecret_Intro();
+            enemy = new Enemy("Basilic", 30, 60);
+            battle();
+            Story.TheChamberOfSecret_Outro();
             game.clearconsole();
             game. anythingtocontinue();
             level=3;
@@ -90,23 +90,23 @@ public class Execution {
             game.gameLoop();
 
         }else if(level==3){
-         //  Story.The_prisoner_of_azkaban_Intro();
-         //  this.enemy = new Enemy("Dementor", 50,70 );
-           // patronus =Patronus.your_patronus();
-           // battle();
-//             Story.The_prisoner_of_azkaban_Outro();
-            game.clearconsole();
-            game.anythingtocontinue();
-            level=4;
-            place=3;
-            game.gameLoop();
+             Story.The_prisoner_of_azkaban_Intro();
+             this.enemy = new Enemy("Dementor", 50,70 );
+             patronus =Patronus.your_patronus();
+             battle();
+             Story.The_prisoner_of_azkaban_Outro();
+             game.clearconsole();
+             game.anythingtocontinue();
+             level=4;
+             place=3;
+             game.gameLoop();
 
         }else if( level==4){
-            //Story.The_goblet_of_fire_Intro();
+            Story.The_goblet_of_fire_Intro();
             enemy = new Enemy("Voldemort", 45,20);
-           enemy1 = new Enemy("Peter Pettigrow", 30,70 );
-          // battle_level4();
-           // Story.The_goblet_of_fire_Outro();
+            enemy1 = new Enemy("Peter Pettigrow", 30,70 );
+            battle_level4();
+            Story.The_goblet_of_fire_Outro();
             game.clearconsole();
             game.anythingtocontinue();
             level=5;
@@ -114,10 +114,10 @@ public class Execution {
             game.gameLoop();
 
         }else if(level==5){
-            //Story.The_order_of_the_phoenix_Intro();
-           // enemy = new Enemy("Dolores Ombrage", 45,70 );
-            //battle_level5();
-            //Story.The_order_of_the_phoenix_Outro();
+            Story.The_order_of_the_phoenix_Intro();
+            enemy = new Enemy("Dolores Ombrage", 45,70 );
+            battle_level5();
+            Story.The_order_of_the_phoenix_Outro();
             game.clearconsole();
             game.anythingtocontinue();
             level=6;
@@ -125,7 +125,7 @@ public class Execution {
             game.gameLoop();
 
         }else if(level==6){
-           // Story.The_half_blood_prince_Outro();
+            Story.The_half_blood_prince_Outro();
             enemy = new Enemy("Death Eater", 55,250);
             battle_6();
             level=7;
