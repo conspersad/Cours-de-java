@@ -16,3 +16,4 @@ Dans la méthode battle, on vérifie grâce a une boucle while on vérifie que t
 
 4.	Battle niveau 4,5,6 et 7.
 Dans le niveau 4, on fait face à deux ennemies, dont Voldemort. J'ai considéré  que le sorcier n'était pas assez fort pour vaincre les deux ennemis donc le but est d'utiliser au moins trois fois le sort "Accio" pour attraper le portoloin et quitter le combat. Lors du combat, vous avez le choix entre plusieurs sorts, mais utiliser bien uniquement "Accio" pour ne pas perdre trop de points de vie.
+Dans le niveau 5, le but est de préparer au moins 6 feuxd'artifice dans un temps de 1 minute et 30 secondes. Vous avez 2 options soit laissez votre ami préparer un feu d'artifice et distraire Ombrage pendant 15 secondes. Soit vous préparez 2 feux d'artifices pendant 5 secondes, mais attention si vous vous faite repérer par Ombrage vous perdez des points de vie et un feu d'artifice.
