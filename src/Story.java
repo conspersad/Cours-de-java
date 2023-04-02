@@ -185,6 +185,13 @@ public class Story{
         game.printseperator(5);
         slowPrint(message, 25);
     }
+    public  void The_deathly_HallowsOutro(){
+        String message = """
+                 You defeat Voldemort and Bellatrix, you became a legendi the wizard world !
+                 Thank for playing to my game""";
+        game.printseperator(5);
+        slowPrint(message, 25);
+    }
     public static void slowPrint(String message, int delay) {
         for (int i = 0; i < message.length(); i++) {
             System.out.print(message.charAt(i));

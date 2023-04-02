@@ -679,8 +679,9 @@ public class Execution {
                 }}
 
                 if (wizard.isAlive()) {
-                    String message5 = wizard.getName()  + " defeat " + enemy.getName() + " !\n";
+                    String message5 = wizard.getName()  + " defeat " + enemy.getName() + enemy1.getName() + " !\n";
                     game.slowPrint(message5, 25);
+                    story.The_deathly_HallowsOutro();
                 } else if (enemy.isAlive()) {
                     String message6 = enemy.getName() + " defeat " + wizard.getName()  + " !\n";
                     game.slowPrint(message6, 25);
