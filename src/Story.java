@@ -1,5 +1,6 @@
 public class Story{
     Game game = new Game();
+
     public void printIntro(){
         game.clearconsole();
         game.printseperator(30);
@@ -11,24 +12,24 @@ public class Story{
         String message ="It's been a few months since you are in Poudlard now, you have made quite a few friends, and you are doing very well in your first class !\n" +
                 "You even learn your first speel, it's Wingardium Leviosas.\n" +
                 "But this morning you wake up and you didn't see your friend Nevile in potion class.\n"+
-                Execution.wizard.name + ": Do you know what happend to Nevile ? He never miss potion class !\n" +
+                Execution.wizard.getName()+ ": Do you know what happend to Nevile ? He never miss potion class !\n" +
                 "Hermione: Well, i saw him coming back from the toilets of the donjon yesterdays he looked very scared, it's seems like he saw a ghost!!\n"+
-                Execution.wizard.name + ": I should probably see! \n"+
-                Execution.wizard.name + ": I should probably see! \n\nNevile ";
+                Execution.wizard.getName() + ": I should probably see! \n"+
+                Execution.wizard.getName() + ": I should probably see! \n\nNevile ";
         game.printseperator(5);
         slowPrint(message, 25);
-      String message2 = "...\n"+ Execution.wizard.name +": Are you here..\n"+ Execution.wizard.name +": Ho my god, WHAT HAPPEND HERE !!!\nNevile: I'm SORRY\nNevile: I'm SORRY\nNevile: I heard weird noise in the toilet yesterday night so i passe again today but\nNevile: I'm  didn't know it was a\nNevile: TROLL !!!\nNevile: You have to use Wingardium Leviosa !!!\n ";
+      String message2 = "...\n"+  Execution.wizard.getName() +": Are you here..\n"+ Execution.wizard.getName()+": Ho my god, WHAT HAPPEND HERE !!!\nNevile: I'm SORRY\nNevile: I'm SORRY\nNevile: I heard weird noise in the toilet yesterday night so i passe again today but\nNevile: I'm  didn't know it was a\nNevile: TROLL !!!\nNevile: You have to use Wingardium Leviosa !!!\n ";
         slowPrint(message2, 25);
     }
     public void Thephilosopherstone_Outro(){
-        String message ="Professor mcgonagall : What happen here Nevile "+ Execution.wizard.name +" !\n" +
+        String message ="Professor mcgonagall : What happen here Nevile "+  Execution.wizard.getName() +" !\n" +
                 "Professor mcgonagall : Hooooo my goddd, is that a troll !\n" +
-                Execution.wizard.name  + " and Nevile : It's a long story...\n"+
+                Execution.wizard.getName() + " and Nevile : It's a long story...\n"+
                 "Professor mcgonagall :I can't believe that wizard that young could defeat a troll !! How is that even possible...\n"+
                 "Professor mcgonagall : For your bravery i would give 20 points to " + Execution.wizard.house +"!\n"+
                 "Professor mcgonagall : But please next time don't play hereos and call a professor !\n"+
-                "Nevile: It was a close one ! But what you did was very brave "+ Execution.wizard.name +". Thank you very much !!\n"
-                + Execution.wizard.name +"And i would do it again if it was necessary !\n"+
+                "Nevile: It was a close one ! But what you did was very brave "+  Execution.wizard.getName() +". Thank you very much !!\n"
+                +  Execution.wizard.getName()+"And i would do it again if it was necessary !\n"+
                 "That how you and Nevile became befriends";
         slowPrint(message, 25);
     }
@@ -51,7 +52,7 @@ public class Story{
     }
     public void TheChamberOfSecret_Outro(){
         String message ="Few hours later ....\n" +
-                "Dumbledore : Thank you for your bravery Harry, Ron, Hermione and"+ Execution.wizard.name +" !\n" +
+                "Dumbledore : Thank you for your bravery Harry, Ron, Hermione and"+ Execution.wizard.getName() +" !\n" +
                 "Dumbledore : And thank you for your service to the school.\n"+
                 "Dumbledore : You seems fearless and for that I am going to give 10 points to " + Execution.wizard.house +"!\n"+
                 "Hermione :  Thank you for sharing the secret diary with us !\n"+
@@ -83,10 +84,10 @@ public class Story{
     }
     public void The_prisoner_of_azkaban_Outro(){
         String message ="Hermione : It was a close one ! \n" +
-                Execution.wizard.name + " : Thank god we learn that new speel in class, other wise i don't know what would have happend to us ! \n"+
+                Execution.wizard.getName()+ " : Thank god we learn that new speel in class, other wise i don't know what would have happend to us ! \n"+
                 "Hermione : Your patronus is beautiful ! \n" +
-                Execution.wizard.name + " : Thank you ! My mom had the same.\n"+
-                Execution.wizard.name + " : But we really got to go,we must prevent the accident with Malfoy from happening again!\n"+
+                Execution.wizard.getName() + " : Thank you ! My mom had the same.\n"+
+                Execution.wizard.getName()+ " : But we really got to go,we must prevent the accident with Malfoy from happening again!\n"+
                         "Few moment later ....\n"+
                 "Hagrid : Thank you very much girl, I know what you did to save my hippogriff,I am very grateful for it"+
                  "Hagrid : It look like, he like you !!\n" +
