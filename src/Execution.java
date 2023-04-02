@@ -50,7 +50,6 @@ public class Execution {
             if (input == 1)
                 nameSet = true;
         }while(!nameSet);
-
         story.printIntro();
 
         game.anythingtocontinue();
