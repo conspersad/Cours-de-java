@@ -56,14 +56,14 @@ public class Enemy extends AbstractEnemy{
     public int defend() {
         int damage;
         if(Execution.wizard.house.equals("Ravenclaw")){
-        if (Math.random() < 0.8) {
+        if (Math.random() > 0.8) {
            damage = 0;
         } else {
             damage = 1;
         }
             return damage;
         }else
-            if (Math.random() < 0.6) {
+            if (Math.random() > 0.6) {
                 damage = 0;
                 return damage;
             } else {

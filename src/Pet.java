@@ -2,6 +2,8 @@ public enum  Pet {
     Owl,Rat,Cat,Toad;
 
     public static Pet choosePet() {
+        Story story = new Story();
+        story.printIntro();
         Game game = new Game();
         game.clearconsole();
         game.printHeading("Please, choose your companion for the adventures");
