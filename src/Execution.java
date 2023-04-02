@@ -32,7 +32,7 @@ public class Execution {
         // print title screen
         game.clearconsole();
         game.printseperator(20);
-        System.out.println("Harry Potter");
+        System.out.println(" RPG Harry Potter");
         System.out.println("BY CONSTANCE PERSAD");
         game.printseperator(20);
         game.anythingtocontinue();
@@ -76,6 +76,7 @@ public class Execution {
             game.anythingtocontinue();
             level=2;
             place=1;
+           wizard.xp=10;
             game.gameLoop();
 
         }else if(level==2){
@@ -87,6 +88,7 @@ public class Execution {
             game. anythingtocontinue();
             level=3;
             place=2;
+            wizard.xp=20;
             game.gameLoop();
 
         }else if(level==3){
@@ -99,6 +101,7 @@ public class Execution {
              game.anythingtocontinue();
              level=4;
              place=3;
+            wizard.xp=30;
              game.gameLoop();
 
         }else if( level==4){
@@ -111,6 +114,7 @@ public class Execution {
             game.anythingtocontinue();
             level=5;
             place=4;
+            wizard.xp=40;
             game.gameLoop();
 
         }else if(level==5){
@@ -123,6 +127,7 @@ public class Execution {
             level=6;
             place=5;
             game.gameLoop();
+            wizard.xp=50;
 
         }else if(level==6){
             story.The_half_blood_prince_Intro();
@@ -131,6 +136,7 @@ public class Execution {
             story.The_half_blood_prince_Outro();
             level=7;
             place=6;
+            wizard.xp=60;
         }
 
    }
