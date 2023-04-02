@@ -600,22 +600,22 @@ public class Execution {
                 int choice = game.readInt("->",4);
                 switch (choice) {
                     case 1 -> {
-                        int damage = wizard.attack();
-                        int reducedDamage = enemy.defend();
-                        int totalDamage = reducedDamage * damage;
-                        enemy.setHp( enemy.getHp() - totalDamage);
-                        String message1 = wizard.getName() + " inflict " + damage + " damage points\n";
-                        game.slowPrint(message1, 1);
-                        if (totalDamage == 0) {
-                            String message2 = enemy.getName() + " dodge your attack\n";
-                            game.slowPrint(message2, 1);
-                        } else {
-                            String message3 = enemy.getName() + " was hit!\n";
-                            game.slowPrint(message3, 1);
-                        }
-
-                    }
-                    case 2 -> {
+                        if(enemy.isAlive()) {
+                            int damage = wizard.attack();
+                            int reducedDamage = enemy.defend();
+                            int totalDamage = reducedDamage * damage;
+                            enemy.setHp(enemy.getHp() - totalDamage);
+                            String message1 = wizard.getName() + " inflict " + damage + " damage points\n";
+                            game.slowPrint(message1, 1);
+                            if (totalDamage == 0) {
+                                String message2 = enemy.getName() + " dodge your attack\n";
+                                game.slowPrint(message2, 1);
+                            } else {
+                                String message3 = enemy.getName() + " was hit!\n";
+                                game.slowPrint(message3, 1);
+                            }
+                        } else System.out.println("This ennemy is already dead fight the other ennemy");                    }
+                    case 2 -> {if(enemy1.isAlive()) {
                         int damage = wizard.attack();
                         int reducedDamage = enemy1.defend();
                         int totalDamage = reducedDamage * damage;
@@ -630,7 +630,7 @@ public class Execution {
                             game.slowPrint(message3, 1);
                         }
 
-                    }
+                    } else System.out.println("This ennemy is already dead fight the other ennemy");                    }
                     case 3 -> {
                         if ((Execution.wizard.house.equals("Hufflepuff")) && (wizard.getHp() < 100)) {
                             int healed = 20;
