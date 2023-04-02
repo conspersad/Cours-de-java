@@ -20,7 +20,7 @@ public class Execution {
     public static int firework=0;
     public static String patronus;
     boolean go_with_voldemort=false;
-    public static int place =0,level=7;
+    public static int place =0,level=1;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "The goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
 
@@ -56,8 +56,6 @@ public class Execution {
         game.anythingtocontinue();
 
         wizard=new Wizard(name,100,0,Hue.your_house(),Pet.choosePet(), Wand.choose_wand());
-
-        //wizard = new Wizard(name,House.your_house() ,pet.choosePet(),Wand.choose_wand() , 100); //appel de joueuer
 
         //setting isRunning to true so the game loop can continue
         game.isRunning =true;
@@ -344,8 +342,7 @@ public class Execution {
             }
         }, dureeMillis);
 
-        boolean preparationEnCours;
-       while ((firework != 6) && (!finDuTimer[0])){
+          while ((firework != 6) && (!finDuTimer[0])){
            // Tour du sorcier
            System.out.println( wizard.getName() + " (" + wizard.hp + " hp, " + wizard.getXp() + " Xp) vs " + enemy.getName() + " (" + enemy.getHp() + " hp, " +  enemy.getXp() + " xp)");
            String message ="What do you want to do ?\n"+
@@ -358,9 +355,8 @@ public class Execution {
            switch (choice) {
                case 1 -> firework=Wizard.distraireEnnemi();
                case 2 -> {
-                   preparationEnCours=true;
                    firework = Wizard.prepare_firework();
-                   int damage = Enemy.verifierPreparationFeuArtifice(preparationEnCours);
+                   int damage = Enemy.verifierPreparationFeuArtifice(true);
                    if(damage==0){
                        System.out.println("Dolores didn't see you preparing the firework ! Continue");
                    }else{
@@ -574,10 +570,12 @@ public class Execution {
         else{
             boolean ennemi1_en_vie = true;
            boolean  ennemi2_en_vie = true;
-           // story.The_deathly_HallowsIntro();
+           story.The_deathly_HallowsIntro();
             enemy = new Enemy("Voldemort", 250,20);
-            //enemy_wand = Core.ennemy_choose_Core();
-            //System.out.println("Voldemort wand is made of " + enemy_wand);
+            /*
+            enemy_wand = Core.ennemy_choose_Core();
+            System.out.println("Voldemort wand is made of " + enemy_wand);
+            */
             enemy1 = new Enemy("Bellatrix Lestrange", 200,70 );
             System.out.println("Before you fight you want to..\n");
             System.out.println("1 - Increase your damage\n");
