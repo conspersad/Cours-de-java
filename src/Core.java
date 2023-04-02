@@ -17,4 +17,13 @@ public enum Core {
             return Core.Dragon_heartstring;
         }
     }
+    public static Core ennemy_choose_Core() {
+        Game game = new Game();
+        game.clearconsole();
+        if (Math.random() > 0.5){
+            return Core.Phoenix_feather;
+        } else {
+            return Core.Dragon_heartstring;
+        }
+    }
 }

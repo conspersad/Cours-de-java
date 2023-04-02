@@ -6,11 +6,13 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+
+
 public class Execution {
+    public static int result;
     Game game= new Game();
     House Hue= new House();
     Story story = new Story();
-
     static Scanner scanner = new Scanner(System.in);
     public static Wizard wizard;
     public static Enemy enemy,enemy1;
@@ -18,7 +20,7 @@ public class Execution {
     public static int firework=0;
     public static String patronus;
     boolean go_with_voldemort=false;
-    public static int place =0,level=1;
+    public static int place =0,level=7;
     public static String[] places ={"The philosopher's stone","The chamber of secret","The prisoner of azkaban", "The goblet of fire","The order of the phoenix","The half-blood prince","The deathly Hallows"};
 
 
@@ -222,7 +224,7 @@ public class Execution {
         // Boucle principale du jeu
         while (wizard.isAlive() && enemy.isAlive() && enemy1.isAlive() && (nbr_accio !=3)){
             // Tour du sorcier
-            System.out.println( wizard.getName() + " (" + wizard.hp + " hp, " + wizard.getXp() + " Xp) vs " + enemy.getName() + " (" + enemy.getHp() + " hp, " +  enemy.getXp() + " xp)");
+            System.out.println( wizard.getName() + " (" + wizard.hp + " hp, " + wizard.getXp() + " Xp) vs " + enemy.getName() + " (" + enemy.getHp() + " hp, " +  enemy.getXp() + " xp) vs " + enemy1.getName() + " (" + enemy1.getHp() + " hp, " +  enemy1.getXp() + " xp)");
             String message = "What do you want to do ?\n" +
                     "1 - Attack " + enemy.getName() + " !\n" +
                     "2 - Attack " + enemy1.getName() + " !\n" +
@@ -354,9 +356,7 @@ public class Execution {
            game.slowPrint(message,1);
            int choice = game.readInt("->",4);
            switch (choice) {
-               case 1 -> {
-                   firework=Wizard.distraireEnnemi();
-               }
+               case 1 -> firework=Wizard.distraireEnnemi();
                case 2 -> {
                    preparationEnCours=true;
                    firework = Wizard.prepare_firework();
@@ -568,14 +568,129 @@ public class Execution {
     public static int Getnbr_accio(){return nbr_accio;}
     public static int Getlevel(){return level;}
     public void continueJourney(){
+        Core enemy_wand;
         //check if game isn't in last act
         if(level != 7) checkAct();
         else{
-            story.The_deathly_HallowsIntro();
-        }
+            boolean ennemi1_en_vie = true;
+           boolean  ennemi2_en_vie = true;
+           // story.The_deathly_HallowsIntro();
+            enemy = new Enemy("Voldemort", 250,20);
+            //enemy_wand = Core.ennemy_choose_Core();
+            //System.out.println("Voldemort wand is made of " + enemy_wand);
+            enemy1 = new Enemy("Bellatrix Lestrange", 200,70 );
+            System.out.println("Before you fight you want to..\n");
+            System.out.println("1 - Increase your damage\n");
+            System.out.println("2 - Increase your life by 100\n");
+             result = game.readInt("->",2);
+            if(result == 2) {
+                wizard.setHp(wizard.getHp() + 100);
+            }
+            while (wizard.isAlive() && (enemy.isAlive() || enemy1.isAlive())){
+                System.out.println( wizard.getName() + " (" + wizard.hp + " hp, " + wizard.getXp() + " Xp) vs " + enemy.getName() + " (" + enemy.getHp() + " hp, " +  enemy.getXp() + " xp) vs " + enemy1.getName() + " (" + enemy1.getHp() + " hp, " +  enemy1.getXp() + " xp)");
+                String message = "What do you want to do ?\n" +
+                        "1 - Attack " + enemy.getName() + " !\n" +
+                        "2 - Attack " + enemy1.getName() + " !\n" +
+                        "3 - Use a sort to have more Hp (only if your life is < 100)\n"+
+                        "4 - Leave";
+                game.slowPrint(message, 1);
+                int choice = game.readInt("->",4);
+                switch (choice) {
+                    case 1 -> {
+                        int damage = wizard.attack();
+                        int reducedDamage = enemy.defend();
+                        int totalDamage = reducedDamage * damage;
+                        enemy.setHp( enemy.getHp() - totalDamage);
+                        String message1 = wizard.getName() + " inflict " + damage + " damage points\n";
+                        game.slowPrint(message1, 1);
+                        if (totalDamage == 0) {
+                            String message2 = enemy.getName() + " dodge your attack\n";
+                            game.slowPrint(message2, 1);
+                        } else {
+                            String message3 = enemy.getName() + " was hit!\n";
+                            game.slowPrint(message3, 1);
+                        }
 
-    }
-}
+                    }
+                    case 2 -> {
+                        int damage = wizard.attack();
+                        int reducedDamage = enemy1.defend();
+                        int totalDamage = reducedDamage * damage;
+                        enemy1.setHp(enemy1.hp - totalDamage);
+                        String message1 = wizard.getName() + " inflict " + damage + " damage points\n";
+                        game.slowPrint(message1, 1);
+                        if (totalDamage == 0) {
+                            String message2 = enemy1.getName() + " dodge your attack\n";
+                            game.slowPrint(message2, 1);
+                        } else {
+                            String message3 = enemy1.getName() + " was hit!\n";
+                            game.slowPrint(message3, 1);
+                        }
+
+                    }
+                    case 3 -> {
+                        if ((Execution.wizard.house.equals("Hufflepuff")) && (wizard.getHp() < 100)) {
+                            int healed = 20;
+                            wizard.setHp(wizard.getHp() + healed);
+                            System.out.println("You healed " + healed + " Hp !\n");
+                            Wizard.nbr_de_potion = Wizard.nbr_de_potion - 1;
+
+                        } else if ((!Execution.wizard.house.equals("Hufflepuff")) && (wizard.getHp() < 100)) {
+                            int healed = 25;
+                            System.out.println("You healed " + healed + " Hp !\n");
+                            wizard.setHp(wizard.getHp() + healed);
+                            Wizard.nbr_de_potion = Wizard.nbr_de_potion - 1;
+
+                        } else if (wizard.getHp() >= 100) {
+                            System.out.println("You have enough hp\n");
+                        }
+                    }
+
+                    case 4 -> {
+                        System.out.println(wizard.getName() + " leave");
+                        System.out.println("You are either very smart or either a little bit coward");
+                        game.gameLoop();
+                    }
+                    default -> System.out.println("Choice not valid");
+                }
+                if (Math.random() > 0.5) {
+                    if (enemy.isAlive()) {
+                        int damage = enemy.attack();
+                        int reducedDamage = wizard.defend();
+                        int totalDamage = reducedDamage * damage;
+                        wizard.setHp(wizard.getHp() - totalDamage);
+                        String message4 = enemy.getName() + " attack causing " + totalDamage + " damage points. \n";
+                        game.slowPrint(message4, 75);
+                    }
+                } else {
+                    if (enemy1.isAlive()) {
+                        int damage = enemy1.attack();
+                        int reducedDamage = wizard.defend();
+                        int totalDamage = reducedDamage * damage;
+                        wizard.setHp(wizard.getHp() - totalDamage);
+                        String message4 = enemy1.getName() + " attack causing " + totalDamage + " damage points. \n";
+
+
+                        game.slowPrint(message4, 75);
+                    }
+                }}
+
+                if (wizard.isAlive()) {
+                    String message5 = wizard.getName()  + " defeat " + enemy.getName() + " !\n";
+                    game.slowPrint(message5, 25);
+                } else if (enemy.isAlive()) {
+                    String message6 = enemy.getName() + " defeat " + wizard.getName()  + " !\n";
+                    game.slowPrint(message6, 25);
+                    game.wizardDied();
+                    ennemi1_en_vie = false;
+                } else if (enemy1.isAlive()) {
+                    String message6 = enemy1.getName() + " defeat " + wizard.getName()  + " !\n";
+                    game.slowPrint(message6, 25);
+                    game.wizardDied();
+                    ennemi2_en_vie = false;
+                }
+            }
+}}
 
 
 

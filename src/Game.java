@@ -165,6 +165,21 @@ public class Game {
                 damage = 40;
             }
         }
+        else if(Execution.level==7 && Execution.result==1){
+            spellCount=4;
+            for (int i = 0; i < spellCount; i++) {
+                System.out.println((i + 1) + " : " + Spell.spells[i]);}
+            int input = readInt("->", spellCount);
+            if (input == 1) {
+                damage = 20;
+            } else if (input == 2) {
+                damage = 40;
+            }else if (input == 3) {
+                damage = 30;
+            }else if (input == 4) {
+                damage = 40;
+            }
+        }
         return damage;      }
 
 
